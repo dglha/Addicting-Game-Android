@@ -1,4 +1,4 @@
-package com.dlha.addictinggame.ui.fragments
+package com.dlha.addictinggame.ui.fragments.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
