@@ -2,4 +2,5 @@
     <string name="app_name">Addicting Games</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
