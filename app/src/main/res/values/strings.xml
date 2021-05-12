@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Addicting Game</string>
+    <string name="app_name">Addicting Games</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
 </resources>
