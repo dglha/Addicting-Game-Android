@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/appName_textView"
+               motion:framePosition="100"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/check_button"
+               motion:framePosition="100"
+               android:alpha="0" />
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/background_imageView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@+id/gradient_view"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            motion:layout_constraintBottom_toBottomOf="@id/background_imageView"
+            motion:layout_constraintLeft_toLeftOf="@id/background_imageView"
+            motion:layout_constraintRight_toRightOf="@id/background_imageView"
+            motion:layout_constraintTop_toTopOf="@id/background_imageView" />
+        <Constraint
+            android:id="@+id/sroll_appName_textView"
+            motion:layout_constraintEnd_toEndOf="@id/background_imageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/background_imageView"
+            android:visibility="visible"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            motion:layout_constraintStart_toStartOf="@+id/background_imageView" />
+    </ConstraintSet>
+</MotionScene>
