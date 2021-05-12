@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MainActivity">
+    tools:context=".ui.activities.MyProfileActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
@@ -156,7 +156,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_payment_24" />
+                            android:src="@drawable/ic_baseline_payment_24" />
 
                         <TextView
                             android:id="@+id/payment"
@@ -170,7 +170,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
                     </LinearLayout>
 
                     <View
@@ -197,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_settings_24" />
+                            android:src="@drawable/ic_baseline_settings_24" />
 
                         <TextView
                             android:id="@+id/settings"
@@ -211,7 +211,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
