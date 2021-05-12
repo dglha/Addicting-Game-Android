@@ -56,10 +56,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="@+id/cart_gameTitle_imageView"
-                app:layout_constraintTop_toBottomOf="@+id/cart_hardText_textView" />
+                app:layout_constraintTop_toBottomOf="@+id/favorite_hardText_textView" />
 
             <TextView
-                android:id="@+id/cart_hardText_textView"
+                android:id="@+id/favorite_hardText_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -77,9 +77,9 @@
                 android:fontFamily="@font/metropolis_medium"
                 android:textSize="14sp"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_hardText_textView"
-                app:layout_constraintStart_toEndOf="@+id/cart_hardText_textView"
-                app:layout_constraintTop_toTopOf="@+id/cart_hardText_textView" />
+                app:layout_constraintBottom_toBottomOf="@+id/favorite_hardText_textView"
+                app:layout_constraintStart_toEndOf="@+id/favorite_hardText_textView"
+                app:layout_constraintTop_toTopOf="@+id/favorite_hardText_textView" />
 
             <ImageView
                 android:id="@+id/cart_menu_imageView"
