@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.MyProfileActivity">
+    tools:context=".ui.fragments.myprofile.MyProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
@@ -144,7 +144,7 @@
                     android:orientation="vertical" >
 
                     <LinearLayout
-                        android:id="@+id/layout_payment"
+                        android:id="@+id/payment_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -156,7 +156,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_payment_24" />
+                            app:srcCompat="@drawable/ic_baseline_payment_24" />
 
                         <TextView
                             android:id="@+id/payment"
@@ -170,7 +170,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                            app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
                     </LinearLayout>
 
                     <View
@@ -185,7 +185,7 @@
                         tools:layout_editor_absoluteX="16dp" />
 
                     <LinearLayout
-                        android:id="@+id/layout_settings"
+                        android:id="@+id/settings_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -206,6 +206,45 @@
                             android:layout_weight="1"
                             android:textSize="18sp"
                             android:text="Settings" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/line"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.359"
+                        tools:layout_editor_absoluteX="16dp" />
+                    <LinearLayout
+                        android:id="@+id/logout_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/logout_icon_imageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_baseline_logout" />
+
+                        <TextView
+                            android:id="@+id/logout_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="18sp"
+                            android:text="Log Out" />
 
                         <ImageView
                             android:layout_width="wrap_content"

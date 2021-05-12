@@ -9,12 +9,14 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.api.ApiClient
 import com.dlha.addictinggame.api.AuthService
 import com.dlha.addictinggame.data.UserPreferences
+import com.dlha.addictinggame.databinding.ActivityLoginBinding
 import com.dlha.addictinggame.model.User
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -24,43 +26,50 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var username : String
     private lateinit var password : String
-    private lateinit var editTextUsername : EditText
-    private lateinit var editTextPassword : EditText
+    private lateinit var usernameTextView : TextView
+    private lateinit var passwordTextView: TextView
+    private lateinit var binding: ActivityLoginBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        changeStatusBarColor()
+        usernameTextView = binding.usernameTextInputEditText
+        passwordTextView = binding.passwordTextInputEditText
 
-        editTextUsername = findViewById(R.id.editTextUsername)
-        editTextPassword = findViewById(R.id.editTextPassword)
+        binding.loginButton.setOnClickListener {
+            username  = usernameTextView.text.toString()
+            password  = passwordTextView.text.toString()
+            if(username.isNotEmpty() && password.isNotEmpty()) {
+                Toast.makeText(this, "$username $password",Toast.LENGTH_SHORT).show()
+                login(username,password)
+            } else {
+                Toast.makeText(this,"Không được để trống Tài Khoản hoặc Mật Khẩu",Toast.LENGTH_SHORT).show()
+            }
+        }
+        binding.createTextView.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_right,R.anim.stay)
+        }
+
+//        changeStatusBarColor()
+
         val username : String? = intent.getStringExtra("username")
         if(!username.isNullOrEmpty()) {
-            editTextUsername.setText(username)
+            usernameTextView.text = username
         }
     }
-    fun onLoginClick(view : View) {
 
-        username  = editTextUsername.text.toString()
-        password  = editTextPassword.text.toString()
-        if(username.isNotEmpty() && password.isNotEmpty()) {
-            login(username,password)
-        } else {
-            Toast.makeText(this,"Không được để trống Tài Khoản hoặc Mật Khẩu",Toast.LENGTH_SHORT).show()
-        }
-    }
-    fun onClickRegisterView(view : View) {
-        startActivity(Intent(this,RegisterActivity::class.java))
-        overridePendingTransition(R.anim.slide_in_left,R.anim.stay)
-    }
-    private fun changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val window: Window = window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = resources.getColor(R.color.login_bk_color)
-        }
-    }
+//    private fun changeStatusBarColor() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            val window: Window = window
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//            window.statusBarColor = resources.getColor(R.color.login_bk_color)
+//        }
+//    }
     private fun login(username : String,password : String) {
         val loginService = ApiClient.getRetrofit().create(AuthService::class.java)
         val call : Call<User> = loginService.userLogin(username,password)
