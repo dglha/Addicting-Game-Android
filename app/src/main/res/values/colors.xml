@@ -12,4 +12,6 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#11CFC5</color>
 
+    <color name="redItemSelected">#DB3022</color>
+
 </resources>

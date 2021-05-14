@@ -6,216 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.MainActivity">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:elevation="10dp"
-        app:cardCornerRadius="20dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="156dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="176dp">
-
-
-        <ImageView
-            android:id="@+id/avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="avatar"/>
-
-    </androidx.cardview.widget.CardView>
-
-    <ImageView
-        android:id="@+id/background_user"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
-        android:layout_height="193dp"
-        android:scaleType="center"
-        android:contentDescription="background_user"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fd1dda13059050ea67316cdc29198af8" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="563dp"
-        android:background="@drawable/rectangle_rounded"
+        android:layout_height="50dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@drawable/tab_color"
+        app:itemTextColor="@drawable/tab_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="Nguyễn Duy Phúc"
-            android:textAlignment="center"
-            android:textColor="#020202"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/line"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.359"
-            tools:layout_editor_absoluteX="16dp" />
-
-        <TextView
-            android:id="@+id/number_game_having"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="128dp"
-            android:text="120"
-            android:textColor="#ADACBA"
-            android:textSize="24dp"
-            android:textStyle="bold"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/number_game_favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="128dp"
-            android:layout_marginEnd="124dp"
-            android:textStyle="bold"
-            android:textSize="24dp"
-            android:textColor="#ADACBA"
-            android:text="96"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/games"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginTop="12dp"
-            android:text="Games"
-            android:textAlignment="center"
-            android:textColor="#ADACBA"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_game_having" />
-
-        <TextView
-            android:id="@+id/favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="96dp"
-            android:text="Favorites"
-            android:textAlignment="center"
-            android:textColor="#ADACBA"
-            android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_game_favorites" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="355dp"
-            android:layout_marginTop="208dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:id="@+id/layout_payment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/icon_payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_payment_24" />
-
-                        <TextView
-                            android:id="@+id/payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:text="Payment" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="6dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/line"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.359"
-                        tools:layout_editor_absoluteX="16dp" />
-
-                    <LinearLayout
-                        android:id="@+id/layout_settings"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:id="@+id/icon_settings"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_settings_24" />
-
-                        <TextView
-                            android:id="@+id/settings"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textSize="18sp"
-                            android:text="Settings" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            tools:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
-                    </LinearLayout>
-                </LinearLayout>
-            </ScrollView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,8 @@
                motion:framePosition="100"
                android:alpha="0" />
        </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@id/background_imageView"
+            motion:touchAnchorSide="bottom"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
