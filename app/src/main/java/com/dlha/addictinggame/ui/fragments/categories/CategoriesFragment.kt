@@ -1,10 +1,10 @@
 package com.dlha.addictinggame.ui.fragments.categories
 
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dlha.addictinggame.R
@@ -21,25 +21,26 @@ class CategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
-
         setHasOptionsMenu(true)
-        setupActionbar()
-
+        setupToolbar()
         val categoryRecyclerView = binding.categoriesRecyclerView
         categoryRecyclerView.adapter = CategoryAdapter()
-        Log.d("test","TESING")
         return binding.root
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.optionsmenu,menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-    private fun setupActionbar() {
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayShowHomeEnabled(false)
+    private fun setupToolbar() {
+        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.categoriesToolbar)
+        (activity as AppCompatActivity?)!!.supportActionBar?.show()
+        (activity as AppCompatActivity?)!!.supportActionBar?.setDisplayShowTitleEnabled(false)
+        changeStatusBar()
     }
-
-
+    private fun changeStatusBar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = requireActivity().window
+            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+    }
 }

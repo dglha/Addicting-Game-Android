@@ -15,4 +15,12 @@
     <color name="red">#DB3022</color>
     <color name="background">#F9F9F9</color>
     <color name="black">#222222</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#9B9B9B</color>
+    <color name="lightGray">#F9F9F9</color>
+    <color name="green">#2AA952</color>
+    <color name="orangeRed">#DB3022</color>
+    <color name="orange">#F01F0E</color>
+    <color name="orangeStrong">#DB3022</color>
 </resources>
