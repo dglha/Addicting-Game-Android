@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:backgroundTint="#FFFFFF"
-    app:layoutDescription="@xml/fragment_home_scene"
-    tools:context=".ui.fragments.home.HomeFragment">
+    tools:context=".ui.fragments.cart.CartFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"

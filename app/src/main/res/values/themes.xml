@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlNormal">@color/whiteTextColor</item>
-        <item name="android:statusBarColor">#F9F9F9</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">#222222</item>
