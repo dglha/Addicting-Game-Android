@@ -70,7 +70,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/add_favorite_to_cart_button"
         android:layout_width="36dp"
         android:layout_height="46dp"
         android:backgroundTint="#DB3022"
