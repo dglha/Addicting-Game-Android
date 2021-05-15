@@ -1,8 +1,9 @@
-package com.dlha.addictinggame
+package com.dlha.addictinggame.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.CarouselType
