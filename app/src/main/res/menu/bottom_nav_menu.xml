@@ -8,7 +8,7 @@
         android:icon="@drawable/ic_category"/>
     <item android:id="@+id/cartFragment"
         android:title="Cart"
-        android:icon="@drawable/ic_shopping_cart"/>
+        android:icon="@drawable/ic_shopping_bag"/>
     <item android:id="@+id/forumsFragment"
         android:title="Forums"
         android:icon="@drawable/ic_forum"/>
