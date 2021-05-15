@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dlha.addictinggame.ui.fragments.myprofile.MyProfileFragment"
+        android:name="com.dlha.addictinggame.ui.fragments.profile.MyProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/my_profile_fragment" />
 

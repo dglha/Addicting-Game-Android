@@ -2,9 +2,7 @@ package com.dlha.addictinggame.ui.fragments.categories
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.dlha.addictinggame.R

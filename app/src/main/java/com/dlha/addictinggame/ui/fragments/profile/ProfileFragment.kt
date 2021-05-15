@@ -1,23 +1,25 @@
-package com.dlha.addictinggame.ui.fragments.myprofile
+package com.dlha.addictinggame.ui.fragments.profile
 
 import android.os.Build
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import com.dlha.addictinggame.R
 
-class MyProfileFragment : Fragment() {
+import com.dlha.addictinggame.databinding.FragmentProfileBinding
 
+
+class ProfileFragment : Fragment() {
+
+    private lateinit var binding : FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        binding = FragmentProfileBinding.inflate(layoutInflater)
         changeStatusBar()
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        return inflater.inflate(R.layout.my_profile_fragment, container, false)
+        setupToolbar()
+        return binding.root
     }
     private fun changeStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -25,5 +27,10 @@ class MyProfileFragment : Fragment() {
             window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
     }
+    private fun setupToolbar() {
+        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.profileToolbar)
+        (activity as AppCompatActivity?)!!.supportActionBar?.hide()
+    }
+
 
 }

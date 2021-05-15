@@ -5,9 +5,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
-import com.dlha.addictinggame.R
-import com.dlha.addictinggame.adapter.CartAdapter
-import com.dlha.addictinggame.databinding.FragmentCartBinding
 import com.dlha.addictinggame.databinding.FragmentForumsBinding
 
 
