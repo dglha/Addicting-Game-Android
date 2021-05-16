@@ -19,16 +19,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.SaleActivity"></activity>
         <activity android:name=".ui.activities.FavoritesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.activities.NewGameActivity">
 
         </activity>
+        <activity android:name=".ui.activities.NewGameActivity"></activity>
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:theme="@style/AppTheme" />
@@ -37,7 +32,21 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".ReviewsActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity android:name=".ui.activities.DetailsActivity"></activity>
     </application>
 
 </manifest>
