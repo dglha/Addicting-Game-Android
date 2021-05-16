@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/gameImage_imageView"
                 android:layout_width="160dp"
                 android:layout_height="210dp"
                 android:scaleType="centerCrop"
@@ -41,8 +41,8 @@
                 android:fontFamily="@font/metropolis_medium"
                 android:text="CD Projekt"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintStart_toStartOf="@+id/gameImage_imageView"
+                app:layout_constraintTop_toBottomOf="@+id/gameImage_imageView" />
 
             <TextView
                 android:id="@+id/gameName_textView"
@@ -91,7 +91,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/gameImage_imageView"
                 app:layout_constraintVertical_bias="0.76" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
