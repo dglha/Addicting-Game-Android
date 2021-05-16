@@ -5,18 +5,26 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
-    lateinit var binding : FragmentHomeBinding
+    private var _binding : FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         changeStatusBar()
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
         setupToolbar()
+
+        binding.newViewAllTextView.setOnClickListener {
+           findNavController().navigate(R.id.action_homeFragment_to_newGameActivity)
+        }
+
         return binding.root
 
     }
