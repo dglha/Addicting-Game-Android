@@ -8,16 +8,20 @@ import com.dlha.addictinggame.adapter.NewGameAdapter
 import com.dlha.addictinggame.databinding.ActivityNewGameBinding
 
 class NewGameActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityNewGameBinding
+    private var _binding : ActivityNewGameBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNewGameBinding.inflate(layoutInflater)
+        _binding = ActivityNewGameBinding.inflate(layoutInflater)
 
         setSupportActionBar(binding.newGameToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val newgameRecyclerView = binding.newGameRecyclerView
-        newgameRecyclerView.adapter = NewGameAdapter()
+        newgameRecyclerView.adapter = NewGameAdapter(this)
+
+
 
         setContentView(binding.root)
     }
