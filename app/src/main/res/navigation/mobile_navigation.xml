@@ -9,13 +9,27 @@
         android:id="@+id/homeFragment"
         android:name="com.dlha.addictinggame.ui.fragments.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_saleActivity"
+            app:destination="@id/saleActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_newGameActivity"
+            app:destination="@id/newGameActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.dlha.addictinggame.ui.fragments.cart.CartFragment"
         android:label="My Profile"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/categoryFragment"
@@ -32,8 +46,31 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dlha.addictinggame.ui.fragments.myprofile.MyProfileFragment"
+        android:name="com.dlha.addictinggame.ui.fragments.profile.MyProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/my_profile_fragment" />
+    <activity
+        android:id="@+id/saleActivity"
+        android:name="com.dlha.addictinggame.ui.activities.SaleActivity"
+        android:label="activity_sale"
+        tools:layout="@layout/activity_sale" />
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.dlha.addictinggame.ui.activities.DetailsActivity"
+        android:label="DetailsActivity"
+        tools:layout="@layout/activity_details"/>
+    <activity
+        android:id="@+id/reviewsActivity"
+        android:name="com.dlha.addictinggame.ReviewsActivity"
+        android:label="ReviewsActivity" />
+    <activity
+        android:id="@+id/newGameActivity"
+        android:name="com.dlha.addictinggame.ui.activities.NewGameActivity"
+        android:label="activity_favorites"
+        tools:layout="@layout/activity_favorites" />
+    <activity
+        android:id="@+id/favoritesActivity2"
+        android:name="com.dlha.addictinggame.ui.activities.FavoritesActivity"
+        android:label="FavoritesActivity" />
 
 </navigation>

@@ -1,9 +1,11 @@
 package com.dlha.addictinggame.ui.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import com.dlha.addictinggame.R
+import com.dlha.addictinggame.ReviewsActivity
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.CarouselType
@@ -22,6 +24,7 @@ class DetailsActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.detailToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val imageList = mutableListOf<CarouselItem>()
 
@@ -32,6 +35,12 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.detailGameImagesImageCarousel.carouselType = CarouselType.SHOWCASE
         binding.detailGameImagesImageCarousel.addData(imageList)
+
+        binding.commentCardCardView.setOnClickListener {
+            startActivity(Intent(this, ReviewsActivity::class.java))
+        }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

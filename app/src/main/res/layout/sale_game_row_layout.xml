@@ -6,7 +6,7 @@
     android:layout_height="150dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+        android:id="@+id/sale_materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
 
 
             <ImageView
-                android:id="@+id/new_gameImage_imageView"
+                android:id="@+id/sale_gameImage_imageView"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:scaleType="centerCrop"
@@ -41,22 +41,22 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/new_gameImage_imageView"
+                app:layout_constraintStart_toEndOf="@+id/sale_gameImage_imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/new_gameCoin_textView"
+                android:id="@+id/sale_oldGameCoin_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_semibold"
+                android:fontFamily="@font/metropolis_regular"
                 android:text="50$"
-                android:textColor="@color/black"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_imageView"
-                app:layout_constraintTop_toBottomOf="@+id/new_gameDeveloper_textView" />
+                app:layout_constraintTop_toBottomOf="@+id/sale_gameDeveloper_textView" />
 
             <TextView
-                android:id="@+id/new_gameDeveloper_textView"
+                android:id="@+id/sale_gameDeveloper_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -64,6 +64,18 @@
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_imageView"
                 app:layout_constraintTop_toBottomOf="@+id/sale_gameTitle_imageView" />
+
+            <TextView
+                android:id="@+id/sale_newGameCoin_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/metropolis_semibold"
+                android:text="49$"
+                android:textColor="#DB3022"
+                app:layout_constraintBottom_toBottomOf="@+id/sale_oldGameCoin_textView"
+                app:layout_constraintStart_toEndOf="@+id/sale_oldGameCoin_textView"
+                app:layout_constraintTop_toTopOf="@+id/sale_oldGameCoin_textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -81,10 +93,10 @@
         app:iconPadding="0dp"
         app:iconSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="@+id/sale_materialCardView"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView"
+        app:layout_constraintStart_toStartOf="@+id/sale_materialCardView"
+        app:layout_constraintTop_toTopOf="@+id/sale_materialCardView"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
