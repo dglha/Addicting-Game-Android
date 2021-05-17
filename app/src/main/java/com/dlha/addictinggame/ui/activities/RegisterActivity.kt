@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
             val password : String = binding.passwordTextInputEditText.text.toString()
             val email  : String = binding.emailTextInputEditText.text.toString()
             if(email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
-                register(email,username,password)
+//                register(email,username,password)
             } else {
                 Toast.makeText(this,"Nhập đủ 3 trường",Toast.LENGTH_SHORT).show()
             }
@@ -52,31 +52,31 @@ class RegisterActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private fun register(name : String,username : String,password : String) {
-        val registerService = ApiClient.getRetrofit().create(AuthService::class.java)
-        val call : Call<Message> = registerService.userRegister(name,username,password)
-        call.enqueue(object : Callback<Message> {
-            override fun onFailure(call: Call<Message>, t: Throwable) {
-                Toast.makeText(this@RegisterActivity,"Xem lại kết nối mạng",Toast.LENGTH_SHORT).show()
-            }
-            override fun onResponse(call: Call<Message>, response: Response<Message>) {
-                val message : Message?= response?.body()
-                when(message?.code) {
-                    201 -> {
-                        Toast.makeText(this@RegisterActivity,message.message,Toast.LENGTH_SHORT).show()
-                        val intent : Intent = Intent(this@RegisterActivity,LoginActivity::class.java)
-                        intent.putExtra("username", "$username")
-                        Thread.sleep(1000)
-                        startActivity(intent)
-                    }
-                    200 -> {
-                        Toast.makeText(this@RegisterActivity,"Tên tài khoản đã tồn tại",Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        Toast.makeText(this@RegisterActivity,"Error",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        })
-    }
+//    private fun register(name : String,username : String,password : String) {
+//        val registerService = ApiClient.getRetrofit().create(AuthService::class.java)
+//        val call : Call<Message> = registerService.userRegister(name,username,password)
+//        call.enqueue(object : Callback<Message> {
+//            override fun onFailure(call: Call<Message>, t: Throwable) {
+//                Toast.makeText(this@RegisterActivity,"Xem lại kết nối mạng",Toast.LENGTH_SHORT).show()
+//            }
+//            override fun onResponse(call: Call<Message>, response: Response<Message>) {
+//                val message : Message?= response?.body()
+//                when(message?.code) {
+//                    201 -> {
+//                        Toast.makeText(this@RegisterActivity,message.message,Toast.LENGTH_SHORT).show()
+//                        val intent : Intent = Intent(this@RegisterActivity,LoginActivity::class.java)
+//                        intent.putExtra("username", "$username")
+//                        Thread.sleep(1000)
+//                        startActivity(intent)
+//                    }
+//                    200 -> {
+//                        Toast.makeText(this@RegisterActivity,"Tên tài khoản đã tồn tại",Toast.LENGTH_SHORT).show()
+//                    }
+//                    else -> {
+//                        Toast.makeText(this@RegisterActivity,"Error",Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+//        })
+//    }
 }
