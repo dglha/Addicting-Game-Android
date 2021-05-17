@@ -46,9 +46,9 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.dlha.addictinggame.ui.fragments.profile.MyProfileFragment"
+        android:name="com.dlha.addictinggame.ui.fragments.profile.ProfileFragment"
         android:label="My Profile"
-        tools:layout="@layout/my_profile_fragment" />
+        tools:layout="@layout/fragment_profile" />
     <activity
         android:id="@+id/saleActivity"
         android:name="com.dlha.addictinggame.ui.activities.SaleActivity"
