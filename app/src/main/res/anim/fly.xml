@@ -1,2 +1,2 @@
 <translate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fromYDelta="300%" android:toYDelta="0%"  android:duration="4000"  />
+    android:fromYDelta="100%" android:toYDelta="0%"  android:duration="@android:integer/config_mediumAnimTime"  />

@@ -19,7 +19,6 @@ class ApiClient {
                                         .addConverterFactory(GsonConverterFactory.create())
                                         .baseUrl("https://whynotaddicting.000webhostapp.com/")
                                         .client(okHttpClient).build()
-
             return retrofit
         }
 
