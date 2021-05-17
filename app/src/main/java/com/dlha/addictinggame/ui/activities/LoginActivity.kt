@@ -11,6 +11,8 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.api.ApiClient
@@ -18,38 +20,44 @@ import com.dlha.addictinggame.api.AuthService
 import com.dlha.addictinggame.data.UserPreferences
 import com.dlha.addictinggame.databinding.ActivityLoginBinding
 import com.dlha.addictinggame.model.User
+import com.dlha.addictinggame.utils.NetworkResult
+import com.dlha.addictinggame.utils.hideKeyboard
+import com.dlha.addictinggame.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    private lateinit var username : String
-    private lateinit var password : String
-    private lateinit var usernameTextView : TextView
-    private lateinit var passwordTextView: TextView
-    private lateinit var binding: ActivityLoginBinding
+    private var _binding: ActivityLoginBinding? = null
+    private val binding get() = _binding!!
 
+    private lateinit var mainViewModel: MainViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        usernameTextView = binding.usernameTextInputEditText
-        passwordTextView = binding.passwordTextInputEditText
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-            username  = usernameTextView.text.toString()
-            password  = passwordTextView.text.toString()
+            val username  = binding.usernameTextInputEditText.text.toString()
+            val password  = binding.passwordTextInputEditText.text.toString()
             if(username.isNotEmpty() && password.isNotEmpty()) {
-                Toast.makeText(this, "$username $password",Toast.LENGTH_SHORT).show()
+                binding.loginProgressBar.visibility = View.VISIBLE
+                hideKeyboard(this)
                 login(username,password)
             } else {
+                hideKeyboard(this)
                 Toast.makeText(this,"Không được để trống Tài Khoản hoặc Mật Khẩu",Toast.LENGTH_SHORT).show()
             }
         }
+
+
         binding.createTextView.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right,R.anim.stay)
@@ -59,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
 
         val username : String? = intent.getStringExtra("username")
         if(!username.isNullOrEmpty()) {
-            usernameTextView.text = username
+            binding.usernameTextInputEditText.setText(username.toString())
         }
     }
 
@@ -71,25 +79,20 @@ class LoginActivity : AppCompatActivity() {
 //        }
 //    }
     private fun login(username : String,password : String) {
-        val loginService = ApiClient.getRetrofit().create(AuthService::class.java)
-        val call : Call<User> = loginService.userLogin(username,password)
-        call.enqueue(object : Callback<User> {
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(this@LoginActivity,"Failed",Toast.LENGTH_SHORT)
-            }
-            override  fun onResponse(call: Call<User>, response: Response<User>) {
-                val token : String? = response.body()?.token
-                Log.d("Token",token.toString())
-                if(token.isNullOrEmpty()) {
-                    Toast.makeText(this@LoginActivity,"Tên đăng nhập hoặc mật khẩu không chính xác",Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@LoginActivity,token.toString(),Toast.LENGTH_SHORT).show()
-                    lifecycleScope.launch {
-                        UserPreferences(this@LoginActivity).saveAuthToken(token)
-                    }
-                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
-                    intent.putExtra("token",token)
-                    startActivity(intent)
+        mainViewModel.userLogin(username, password)
+        mainViewModel.userLoginResponse.observe(this, { response ->
+            when (response) {
+                is NetworkResult.Error -> {
+                    binding.loginProgressBar.visibility = View.INVISIBLE
+                    Toast.makeText(this, response.message.toString(), Toast.LENGTH_SHORT).show()
+                }
+                is NetworkResult.Loading -> {
+                    binding.loginProgressBar.visibility = View.VISIBLE
+                }
+                is NetworkResult.Success -> {
+                    binding.loginProgressBar.visibility = View.INVISIBLE
+                    Log.d("LoginActivity","Success -> token: ${response.data!!.token}")
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
             }
         })
