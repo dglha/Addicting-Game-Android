@@ -3,9 +3,7 @@ package com.dlha.addictinggame.data
 import com.dlha.addictinggame.api.AppServiceAPI
 import com.dlha.addictinggame.api.AuthService
 import com.dlha.addictinggame.api.UserServiceAPI
-import com.dlha.addictinggame.model.Category
-import com.dlha.addictinggame.model.Message
-import com.dlha.addictinggame.model.User
+import com.dlha.addictinggame.model.*
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -18,6 +16,10 @@ class RemoteDataSource @Inject constructor(
     //AppServiceAPI Code Here
     suspend fun getListCategories() : Response<Category>{
         return appServiceAPI.getListCategories()
+    }
+
+    suspend fun getListNewGames() : Response<List<GameItem>>{
+        return appServiceAPI.getListNewGames()
     }
 
     /*

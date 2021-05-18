@@ -14,7 +14,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var _binding : ActivityMainBinding? = null
