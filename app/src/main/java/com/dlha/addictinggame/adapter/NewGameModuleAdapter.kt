@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.Glide
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
@@ -28,18 +27,26 @@ class NewGameModuleAdapter(val context: Context) :
             val imageView = itemView.findViewById<ImageView>(R.id.module_gameImage_imageView)
             itemView.findViewById<TextView>(R.id.module_developer_textView).text = game.developer
             itemView.findViewById<TextView>(R.id.module_gameCoin_textView).text = game.coin
-
-            if(game.image.contains("data:image")){
-                Log.d("NewGameModule", "image base64: " + game.image)
-                Glide.with(itemView)
-                    .asBitmap()
-                    .load(game.image)
-                    .into(imageView)
-            } else {
-                Glide.with(itemView)
-                    .load(game.image)
-                    .into(imageView)
+            imageView.load(game.image){
+                crossfade(600)
             }
+
+//            if(game.image.contains("data:image")){
+//                Log.d("NewGameModule", "image base64: " + game.image)
+////                Glide.with(itemView)
+////                    .load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
+////                    .centerCrop()
+////                    .placeholder(R.drawable.ic_error_placeholder)
+////                    .into(imageView)
+//                imageView.load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
+//            } else {
+////                Glide.with(itemView)
+////                    .load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
+////                    .centerCrop()
+////                    .placeholder(R.drawable.ic_error_placeholder)
+////                    .into(imageView)
+//                imageView.load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
+//            }
 
             itemView.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsActivity(game)

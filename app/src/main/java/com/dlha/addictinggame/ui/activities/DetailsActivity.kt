@@ -37,7 +37,7 @@ class DetailsActivity : AppCompatActivity() {
 
         Log.d("NavToDetails", "game: " + gameItem.name)
 
-//        imageList.add(CarouselItem(gameItem.image))
+        imageList.add(CarouselItem(gameItem.image))
         imageList.add(CarouselItem(R.drawable.fd1dda13059050ea67316cdc29198af8))
         imageList.add(CarouselItem(R.drawable.cyberpunk20770_olto))
         imageList.add(CarouselItem(R.drawable.fd1dda13059050ea67316cdc29198af8))

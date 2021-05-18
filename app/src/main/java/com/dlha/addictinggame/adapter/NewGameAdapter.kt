@@ -22,7 +22,7 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
     inner class NewGameViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(game: GameItem){
             itemView.findViewById<TextView>(R.id.new_gameTitle_textView).text = game.name
-            itemView.findViewById<ImageView>(R.id.new_gameImage_imageView).load(game.image){
+            itemView.findViewById<ImageView>(R.id.new_gameImage_imageView).load(game.image) {
                 crossfade(600)
             }
             itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
