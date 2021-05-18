@@ -30,7 +30,7 @@
                 app:srcCompat="@drawable/cyberpunk20770_olto" />
 
             <TextView
-                android:id="@+id/sale_gameTitle_imageView"
+                android:id="@+id/new_gameTitle_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -52,7 +52,7 @@
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="50$"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_imageView"
+                app:layout_constraintStart_toStartOf="@+id/new_gameTitle_textView"
                 app:layout_constraintTop_toBottomOf="@+id/new_gameDeveloper_textView" />
 
             <TextView
@@ -62,8 +62,8 @@
                 android:layout_marginTop="4dp"
                 android:text="CD Project Red"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_imageView"
-                app:layout_constraintTop_toBottomOf="@+id/sale_gameTitle_imageView" />
+                app:layout_constraintStart_toStartOf="@+id/new_gameTitle_textView"
+                app:layout_constraintTop_toBottomOf="@+id/new_gameTitle_textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

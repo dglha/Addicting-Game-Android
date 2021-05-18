@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:background="#ffffff">
+    android:background="#F9F9F9">
 
 
     <com.google.android.material.card.MaterialCardView
@@ -21,10 +21,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#F9F9F9">
 
             <ImageView
-                android:id="@+id/gameImage_imageView"
+                android:id="@+id/module_gameImage_imageView"
                 android:layout_width="160dp"
                 android:layout_height="210dp"
                 android:scaleType="centerCrop"
@@ -34,33 +35,34 @@
                 app:srcCompat="@drawable/cyberpunk20770_olto" />
 
             <TextView
-                android:id="@+id/developer_textView"
+                android:id="@+id/module_developer_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/metropolis_medium"
                 android:text="CD Projekt"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/gameImage_imageView"
-                app:layout_constraintTop_toBottomOf="@+id/gameImage_imageView" />
+                app:layout_constraintStart_toStartOf="@+id/module_gameImage_imageView"
+                app:layout_constraintTop_toBottomOf="@+id/module_gameImage_imageView" />
 
             <TextView
-                android:id="@+id/gameName_textView"
-                android:layout_width="wrap_content"
+                android:id="@+id/module_gameName_textView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Cyberpunk 2077"
                 android:textColor="@color/black"
                 android:ellipsize="end"
+                android:maxLines="1"
                 android:fontFamily="@font/metropolis_bold"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/developer_textView" />
+                app:layout_constraintTop_toBottomOf="@+id/module_developer_textView" />
 
             <TextView
-                android:id="@+id/gameCoin_textView"
+                android:id="@+id/module_gameCoin_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -70,13 +72,13 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/gameName_textView"
+                app:layout_constraintEnd_toEndOf="@+id/module_gameName_textView"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/gameName_textView"
-                app:layout_constraintTop_toBottomOf="@+id/gameName_textView" />
+                app:layout_constraintStart_toStartOf="@+id/module_gameName_textView"
+                app:layout_constraintTop_toBottomOf="@+id/module_gameName_textView" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button"
+                android:id="@+id/module_addToFavorite_button"
                 android:layout_width="26dp"
                 android:layout_height="36dp"
                 app:cornerRadius="30dp"
@@ -91,7 +93,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gameImage_imageView"
+                app:layout_constraintTop_toTopOf="@+id/module_gameImage_imageView"
                 app:layout_constraintVertical_bias="0.76" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
