@@ -21,17 +21,17 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
 
     inner class NewGameViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(game: GameItem){
-            itemView.findViewById<TextView>(R.id.module_gameName_textView).text = game.name
-            itemView.findViewById<ImageView>(R.id.module_gameImage_imageView).load(game.image){
+            itemView.findViewById<TextView>(R.id.new_gameTitle_textView).text = game.name
+            itemView.findViewById<ImageView>(R.id.new_gameImage_imageView).load(game.image){
                 crossfade(600)
             }
-//            itemView.findViewById<TextView>(R.id.module_developer_textView)
-            itemView.findViewById<TextView>(R.id.module_gameCoin_textView).text = game.coin
+            itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
+            itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewGameViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.game_module_row_layout,parent,false)
+        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.new_game_row_layout ,parent,false)
         layoutInflater.setOnClickListener{
             context.startActivity(Intent(context, DetailsActivity::class.java))
         }

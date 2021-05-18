@@ -12,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.adapter.NewGameAdapter
+import com.dlha.addictinggame.adapter.NewGameModuleAdapter
 import com.dlha.addictinggame.databinding.FragmentHomeBinding
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.MainViewModel
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
 
-    private val mNewGameAdapter by lazy { NewGameAdapter(requireContext()) }
+    private val mNewGameModuleAdapter by lazy { NewGameModuleAdapter(requireContext()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecycleView() {
-        binding.newGameRecyclerView.adapter = mNewGameAdapter
+        binding.newGameRecyclerView.adapter = mNewGameModuleAdapter
         binding.newGameRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         showShimmerEffect(binding.newGameRecyclerView)
     }
@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                         Log.d("ListNewGame", "readApi: success")
                         hideShimmerEffect(binding.newGameRecyclerView)
                         response.data?.let {
-                            mNewGameAdapter.setData(it)
+                            mNewGameModuleAdapter.setData(it)
                         }
                     }
                     is NetworkResult.Error -> {

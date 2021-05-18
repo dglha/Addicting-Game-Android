@@ -58,7 +58,11 @@
         android:id="@+id/detailsActivity"
         android:name="com.dlha.addictinggame.ui.activities.DetailsActivity"
         android:label="DetailsActivity"
-        tools:layout="@layout/activity_details"/>
+        tools:layout="@layout/activity_details">
+        <argument
+            android:name="gameItem"
+            app:argType="com.dlha.addictinggame.model.GameItem" />
+    </activity>
     <activity
         android:id="@+id/reviewsActivity"
         android:name="com.dlha.addictinggame.ReviewsActivity"
