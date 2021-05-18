@@ -31,8 +31,8 @@ class RemoteDataSource @Inject constructor(
     }
 
 
-    suspend fun userRegister(name: String, username: String, password: String): Response<Message>{
-        return authService.userRegister(name, username, password)
+    suspend fun userRegister(email: String, username: String, password: String): Response<Message>{
+        return authService.userRegister(email, username, password)
     }
 
     /*
