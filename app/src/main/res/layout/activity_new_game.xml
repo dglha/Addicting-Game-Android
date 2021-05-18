@@ -33,6 +33,7 @@
                 android:id="@+id/headline_textView"
                 android:layout_width="75dp"
                 android:layout_height="34dp"
+                android:textColor="@color/black"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="14dp"

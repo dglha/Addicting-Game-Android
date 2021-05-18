@@ -102,7 +102,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialButton" />
 
             <TextView
-                android:id="@+id/detail_gameTitle_textView"
+                android:id="@+id/detail_gameDeveloper_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -124,8 +124,8 @@
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean justo erat, feugiat nec consectetur quis, tincidunt vitae libero. Nunc tincidunt id urna vel dapibus. Phasellus in feugiat lorem. Ut mattis finibus ante at maximus. Cras volutpat justo ut maximus dignissim. Nam laoreet id eros in porttitor"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/detail_gameCoin_textView"
-                app:layout_constraintStart_toStartOf="@+id/detail_gameTitle_textView"
-                app:layout_constraintTop_toBottomOf="@+id/detail_gameTitle_textView" />
+                app:layout_constraintStart_toStartOf="@+id/detail_gameDeveloper_textView"
+                app:layout_constraintTop_toBottomOf="@+id/detail_gameDeveloper_textView" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/commentCard_cardView"

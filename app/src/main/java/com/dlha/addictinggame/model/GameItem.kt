@@ -1,8 +1,11 @@
 package com.dlha.addictinggame.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class GameItem(
     @SerializedName("coin")
     val coin: String,
@@ -21,5 +24,9 @@ data class GameItem(
     @SerializedName("namegame")
     val name: String,
     @SerializedName("time")
-    val time: String
-)
+    val time: String,
+    @SerializedName("sale")
+    val saleCoin: String,
+    @SerializedName("developer")
+    val developer: String,
+): Parcelable
