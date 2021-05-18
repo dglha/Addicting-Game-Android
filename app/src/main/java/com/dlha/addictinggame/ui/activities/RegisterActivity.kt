@@ -2,42 +2,31 @@ package com.dlha.addictinggame.ui.activities
 
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.api.ApiClient
-import com.dlha.addictinggame.api.AuthService
 import com.dlha.addictinggame.databinding.ActivityRegisterBinding
-import com.dlha.addictinggame.model.Message
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.utils.hideKeyboard
-import com.dlha.addictinggame.viewmodels.RegisterViewModel
+import com.dlha.addictinggame.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 @AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRegisterBinding
 
-    private lateinit var registerViewModel: RegisterViewModel
+    private lateinit var authViewModel: AuthViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding  = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         binding.registerButton.setOnClickListener {
             val username : String = binding.usernameTextInputEditText.text.toString()
@@ -68,12 +57,13 @@ class RegisterActivity : AppCompatActivity() {
 //    }
 
     private fun register(email : String,username : String,password : String) {
-        registerViewModel.userRegister(email,username,password)
-        registerViewModel.userRegisterResponse.observe(this) { response ->
+        authViewModel.userRegister(email,username,password)
+        authViewModel.userRegisterResponse.observe(this) { response ->
             when (response) {
                 is NetworkResult.Error -> {
                     binding.registerProgressBar.visibility = View.INVISIBLE
                     Toast.makeText(this, response.message.toString(), Toast.LENGTH_SHORT).show()
+                    Log.d("RegisterViewModel", "register: toast called")
                 }
                 is NetworkResult.Loading -> {
                     binding.registerProgressBar.visibility = View.VISIBLE

@@ -1,41 +1,25 @@
 package com.dlha.addictinggame.ui.activities
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.api.ApiClient
-import com.dlha.addictinggame.api.AuthService
-import com.dlha.addictinggame.data.UserPreferences
 import com.dlha.addictinggame.databinding.ActivityLoginBinding
-import com.dlha.addictinggame.model.User
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.utils.hideKeyboard
-import com.dlha.addictinggame.viewmodels.MainViewModel
+import com.dlha.addictinggame.viewmodels.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mainViewModel: MainViewModel
+    private lateinit var authViewModel: AuthViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
             val username = binding.usernameTextInputEditText.text.toString()
@@ -84,8 +68,8 @@ class LoginActivity : AppCompatActivity() {
 //        }
 //    }
     private fun login(username: String, password: String) {
-        mainViewModel.userLogin(username, password)
-        mainViewModel.userLoginResponse.observe(this) { response ->
+        authViewModel.userLogin(username, password)
+        authViewModel.userLoginResponse.observe(this) { response ->
             when (response) {
                 is NetworkResult.Error -> {
                     binding.loginProgressBar.visibility = View.INVISIBLE
