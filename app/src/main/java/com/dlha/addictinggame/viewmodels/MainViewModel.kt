@@ -38,18 +38,18 @@ class MainViewModel @Inject constructor(
     }
 
     private fun handleUserLoginResponse(response: Response<User>): NetworkResult<User> {
-        when{
+        return when{
             response.message().toString().contains("timeout") -> {
-                return NetworkResult.Error("Timeout.")
+                NetworkResult.Error("Timeout.")
             }
             response.body()!!.token.isEmpty() -> {
-                return NetworkResult.Error("User not found!")
+                NetworkResult.Error("User not found!")
             }
             response.isSuccessful -> {
                 val user = response.body()
-                return NetworkResult.Success(user!!)
+                NetworkResult.Success(user!!)
             }
-            else -> return NetworkResult.Error(response.message().toString())
+            else -> NetworkResult.Error(response.message().toString())
         }
     }
 }

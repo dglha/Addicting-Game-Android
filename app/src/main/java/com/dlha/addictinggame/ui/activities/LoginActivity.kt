@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.api.ApiClient
 import com.dlha.addictinggame.api.AuthService
@@ -45,42 +46,46 @@ class LoginActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-            val username  = binding.usernameTextInputEditText.text.toString()
-            val password  = binding.passwordTextInputEditText.text.toString()
-            if(username.isNotEmpty() && password.isNotEmpty()) {
+            val username = binding.usernameTextInputEditText.text.toString()
+            val password = binding.passwordTextInputEditText.text.toString()
+            if (username.isNotEmpty() && password.isNotEmpty()) {
                 binding.loginProgressBar.visibility = View.VISIBLE
                 hideKeyboard(this)
-                login(username,password)
+                login(username, password)
             } else {
                 hideKeyboard(this)
-                Toast.makeText(this,"Không được để trống Tài Khoản hoặc Mật Khẩu",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Không được để trống Tài Khoản hoặc Mật Khẩu",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
 
         binding.createTextView.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
-            overridePendingTransition(R.anim.slide_in_right,R.anim.stay)
+            startActivity(Intent(this, RegisterActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
         }
 
 //        changeStatusBarColor()
 
-        val username : String? = intent.getStringExtra("username")
-        if(!username.isNullOrEmpty()) {
+        val username: String? = intent.getStringExtra("username")
+        if (!username.isNullOrEmpty()) {
             binding.usernameTextInputEditText.setText(username.toString())
         }
     }
 
-//    private fun changeStatusBarColor() {
+    //    private fun changeStatusBarColor() {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            val window: Window = window
 //            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
 //            window.statusBarColor = resources.getColor(R.color.login_bk_color)
 //        }
 //    }
-    private fun login(username : String,password : String) {
+    private fun login(username: String, password: String) {
         mainViewModel.userLogin(username, password)
-        mainViewModel.userLoginResponse.observe(this, { response ->
+        mainViewModel.userLoginResponse.observe(this) { response ->
             when (response) {
                 is NetworkResult.Error -> {
                     binding.loginProgressBar.visibility = View.INVISIBLE
@@ -91,11 +96,10 @@ class LoginActivity : AppCompatActivity() {
                 }
                 is NetworkResult.Success -> {
                     binding.loginProgressBar.visibility = View.INVISIBLE
-                    Log.d("LoginActivity","Success -> token: ${response.data!!.token}")
+                    Log.d("LoginActivity", "Success -> token: ${response.data!!.token}")
                     startActivity(Intent(this, MainActivity::class.java))
                 }
             }
-        })
+        }
     }
-
 }
