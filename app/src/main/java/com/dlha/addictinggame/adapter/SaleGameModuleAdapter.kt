@@ -17,6 +17,7 @@ import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
+import com.dlha.addictinggame.ui.activities.SaleActivity
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
 import kotlin.math.roundToInt
 
@@ -48,7 +49,7 @@ class SaleGameModuleAdapter(val context : Context) : RecyclerView.Adapter<SaleGa
                 try{
                     itemView.findNavController().navigate(action)
                 } catch (e: Exception){
-                    Log.d("NavToDetails", "error when navigate: " + e.message.toString())
+                    Log.d("NavToDetails", "error when navigate: Sale " + e.message.toString())
                 }
             }
         }
@@ -66,7 +67,7 @@ class SaleGameModuleAdapter(val context : Context) : RecyclerView.Adapter<SaleGa
     }
 
     override fun getItemCount(): Int {
-        return games.count()
+        return 5
     }
 
     override fun onBindViewHolder(holder: SaleGameModuleAdapter.SaleGameModuleViewHolder, position: Int) {
