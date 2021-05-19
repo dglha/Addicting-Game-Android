@@ -54,7 +54,7 @@ class NewGameModuleAdapter(val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return games.size
+        return 5
     }
 
     override fun onBindViewHolder(holder: NewGameModuleAdapter.NewGameModuleViewHolder, position: Int) {

@@ -2,6 +2,7 @@ package com.dlha.addictinggame.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,16 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
             }
             itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
             itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
+
+            itemView.setOnClickListener {
+                val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
+                Log.d("NavToDetails", "game selected: $game")
+                try{
+                    context.startActivity(intent)
+                } catch (e: Exception){
+                    Log.d("NavToDetails", "error when navigate from New: " + e.message.toString())
+                }
+            }
 
         }
     }

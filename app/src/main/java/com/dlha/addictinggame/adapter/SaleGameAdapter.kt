@@ -40,12 +40,12 @@ class SaleGameAdapter(val context : Context) : RecyclerView.Adapter<SaleGameAdap
             game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
             itemView.findViewById<TextView>(R.id.sale_newGameCoin_textView).text = game.newCoin.toString()
             itemView.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailsActivity(game)
+                val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
                 Log.d("NavToDetails", "game selected: $game")
                 try{
-                    itemView.findNavController().navigate(action)
+                    context.startActivity(intent)
                 } catch (e: Exception){
-                    Log.d("NavToDetails", "error when navigate: " + e.message.toString())
+                    Log.d("NavToDetails", "error when navigate from Sale: " + e.message.toString())
                 }
             }
         }

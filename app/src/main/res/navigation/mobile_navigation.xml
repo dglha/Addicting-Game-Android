@@ -61,7 +61,9 @@
         tools:layout="@layout/activity_details">
         <argument
             android:name="gameItem"
-            app:argType="com.dlha.addictinggame.model.GameItem" />
+            app:argType="com.dlha.addictinggame.model.GameItem"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </activity>
     <activity
         android:id="@+id/reviewsActivity"

@@ -20,7 +20,7 @@ import org.imaginativeworld.whynotimagecarousel.CarouselType
 
 class DetailsActivity : AppCompatActivity() {
 
-    private var _binding : ActivityDetailsBinding? = null
+    private var _binding: ActivityDetailsBinding? = null
     private val binding get() = _binding!!
 
     private val args by navArgs<DetailsActivityArgs>()
@@ -36,12 +36,11 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val gameItem = if (args.gameItem==null)
+            intent.getParcelableExtra<GameItem>("item")!!
+        else args.gameItem
 
-
-
-        val gameItem = args.gameItem
-
-        Log.d("NavToDetails", "game: " + gameItem.name)
+        Log.d("NavToDetails", "game: " + gameItem!!.name)
 
         setupCarouselItem(gameItem)
         setUpContentView(gameItem)
@@ -57,8 +56,8 @@ class DetailsActivity : AppCompatActivity() {
         val imageList = mutableListOf<CarouselItem>()
         val part = gameItem.imgtoshow?.split(";")
         imageList.add(CarouselItem(gameItem.image))
-        if(part?.count()!! > 0) {
-            for (i in 0 until part?.count())
+        if (part?.count()!! > 0) {
+            for (i in 0 until part.count())
                 imageList.add(CarouselItem(part[i]))
         }
         binding.detailGameImagesImageCarousel.carouselType = CarouselType.SHOWCASE
@@ -70,11 +69,11 @@ class DetailsActivity : AppCompatActivity() {
         binding.detailGameDeveloperTextView.text = gameItem.developer
         binding.detailGameDescriptionTextView.text = gameItem.detail
 
-        if(gameItem.salePercent.toInt() > 0) {
+        if (gameItem.salePercent.toInt() > 0) {
             val spanBuilder = SpannableStringBuilder(gameItem.coin)
             val strikethroughSpan = StrikethroughSpan()
             spanBuilder.setSpan(
-                strikethroughSpan,0,gameItem.coin.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                strikethroughSpan, 0, gameItem.coin.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             binding.detailGameCoinTextView.text = spanBuilder
             binding.coinAfterTextView.text = gameItem.newCoin.toString()
