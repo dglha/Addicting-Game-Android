@@ -8,8 +8,8 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AppServiceAPI {
-    @POST("api/listdanhmuc")
-    suspend fun getListCategories() : Response<Category>
+    @GET("api/listCategory")
+    suspend fun getListCategories(): Response<List<Category>>
 
     @GET("api/listNewGame")
     suspend fun getListNewGames(): Response<List<GameItem>>
