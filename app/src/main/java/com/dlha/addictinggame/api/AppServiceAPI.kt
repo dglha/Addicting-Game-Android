@@ -13,4 +13,7 @@ interface AppServiceAPI {
 
     @GET("api/listNewGame")
     suspend fun getListNewGames(): Response<List<GameItem>>
+
+    @GET("api/listGameSale")
+    suspend fun getListSaleGame(): Response<List<GameItem>>
 }

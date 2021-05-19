@@ -27,6 +27,7 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
             }
             itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
             itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
+
         }
     }
 

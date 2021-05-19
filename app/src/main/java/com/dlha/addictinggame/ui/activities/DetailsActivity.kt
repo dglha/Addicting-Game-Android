@@ -3,8 +3,13 @@ package com.dlha.addictinggame.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.StrikethroughSpan
 import android.util.Log
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.navigation.navArgs
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.ReviewsActivity
@@ -31,21 +36,15 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val imageList = mutableListOf<CarouselItem>()
+
+
 
         val gameItem = args.gameItem
 
         Log.d("NavToDetails", "game: " + gameItem.name)
 
-        imageList.add(CarouselItem(gameItem.image))
-        imageList.add(CarouselItem(R.drawable.fd1dda13059050ea67316cdc29198af8))
-        imageList.add(CarouselItem(R.drawable.cyberpunk20770_olto))
-        imageList.add(CarouselItem(R.drawable.fd1dda13059050ea67316cdc29198af8))
-
+        setupCarouselItem(gameItem)
         setUpContentView(gameItem)
-
-        binding.detailGameImagesImageCarousel.carouselType = CarouselType.SHOWCASE
-        binding.detailGameImagesImageCarousel.addData(imageList)
 
         binding.commentCardCardView.setOnClickListener {
             startActivity(Intent(this, ReviewsActivity::class.java))
@@ -54,11 +53,35 @@ class DetailsActivity : AppCompatActivity() {
 
     }
 
+    private fun setupCarouselItem(gameItem: GameItem) {
+        val imageList = mutableListOf<CarouselItem>()
+        val part = gameItem.imgtoshow?.split(";")
+        imageList.add(CarouselItem(gameItem.image))
+        if(part?.count()!! > 0) {
+            for (i in 0 until part?.count())
+                imageList.add(CarouselItem(part[i]))
+        }
+        binding.detailGameImagesImageCarousel.carouselType = CarouselType.SHOWCASE
+        binding.detailGameImagesImageCarousel.addData(imageList)
+    }
+
     private fun setUpContentView(gameItem: GameItem) {
         binding.detailToolbarTitle.text = gameItem.name
         binding.detailGameDeveloperTextView.text = gameItem.developer
         binding.detailGameDescriptionTextView.text = gameItem.detail
-        binding.detailGameCoinTextView.text = gameItem.coin
+
+        if(gameItem.salePercent.toInt() > 0) {
+            val spanBuilder = SpannableStringBuilder(gameItem.coin)
+            val strikethroughSpan = StrikethroughSpan()
+            spanBuilder.setSpan(
+                strikethroughSpan,0,gameItem.coin.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.detailGameCoinTextView.text = spanBuilder
+            binding.coinAfterTextView.text = gameItem.newCoin.toString()
+        } else {
+            binding.detailGameCoinTextView.text = gameItem.coin
+            binding.coinAfterTextView.visibility = View.GONE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

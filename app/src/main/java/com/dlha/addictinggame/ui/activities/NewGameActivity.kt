@@ -7,6 +7,7 @@ import android.view.Menu
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.adapter.NewGameAdapter
@@ -48,7 +49,7 @@ class NewGameActivity : AppCompatActivity() {
     private fun readApi() {
         lifecycleScope.launch {
             mainViewModel.getNewGames()
-            mainViewModel.newGamesResponse.observe(this@NewGameActivity, { response ->
+            mainViewModel.newGamesResponse.observe(this@NewGameActivity) { response ->
                 when (response) {
                     is NetworkResult.Success -> {
                         Log.d("NewGameActivity", "readApi: success")
@@ -65,7 +66,7 @@ class NewGameActivity : AppCompatActivity() {
                         showShimmerEffect()
                     }
                 }
-            })
+            }
         }
     }
 

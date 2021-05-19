@@ -1,9 +1,11 @@
 package com.dlha.addictinggame.model
 
 
+import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import kotlin.math.roundToInt
 
 @Parcelize
 data class GameItem(
@@ -26,7 +28,9 @@ data class GameItem(
     @SerializedName("time")
     val time: String,
     @SerializedName("sale")
-    val saleCoin: String,
+    val salePercent: String,
     @SerializedName("developer")
     val developer: String,
-): Parcelable
+    var newCoin : Int
+): Parcelable {
+}
