@@ -24,9 +24,13 @@ class MainViewModel @Inject constructor(
 ): AndroidViewModel(application) {
 
     val newGamesResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
+    val saleGameResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
 
     fun getNewGames() = viewModelScope.launch {
             getNewGamesSafeCall()
+    }
+    fun getSaleGames() = viewModelScope.launch {
+            getSaleGamesSafeCall()
     }
 
     private suspend fun getNewGamesSafeCall() {
@@ -51,6 +55,32 @@ class MainViewModel @Inject constructor(
             response.isSuccessful -> {
                 val newGames = response.body()
                 return NetworkResult.Success(newGames!!)
+            }
+            else -> return NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun getSaleGamesSafeCall() {
+        saleGameResponse.value = NetworkResult.Loading()
+        try{
+            val response = repository.remote.getListSaleGames()
+            saleGameResponse.value = handleListSaleGameResponse(response)
+        } catch (e: Exception){
+            saleGameResponse.value = NetworkResult.Error(e.message)
+            Log.d("ListSaleGame", "getSaleGamesSafeCall: error: " +e.message)
+        }
+    }
+    private fun handleListSaleGameResponse(response: Response<List<GameItem>>): NetworkResult<List<GameItem>>? {
+        return when{
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.body()!!.isNullOrEmpty() -> {
+                NetworkResult.Error("No Game found!")
+            }
+            response.isSuccessful -> {
+                val saleGames = response.body()
+                return NetworkResult.Success(saleGames!!)
             }
             else -> return NetworkResult.Error(response.message().toString())
         }

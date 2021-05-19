@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.ActivityLoginBinding
 import com.dlha.addictinggame.utils.NetworkResult

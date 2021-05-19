@@ -22,6 +22,10 @@ class RemoteDataSource @Inject constructor(
         return appServiceAPI.getListNewGames()
     }
 
+    suspend fun getListSaleGames(): Response<List<GameItem>> {
+        return appServiceAPI.getListSaleGame()
+    }
+
     /*
     *
     * AutServiceAPI Code Here

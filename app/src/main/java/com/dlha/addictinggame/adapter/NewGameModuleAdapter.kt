@@ -31,26 +31,9 @@ class NewGameModuleAdapter(val context: Context) :
                 crossfade(600)
             }
 
-//            if(game.image.contains("data:image")){
-//                Log.d("NewGameModule", "image base64: " + game.image)
-////                Glide.with(itemView)
-////                    .load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
-////                    .centerCrop()
-////                    .placeholder(R.drawable.ic_error_placeholder)
-////                    .into(imageView)
-//                imageView.load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
-//            } else {
-////                Glide.with(itemView)
-////                    .load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
-////                    .centerCrop()
-////                    .placeholder(R.drawable.ic_error_placeholder)
-////                    .into(imageView)
-//                imageView.load("https://res.cloudinary.com/de8cfygk1/image/upload/v1621325856/fuqotbs7bfd4jdm9flrf.png")
-//            }
-
             itemView.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsActivity(game)
-                Log.d("NavToDetails", "game selected: " + game.toString())
+                Log.d("NavToDetails", "game selected: $game")
                 try{
                     itemView.findNavController().navigate(action)
                 } catch (e: Exception){
@@ -71,7 +54,7 @@ class NewGameModuleAdapter(val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return games.size
+        return 5
     }
 
     override fun onBindViewHolder(holder: NewGameModuleAdapter.NewGameModuleViewHolder, position: Int) {

@@ -40,7 +40,8 @@
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
                 android:lineHeight="34sp"
-                android:text="Favorites"
+                android:textColor="@color/black"
+                android:text="Sale"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -145,11 +146,12 @@
         app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
         tools:layout_editor_absoluteX="0dp">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/sale_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
+            app:shimmer_recycler_layout="@layout/placeholder_row_layout"
             android:layout_marginEnd="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

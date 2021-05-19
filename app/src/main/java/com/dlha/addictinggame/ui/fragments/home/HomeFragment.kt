@@ -9,10 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.adapter.NewGameModuleAdapter
+import com.dlha.addictinggame.adapter.SaleGameModuleAdapter
 import com.dlha.addictinggame.databinding.FragmentHomeBinding
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.MainViewModel
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
 
     private val mNewGameModuleAdapter by lazy { NewGameModuleAdapter(requireContext()) }
+    private val mSaleGameModuleAdapter by lazy { SaleGameModuleAdapter(requireContext()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,15 +51,23 @@ class HomeFragment : Fragment() {
         binding.newViewAllTextView.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_newGameActivity)
         }
+        binding.saleViewAllTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_saleActivity)
+        }
 
         return binding.root
 
     }
 
     private fun setupRecycleView() {
+        // adapter new
         binding.newGameRecyclerView.adapter = mNewGameModuleAdapter
         binding.newGameRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         showShimmerEffect(binding.newGameRecyclerView)
+        // adapter sale
+        binding.saleGameRecyclerView.adapter = mSaleGameModuleAdapter
+        binding.saleGameRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        showShimmerEffect(binding.saleGameRecyclerView)
     }
 
     private fun showShimmerEffect(recyclerView: ShimmerRecyclerView) {
@@ -68,9 +79,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun readApi() {
+        // read New Game
         lifecycleScope.launch {
             mainViewModel.getNewGames()
-            mainViewModel.newGamesResponse.observe(viewLifecycleOwner, { response ->
+            mainViewModel.newGamesResponse.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is NetworkResult.Success -> {
                         Log.d("ListNewGame", "readApi: success")
@@ -87,7 +99,27 @@ class HomeFragment : Fragment() {
                         showShimmerEffect(binding.newGameRecyclerView)
                     }
                 }
-            })
+            }
+            // read Sale Game
+            mainViewModel.getSaleGames()
+            mainViewModel.saleGameResponse.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is NetworkResult.Success -> {
+                        Log.d("ListSaleGame", "readApi: success")
+                        hideShimmerEffect(binding.saleGameRecyclerView)
+                        response.data?.let {
+                            mSaleGameModuleAdapter.setData(it)
+                        }
+                    }
+                    is NetworkResult.Error -> {
+                        hideShimmerEffect(binding.saleGameRecyclerView)
+                        Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                    is NetworkResult.Loading -> {
+                        showShimmerEffect(binding.saleGameRecyclerView)
+                    }
+                }
+            }
         }
     }
 
