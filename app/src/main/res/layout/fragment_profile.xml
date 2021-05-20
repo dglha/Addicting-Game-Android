@@ -149,13 +149,13 @@
 
                         <LinearLayout
                             android:id="@+id/payment_layout"
-                            android:clickable="true"
-                            android:padding="7dp"
-                            android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="horizontal"
+                            android:padding="7dp">
 
                             <ImageView
                                 android:id="@+id/icon_payment"
@@ -253,13 +253,13 @@
                         <LinearLayout
                             android:id="@+id/logout_layout"
                             android:layout_width="match_parent"
-                            android:clickable="true"
-                            android:padding="7dp"
-                            android:focusable="true"
-                            android:background="?android:attr/selectableItemBackground"
                             android:layout_height="match_parent"
                             android:layout_marginTop="7dp"
-                            android:orientation="horizontal">
+                            android:background="?android:attr/selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="horizontal"
+                            android:padding="7dp">
 
                             <ImageView
                                 android:id="@+id/logout_icon_imageView"

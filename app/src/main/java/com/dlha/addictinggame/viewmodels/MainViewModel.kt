@@ -3,14 +3,11 @@ package com.dlha.addictinggame.viewmodels
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dlha.addictinggame.data.Repository
 import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.model.GameItem
-import com.dlha.addictinggame.model.Games
-import com.dlha.addictinggame.model.User
 import com.dlha.addictinggame.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
