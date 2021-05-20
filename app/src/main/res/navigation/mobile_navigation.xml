@@ -48,7 +48,11 @@
         android:id="@+id/profileFragment"
         android:name="com.dlha.addictinggame.ui.fragments.profile.ProfileFragment"
         android:label="My Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
     <activity
         android:id="@+id/saleActivity"
         android:name="com.dlha.addictinggame.ui.activities.SaleActivity"
@@ -78,5 +82,15 @@
         android:id="@+id/favoritesActivity2"
         android:name="com.dlha.addictinggame.ui.activities.FavoritesActivity"
         android:label="FavoritesActivity" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.dlha.addictinggame.ui.activities.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/registerActivity"
+        android:name="com.dlha.addictinggame.ui.activities.RegisterActivity"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
 
 </navigation>
