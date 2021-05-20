@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.dlha.addictinggame.data.Repository
+import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.model.Games
 import com.dlha.addictinggame.model.User
@@ -25,12 +26,20 @@ class MainViewModel @Inject constructor(
 
     val newGamesResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
     val saleGameResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
+    val categoryResponse: MutableLiveData<NetworkResult<List<Category>>> = MutableLiveData()
+    val gamesInCategoryResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
 
     fun getNewGames() = viewModelScope.launch {
-            getNewGamesSafeCall()
+        getNewGamesSafeCall()
     }
     fun getSaleGames() = viewModelScope.launch {
-            getSaleGamesSafeCall()
+        getSaleGamesSafeCall()
+    }
+    fun getCategory() = viewModelScope.launch {
+        getCategoriesSafeCall()
+    }
+    fun getGamesInCategory(idcategory : Int) = viewModelScope.launch {
+        getGamesInCategorySafeCall(idcategory)
     }
 
     private suspend fun getNewGamesSafeCall() {
@@ -43,7 +52,6 @@ class MainViewModel @Inject constructor(
             Log.d("ListNewGame", "getNewGamesSafeCall: error: " +e.message)
         }
     }
-
     private fun handleListNewGamesResponse(response: Response<List<GameItem>>): NetworkResult<List<GameItem>>? {
         return when{
             response.message().toString().contains("timeout") -> {
@@ -83,6 +91,59 @@ class MainViewModel @Inject constructor(
                 return NetworkResult.Success(saleGames!!)
             }
             else -> return NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun getCategoriesSafeCall() {
+        categoryResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.getListCategories()
+            categoryResponse.value =  handleListCategoriesResponse(response)
+        }catch (e: Exception) {
+            categoryResponse.value = NetworkResult.Error(e.message)
+            Log.d("ListCategories", "getCategoriesSafeCall: error: " +e.message)
+        }
+    }
+    private fun handleListCategoriesResponse(response: Response<List<Category>>): NetworkResult<List<Category>>? {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.body()!!.isNullOrEmpty() -> {
+                NetworkResult.Error("No Category found!")
+            }
+            response.isSuccessful -> {
+                val categories = response.body()
+                return NetworkResult.Success(categories!!)
+            }
+            else -> return  NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun getGamesInCategorySafeCall(idcategory : Int) {
+        gamesInCategoryResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.getListGameInCategory(idcategory)
+            gamesInCategoryResponse.value = handleListGamesInCategoryResponse(response)
+        } catch (e : Exception) {
+            gamesInCategoryResponse.value = NetworkResult.Error(e.message)
+            Log.d("ListGameInCategory", "getNewGamesSafeCall: error: " +e.message)
+        }
+    }
+    private fun handleListGamesInCategoryResponse(response: Response<List<GameItem>>): NetworkResult<List<GameItem>> {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.body()!!.isNullOrEmpty() -> {
+                NetworkResult.Error("No Games in this Category found!")
+            }
+            response.isSuccessful -> {
+                val games = response.body()
+                Log.d("COUNT",games?.count().toString())
+                return NetworkResult.Success(games!!)
+            }
+            else -> return  NetworkResult.Error(response.message().toString())
         }
     }
 }
