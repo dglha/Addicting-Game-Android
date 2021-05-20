@@ -1,11 +1,11 @@
 package com.dlha.addictinggame.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
@@ -82,7 +82,10 @@ class LoginActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     binding.loginProgressBar.visibility = View.INVISIBLE
                     Log.d("LoginActivity", "Success -> token: ${response.data!!.token}")
-                    startActivity(Intent(this, MainActivity::class.java))
+//                    val intent = Intent(this, MainActivity::class.java)
+//                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                    startActivity(intent)
+                    this.finish()
                 }
             }
         }
