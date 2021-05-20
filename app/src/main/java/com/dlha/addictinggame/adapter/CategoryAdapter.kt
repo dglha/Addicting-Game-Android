@@ -1,6 +1,7 @@
 package com.dlha.addictinggame.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.Category
+import com.dlha.addictinggame.ui.activities.CategoryActivity
+import java.lang.Exception
 
 
 class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>()
@@ -23,6 +26,14 @@ class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdap
                 crossfade(600)
             }
             Log.d("IDDDD",category.id.toString())
+            itemView.setOnClickListener {
+                val intent = Intent(context,CategoryActivity::class.java).putExtra("idcategory",category.id)
+                try {
+                    context.startActivity(intent)
+                } catch (e : Exception) {
+
+                }
+            }
         }
     }
 

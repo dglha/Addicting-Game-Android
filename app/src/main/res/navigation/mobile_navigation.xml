@@ -35,7 +35,13 @@
         android:id="@+id/categoryFragment"
         android:name="com.dlha.addictinggame.ui.fragments.categories.CategoriesFragment"
         android:label="My Profile"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories" >
+
+        <action
+            android:id="@+id/action_categoryFragment_to_categoryActivity"
+            app:destination="@id/categoryActivity" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/forumsFragment"
@@ -78,5 +84,10 @@
         android:id="@+id/favoritesActivity2"
         android:name="com.dlha.addictinggame.ui.activities.FavoritesActivity"
         android:label="FavoritesActivity" />
+    <activity
+        android:id="@+id/categoryActivity"
+        android:name="com.dlha.addictinggame.ui.activities.CategoryActivity"
+        android:label="CategoryActivity"
+        tools:layout="@layout/activity_category"/>
 
 </navigation>

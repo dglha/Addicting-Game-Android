@@ -27,15 +27,19 @@ class MainViewModel @Inject constructor(
     val newGamesResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
     val saleGameResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
     val categoryResponse: MutableLiveData<NetworkResult<List<Category>>> = MutableLiveData()
+    val gamesInCategoryResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
 
     fun getNewGames() = viewModelScope.launch {
-            getNewGamesSafeCall()
+        getNewGamesSafeCall()
     }
     fun getSaleGames() = viewModelScope.launch {
-            getSaleGamesSafeCall()
+        getSaleGamesSafeCall()
     }
     fun getCategory() = viewModelScope.launch {
-            getCategoriesSafeCall()
+        getCategoriesSafeCall()
+    }
+    fun getGamesInCategory(idcategory : Int) = viewModelScope.launch {
+        getGamesInCategorySafeCall(idcategory)
     }
 
     private suspend fun getNewGamesSafeCall() {
@@ -116,4 +120,30 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    private suspend fun getGamesInCategorySafeCall(idcategory : Int) {
+        gamesInCategoryResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.getListGameInCategory(idcategory)
+            gamesInCategoryResponse.value = handleListGamesInCategoryResponse(response)
+        } catch (e : Exception) {
+            gamesInCategoryResponse.value = NetworkResult.Error(e.message)
+            Log.d("ListGameInCategory", "getNewGamesSafeCall: error: " +e.message)
+        }
+    }
+    private fun handleListGamesInCategoryResponse(response: Response<List<GameItem>>): NetworkResult<List<GameItem>> {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.body()!!.isNullOrEmpty() -> {
+                NetworkResult.Error("No Games in this Category found!")
+            }
+            response.isSuccessful -> {
+                val games = response.body()
+                Log.d("COUNT",games?.count().toString())
+                return NetworkResult.Success(games!!)
+            }
+            else -> return  NetworkResult.Error(response.message().toString())
+        }
+    }
 }

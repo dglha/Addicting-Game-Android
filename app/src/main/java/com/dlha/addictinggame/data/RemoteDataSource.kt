@@ -25,6 +25,9 @@ class RemoteDataSource @Inject constructor(
     suspend fun getListSaleGames(): Response<List<GameItem>> {
         return appServiceAPI.getListSaleGame()
     }
+    suspend fun getListGameInCategory(iddm : Int): Response<List<GameItem>> {
+        return  appServiceAPI.getListGameInCategory(iddm)
+    }
 
     /*
     *
