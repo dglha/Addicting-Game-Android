@@ -32,13 +32,17 @@ class RemoteDataSource @Inject constructor(
     *
     * */
 
-    suspend fun userLogin(username : String, password: String): Response<User>{
+    suspend fun userLogin(username : String, password: String): Response<UserResponse>{
         return authService.userLogin(username, password)
     }
 
 
     suspend fun userRegister(email: String, username: String, password: String): Response<Message>{
         return authService.userRegister(email, username, password)
+    }
+
+    suspend fun getUserInfo(token: String): Response<User>{
+        return authService.getUserInfo(token)
     }
 
     /*
@@ -48,7 +52,7 @@ class RemoteDataSource @Inject constructor(
     * */
 
 
-    suspend fun getUserInformation(token: String): Response<User>{
+    suspend fun getUserInformation(token: String): Response<UserResponse>{
         return userServiceAPI.getUserInformation(token)
     }
 
