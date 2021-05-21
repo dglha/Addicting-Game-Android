@@ -13,7 +13,6 @@ import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.ui.activities.CategoryActivity
-import java.lang.Exception
 
 
 class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>()
@@ -27,7 +26,9 @@ class CategoryAdapter(val context : Context) : RecyclerView.Adapter<CategoryAdap
             }
             Log.d("IDDDD",category.id.toString())
             itemView.setOnClickListener {
-                val intent = Intent(context,CategoryActivity::class.java).putExtra("idcategory",category.id)
+                val intent = Intent(context,CategoryActivity::class.java)
+                    .putExtra("idcategory",category.id)
+                    .putExtra("categoryName", category.nameCategory)
                 try {
                     context.startActivity(intent)
                 } catch (e : Exception) {
