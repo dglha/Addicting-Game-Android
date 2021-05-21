@@ -1,7 +1,6 @@
 package com.dlha.addictinggame.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -9,15 +8,24 @@ import android.text.style.StrikethroughSpan
 import android.util.Log
 import android.view.Menu
 import android.view.View
-import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navArgs
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.ReviewsActivity
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import com.dlha.addictinggame.model.GameItem
+import com.dlha.addictinggame.utils.NetworkResult
+import com.dlha.addictinggame.viewmodels.FavoriteViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.CarouselType
 
+@AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
 
     private var _binding: ActivityDetailsBinding? = null
@@ -25,10 +33,13 @@ class DetailsActivity : AppCompatActivity() {
 
     private val args by navArgs<DetailsActivityArgs>()
 
+    private lateinit var favoriteViewModel: FavoriteViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         _binding = ActivityDetailsBinding.inflate(layoutInflater)
+        favoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
         Log.d("NavToDetails", "inflate")
         setContentView(binding.root)
 
@@ -36,7 +47,7 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val gameItem = if (args.gameItem==null)
+        val gameItem = if (args.gameItem == null)
             intent.getParcelableExtra<GameItem>("item")!!
         else args.gameItem
 
@@ -49,7 +60,37 @@ class DetailsActivity : AppCompatActivity() {
             startActivity(Intent(this, ReviewsActivity::class.java))
         }
 
+        binding.detailsAddToFavoriteButton.setOnClickListener {
+            addToFavorite(gameItem)
+        }
 
+
+    }
+
+    private fun addToFavorite(gameItem: GameItem) {
+        lifecycleScope.launch {
+            favoriteViewModel.addFavoriteGameHaveId(gameItem.id)
+            favoriteViewModel.userAddFavoriteResponse.observe(this@DetailsActivity, { response ->
+                when (response) {
+                    is NetworkResult.Loading -> {
+                        Toast.makeText(this@DetailsActivity, "Waiting...", Toast.LENGTH_SHORT).show()
+                    }
+                    is NetworkResult.Error -> {
+                        Toast.makeText(this@DetailsActivity, response.message, Toast.LENGTH_SHORT).show()
+                    }
+                    is NetworkResult.Success -> {
+                        Toast.makeText(this@DetailsActivity, "Added ${gameItem.name} to favorite!", Toast.LENGTH_SHORT).show()
+                        changeFavoriteButtonColor()
+                    }
+                }
+            })
+        }
+    }
+
+    private fun changeFavoriteButtonColor() {
+        binding.detailsAddToFavoriteButton.setIconResource(R.drawable.ic_heart)
+        binding.detailsAddToFavoriteButton.iconTint =
+            ContextCompat.getColorStateList(this, R.color.orangeRed)
     }
 
     private fun setupCarouselItem(gameItem: GameItem) {
