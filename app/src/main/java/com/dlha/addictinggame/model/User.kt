@@ -23,5 +23,7 @@ data class User(
     @SerializedName("type")
     val type: String,
     @SerializedName("username")
-    val username: String
+    val username: String,
+    @SerializedName("total_favorite")
+    val totalFavorites: Int,
 )
