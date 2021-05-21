@@ -11,9 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.model.GameItem
-import com.dlha.addictinggame.ui.activities.CategoryActivity
+import com.dlha.addictinggame.ui.activities.DetailsActivity
 
 
 class GameInCategoryAdapter(val context : Context) : RecyclerView.Adapter<GameInCategoryAdapter.GameInCategoryAdapterViewHolder>()
@@ -28,6 +27,10 @@ class GameInCategoryAdapter(val context : Context) : RecyclerView.Adapter<GameIn
             itemView.findViewById<TextView>(R.id.favorite_gameTitle_imageView).text = gameItem.developer
             itemView.findViewById<TextView>(R.id.favorite_gameCoin_textView).text = gameItem.coin
 
+            itemView.setOnClickListener {
+                val intent = Intent(context, DetailsActivity::class.java).putExtra("gameItem", gameItem)
+                context.startActivity(intent)
+            }
         }
     }
 
@@ -41,7 +44,7 @@ class GameInCategoryAdapter(val context : Context) : RecyclerView.Adapter<GameIn
     }
 
     override fun onBindViewHolder(holder: GameInCategoryAdapterViewHolder, position: Int) {
-        var category = gamesInCategory[position]
+        val category = gamesInCategory[position]
         return holder.bind(category)
     }
 
