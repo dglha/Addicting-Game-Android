@@ -1,18 +1,15 @@
 package com.dlha.addictinggame.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
-import androidx.navigation.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dlha.addictinggame.adapter.CategoryAdapter
 import com.dlha.addictinggame.adapter.GameInCategoryAdapter
 import com.dlha.addictinggame.databinding.ActivityCategoryBinding
-import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,9 +31,12 @@ class CategoryActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        setupToolbar()
+
 
         val idcategory = intent.getIntExtra("idcategory",0)
+        val title = intent.getStringExtra("categoryName")
+
+        setupToolbar(title!!)
         Log.d("QQQ",idcategory.toString())
 
         setupRecyclerView()
@@ -44,10 +44,11 @@ class CategoryActivity : AppCompatActivity() {
 
         setContentView(binding.root)
     }
-    private fun setupToolbar() {
+    private fun setupToolbar(title: String) {
         setSupportActionBar(binding.categoryToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.categoryToolbarTitle.text = title
     }
     private fun readAPI(idcategory : Int) {
         lifecycleScope.launch {
