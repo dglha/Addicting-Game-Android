@@ -31,7 +31,7 @@ class RemoteDataSource @Inject constructor(
 
     /*
     *
-    * AutServiceAPI Code Here
+    * AuthServiceAPI Code Here
     *
     * */
 
@@ -57,6 +57,18 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getUserInformation(token: String): Response<UserResponse>{
         return userServiceAPI.getUserInformation(token)
+    }
+
+    suspend fun getUserFavoriteListGames(token: String): Response<List<GameItem>>{
+        return userServiceAPI.getUserFavoriteListGames(token)
+    }
+
+    suspend fun unFavoriteGameHaveId(token: String, id: Int): Response<Message>{
+        return userServiceAPI.unFavoriteGameHaveId(token, id)
+    }
+
+    suspend fun addFavoriteGameHaveId(token: String, id: Int): Response<Message>{
+        return userServiceAPI.addFavoriteGameHaveId(token, id)
     }
 
 }
