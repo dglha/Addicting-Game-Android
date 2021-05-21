@@ -73,7 +73,7 @@
             </org.imaginativeworld.whynotimagecarousel.ImageCarousel>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton"
+                android:id="@+id/details_addToFavorite_button"
                 android:layout_width="46dp"
                 android:layout_height="56dp"
                 android:layout_marginTop="16dp"
@@ -98,8 +98,8 @@
                 android:text="$19.99"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/materialButton"
-                app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+                app:layout_constraintEnd_toEndOf="@+id/details_addToFavorite_button"
+                app:layout_constraintTop_toBottomOf="@+id/details_addToFavorite_button" />
 
             <TextView
                 android:id="@+id/detail_gameDeveloper_textView"
@@ -249,7 +249,7 @@
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/detail_gameCoin_textView"
-                app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+                app:layout_constraintTop_toBottomOf="@+id/details_addToFavorite_button" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
