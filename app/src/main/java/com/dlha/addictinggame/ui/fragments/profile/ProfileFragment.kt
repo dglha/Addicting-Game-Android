@@ -14,6 +14,7 @@ import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.FragmentProfileBinding
 import com.dlha.addictinggame.model.User
+import com.dlha.addictinggame.ui.activities.FavoritesActivity
 import com.dlha.addictinggame.ui.activities.LoginActivity
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.ProfileViewModel
@@ -89,6 +90,7 @@ class ProfileFragment : Fragment() {
 
         userSave = user
         val name = user.firstname + " " + user.lastname
+        val favorites = "${user.totalFavorites} Favorites"
         binding.username.text = name
         binding.avatar.load(user.avatar)
 
@@ -96,6 +98,16 @@ class ProfileFragment : Fragment() {
         binding.paymentLayout.visibility = View.VISIBLE
         binding.paymentLayout.visibility = View.VISIBLE
         binding.logoutMainLayout.visibility = View.VISIBLE
+
+        binding.numberGameFavorites.apply{
+            visibility = View.VISIBLE
+            text = favorites
+            setOnClickListener {
+                startActivity(Intent(requireContext(), FavoritesActivity::class.java))
+                Log.d("Favo", "onCreateView: start favorite")
+            }
+        }
+
     }
 
     private fun resetContentView() {
@@ -125,7 +137,7 @@ class ProfileFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding == null
+        _binding = null
     }
 
 

@@ -22,8 +22,10 @@ class ProfileViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository,
     application: Application
 ) : AndroidViewModel(application) {
-    //DataStore
+
     val userInfoResponse : MutableLiveData<NetworkResult<User>> = MutableLiveData()
+
+    //DataStore
     val userToken = dataStoreRepository.readAuthToken.asLiveData()
 
     fun getUserInfo(token: String) = viewModelScope.launch {
