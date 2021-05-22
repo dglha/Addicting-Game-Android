@@ -82,6 +82,7 @@
                 android:layout_width="26dp"
                 android:layout_height="36dp"
                 app:cornerRadius="30dp"
+                android:visibility="invisible"
                 app:icon="@drawable/ic_heart_border"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"

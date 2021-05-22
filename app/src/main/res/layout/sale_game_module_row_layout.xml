@@ -123,6 +123,7 @@
                 app:icon="@drawable/ic_heart_border"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
+                android:visibility="invisible"
                 app:iconSize="14dp"
                 android:elevation="8dp"
                 android:backgroundTint="@color/whiteTextColor"
