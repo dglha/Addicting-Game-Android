@@ -2,7 +2,6 @@ package com.dlha.addictinggame.api
 
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.model.Message
-import com.dlha.addictinggame.model.Message
 import com.dlha.addictinggame.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.Field
