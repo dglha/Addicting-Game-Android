@@ -9,17 +9,21 @@ import android.util.Log
 import android.view.Menu
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.navigation.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.ReviewsActivity
+import com.dlha.addictinggame.adapter.NewGameModuleAdapter
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.FavoriteViewModel
+import com.dlha.addictinggame.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
@@ -33,13 +37,16 @@ class DetailsActivity : AppCompatActivity() {
 
     private val args by navArgs<DetailsActivityArgs>()
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
+
+    private val mAdapter: NewGameModuleAdapter by lazy { NewGameModuleAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         _binding = ActivityDetailsBinding.inflate(layoutInflater)
-        favoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+
         Log.d("NavToDetails", "inflate")
         setContentView(binding.root)
 
@@ -63,8 +70,51 @@ class DetailsActivity : AppCompatActivity() {
         binding.detailsAddToFavoriteButton.setOnClickListener {
             addToFavorite(gameItem)
         }
+        setupRecyclerView()
+        readYouMayLikeApi(gameItem.categoryId, gameItem.id)
 
 
+    }
+
+    private fun setupRecyclerView() {
+        binding.detailsRecyclerView.adapter = mAdapter
+        binding.detailsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        showShimmerEffect()
+    }
+
+    private fun readYouMayLikeApi(cateId: Int, gameId: Int) {
+        lifecycleScope.launch {
+            mainViewModel.getGamesInCategory(cateId)
+            mainViewModel.gamesInCategoryResponse.observe(this@DetailsActivity) { response ->
+                when(response) {
+                    is NetworkResult.Loading -> {
+
+                        showShimmerEffect()
+                    }
+                    is NetworkResult.Error -> {
+                        hideShimmerEffect()
+                        Toast.makeText(this@DetailsActivity,response.message.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                    is NetworkResult.Success -> {
+                        Log.d("SUCCESS","ERR")
+                        Log.d("SUCCESS", "readAPI: " + response.data.toString())
+                        response.data?.let {
+
+                            mAdapter.setData(it.filter { game -> game.id != gameId })
+                        }
+                        hideShimmerEffect()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun hideShimmerEffect() {
+        binding.detailsRecyclerView.hideShimmer()
+    }
+
+    private fun showShimmerEffect() {
+        binding.detailsRecyclerView.showShimmer()
     }
 
     private fun addToFavorite(gameItem: GameItem) {

@@ -177,7 +177,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+                                app:srcCompat="@drawable/ic_forward" />
                         </LinearLayout>
 
                         <View
@@ -230,7 +230,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                                android:src="@drawable/ic_forward" />
 
                         </LinearLayout>
 
@@ -281,7 +281,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                                android:src="@drawable/ic_forward" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -325,7 +325,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                                android:src="@drawable/ic_forward" />
 
                         </LinearLayout>
                     </LinearLayout>

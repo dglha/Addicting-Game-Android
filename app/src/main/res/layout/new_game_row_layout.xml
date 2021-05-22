@@ -76,7 +76,7 @@
         android:elevation="8dp"
         app:cornerRadius="30dp"
         app:iconTint="@color/black"
-        app:icon="@drawable/ic_heart_border"
+        app:icon="@drawable/ic_forward"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="18dp"

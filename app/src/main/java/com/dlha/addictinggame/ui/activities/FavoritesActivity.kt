@@ -1,7 +1,6 @@
 package com.dlha.addictinggame.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.adapter.FavoritesAdapter
 import com.dlha.addictinggame.databinding.ActivityFavoritesBinding
-import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.utils.SwipeToDelete
-import com.dlha.addictinggame.utils.observeOnce
 import com.dlha.addictinggame.viewmodels.FavoriteViewModel
 import com.todkars.shimmer.ShimmerRecyclerView
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,19 +53,31 @@ class FavoritesActivity : AppCompatActivity() {
                 // Delete item
                 lifecycleScope.launch {
                     favoriteViewModel.unFavoriteGameHaveId(deletedItem.id)
-                    favoriteViewModel.userUnFavoriteResponse.observeOnce(this@FavoritesActivity, { response ->
-                        when (response) {
-                            is NetworkResult.Loading -> {
+                    favoriteViewModel.userUnFavoriteResponse.observe(
+                        this@FavoritesActivity,
+                        { response ->
+                            when (response) {
+                                is NetworkResult.Loading -> {
+                                }
+                                is NetworkResult.Error -> {
+                                    Toast.makeText(
+                                        this@FavoritesActivity,
+                                        response.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                }
+                                is NetworkResult.Success -> {
+                                    Toast.makeText(
+                                        this@FavoritesActivity,
+                                        "Removed ${deletedItem.name}!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+//                                    mAdapter.setData(emptyList())
+                                    favoriteViewModel.getListFavorite()
+                                }
                             }
-                            is NetworkResult.Error -> {
-                                Toast.makeText(this@FavoritesActivity, response.message, Toast.LENGTH_SHORT).show()
-                            }
-                            is NetworkResult.Success -> {
-                                Toast.makeText(this@FavoritesActivity, "Removed ${deletedItem.name}!", Toast.LENGTH_SHORT).show()
-                                readApi()
-                            }
-                        }
-                    })
+                        })
                 }
             }
         }
@@ -86,7 +95,6 @@ class FavoritesActivity : AppCompatActivity() {
                 when (response) {
                     is NetworkResult.Loading -> {
                         showShimmer()
-                        Log.d("Favo", "readApi: shimmerLoaded")
                     }
                     is NetworkResult.Error -> {
                         Toast.makeText(
@@ -94,6 +102,7 @@ class FavoritesActivity : AppCompatActivity() {
                             response.message.toString(),
                             Toast.LENGTH_SHORT
                         ).show()
+                        mAdapter.setData(mutableListOf())
                         hideShimmer()
                     }
                     is NetworkResult.Success -> {
@@ -124,22 +133,5 @@ class FavoritesActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.optionsmenu, menu)
         return true
-    }
-
-    private fun deleteItem(game: GameItem){
-        favoriteViewModel.unFavoriteGameHaveId(game.id)
-        favoriteViewModel.userUnFavoriteResponse.observeOnce(this@FavoritesActivity, { response ->
-            when (response) {
-                is NetworkResult.Loading -> {
-                }
-                is NetworkResult.Error -> {
-                    Toast.makeText(this@FavoritesActivity, response.message, Toast.LENGTH_SHORT).show()
-                }
-                is NetworkResult.Success -> {
-                    Toast.makeText(this@FavoritesActivity, "Removed ${game.name}!", Toast.LENGTH_SHORT).show()
-                    readApi()
-                }
-            }
-        })
     }
 }

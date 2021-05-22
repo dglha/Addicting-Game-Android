@@ -32,8 +32,8 @@ class FavoriteViewModel @Inject constructor(
     }
 
     fun unFavoriteGameHaveId(id: Int) = viewModelScope.launch {
-//        unFavoriteGameHaveIdSafeCall(id)
-        repository.remote.unFavoriteGameHaveId(dataStoreRepository.getAuthToken()!!, id)
+        unFavoriteGameHaveIdSafeCall(id)
+//        repository.remote.unFavoriteGameHaveId(dataStoreRepository.getAuthToken()!!, id)
     }
 
     fun addFavoriteGameHaveId(id: Int) = viewModelScope.launch {
@@ -101,7 +101,7 @@ class FavoriteViewModel @Inject constructor(
         }
     }
 
-    private fun handleUserAddFavoriteResponse(response: Response<Message>): NetworkResult<Message>? {
+    private fun handleUserAddFavoriteResponse(response: Response<Message>): NetworkResult<Message> {
         return when {
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout.")

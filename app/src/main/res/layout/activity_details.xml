@@ -165,7 +165,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/commentCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/commentCard_textView"
-                        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                        app:srcCompat="@drawable/ic_forward"
                         app:tint="@color/black" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,7 +209,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/supportCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/supportCard_textView"
-                        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
+                        app:srcCompat="@drawable/ic_forward"
                         app:tint="@color/black" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,7 +228,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/supportCard_cardView" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.todkars.shimmer.ShimmerRecyclerView
+                android:id="@+id/details_recyclerView"
+                app:shimmer_recycler_layout="@layout/placeholder_module_row_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"

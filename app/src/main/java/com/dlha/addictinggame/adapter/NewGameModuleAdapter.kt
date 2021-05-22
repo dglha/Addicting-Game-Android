@@ -1,8 +1,6 @@
 package com.dlha.addictinggame.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
-import com.dlha.addictinggame.ui.activities.DetailsActivity
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
 
 class NewGameModuleAdapter(val context: Context) :
@@ -54,7 +51,7 @@ class NewGameModuleAdapter(val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return if (games.size > 5) 5 else games.size
     }
 
     override fun onBindViewHolder(holder: NewGameModuleAdapter.NewGameModuleViewHolder, position: Int) {
