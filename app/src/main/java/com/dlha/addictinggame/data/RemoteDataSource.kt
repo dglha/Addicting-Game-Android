@@ -28,6 +28,9 @@ class RemoteDataSource @Inject constructor(
     suspend fun getListGameInCategory(iddm : Int): Response<List<GameItem>> {
         return  appServiceAPI.getListGameInCategory(iddm)
     }
+    suspend fun getListCommentInGame(idgame : Int): Response<List<Comment>> {
+        return appServiceAPI.getListCommentInGame(idgame)
+    }
 
     /*
     *
@@ -59,4 +62,7 @@ class RemoteDataSource @Inject constructor(
         return userServiceAPI.getUserInformation(token)
     }
 
+    suspend fun addComment(token : String,text_comment : String,idgame : Int): Response<Message> {
+        return userServiceAPI.addComment(token,text_comment,idgame)
+    }
 }

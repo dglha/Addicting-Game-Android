@@ -46,9 +46,8 @@ class DetailsActivity : AppCompatActivity() {
         setUpContentView(gameItem)
 
         binding.commentCardCardView.setOnClickListener {
-            startActivity(Intent(this, ReviewsActivity::class.java))
+            startActivity(Intent(this, ReviewsActivity::class.java).putExtra("idgame",gameItem.id))
         }
-
 
     }
 

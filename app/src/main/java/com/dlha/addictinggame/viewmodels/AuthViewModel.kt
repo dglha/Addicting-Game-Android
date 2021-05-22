@@ -145,6 +145,7 @@ class AuthViewModel @Inject constructor(
         Log.d("Profile", "saveAuthKey: " + dataStoreRepository.getAuthToken())
     }
 
+
     suspend fun isAuthKeyNull() : Boolean {
         return dataStoreRepository.getAuthToken() == null
     }

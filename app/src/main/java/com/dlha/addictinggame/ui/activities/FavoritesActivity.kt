@@ -24,4 +24,6 @@ class FavoritesActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.optionsmenu, menu)
         return true
     }
+
+
 }
