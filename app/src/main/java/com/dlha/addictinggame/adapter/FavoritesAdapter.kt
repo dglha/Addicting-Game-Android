@@ -18,7 +18,7 @@ import com.dlha.addictinggame.viewmodels.FavoriteViewModel
 
 class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteViewModel, val lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>()
 {
-    var games : List<GameItem> = emptyList()
+    var games : MutableList<GameItem> = mutableListOf()
 
     inner class FavoritesViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(game: GameItem, position: Int){
@@ -57,7 +57,7 @@ class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteView
     }
 
     fun setData(newData: List<GameItem>){
-        games = newData
+        games = newData as MutableList<GameItem>
         notifyDataSetChanged()
     }
 }
