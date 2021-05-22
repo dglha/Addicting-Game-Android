@@ -46,7 +46,6 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         _binding = ActivityDetailsBinding.inflate(layoutInflater)
-
         Log.d("NavToDetails", "inflate")
         setContentView(binding.root)
 
@@ -54,7 +53,7 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val gameItem = if (args.gameItem == null)
+        val gameItem = if (args.gameItem==null)
             intent.getParcelableExtra<GameItem>("item")!!
         else args.gameItem
 
@@ -64,7 +63,7 @@ class DetailsActivity : AppCompatActivity() {
         setUpContentView(gameItem)
 
         binding.commentCardCardView.setOnClickListener {
-            startActivity(Intent(this, ReviewsActivity::class.java))
+            startActivity(Intent(this, ReviewsActivity::class.java).putExtra("idgame",gameItem.id))
         }
 
         binding.detailsAddToFavoriteButton.setOnClickListener {

@@ -89,5 +89,11 @@
         android:name="com.dlha.addictinggame.ui.activities.CategoryActivity"
         android:label="CategoryActivity"
         tools:layout="@layout/activity_category"/>
+    <fragment
+        android:id="@+id/reviewBottomSheet"
+
+        android:name="com.dlha.addictinggame.ReviewBottomSheet"
+        android:label="fragment_review_bottom_sheet"
+        tools:layout="@layout/fragment_review_bottom_sheet" />
 
 </navigation>

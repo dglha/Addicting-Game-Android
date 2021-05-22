@@ -1,10 +1,11 @@
 package com.dlha.addictinggame.api
 
 import com.dlha.addictinggame.model.Category
+import com.dlha.addictinggame.model.Comment
 import com.dlha.addictinggame.model.GameItem
+
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface AppServiceAPI {
     @GET("api/listCategory")
@@ -18,4 +19,7 @@ interface AppServiceAPI {
 
     @GET("api/listGameInCategory")
     suspend fun getListGameInCategory(@Query("iddm") idcategory : Int ): Response<List<GameItem>>
+
+    @GET("api/getListCommentInGame")
+    suspend fun getListCommentInGame(@Query("idgame") idgame : Int): Response<List<Comment>>
 }

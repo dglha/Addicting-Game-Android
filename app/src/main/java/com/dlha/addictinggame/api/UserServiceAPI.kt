@@ -2,6 +2,7 @@ package com.dlha.addictinggame.api
 
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.model.Message
+import com.dlha.addictinggame.model.Message
 import com.dlha.addictinggame.model.UserResponse
 import retrofit2.Response
 import retrofit2.http.Field
@@ -24,4 +25,7 @@ interface UserServiceAPI {
     @POST("api/favoriteGame")
     @FormUrlEncoded
     suspend fun addFavoriteGameHaveId(@Field("token") token: String, @Field("idgame") id: Int): Response<Message>
+    @POST("api/addComment")
+    @FormUrlEncoded
+    suspend fun addComment(@Field("token") token : String,@Field("content") text_comment : String,@Field("idgame") idgame : Int): Response<Message>
 }

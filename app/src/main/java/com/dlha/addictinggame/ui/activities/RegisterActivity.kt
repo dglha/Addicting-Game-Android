@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.ActivityRegisterBinding
 import com.dlha.addictinggame.utils.NetworkResult
@@ -71,7 +72,8 @@ class RegisterActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     binding.registerProgressBar.visibility = View.INVISIBLE
                     Log.d("RegisterActivity", "Success -> Message: ${response.data!!.message}")
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_left,android.R.anim.slide_out_right);
                 }
             }
         }
