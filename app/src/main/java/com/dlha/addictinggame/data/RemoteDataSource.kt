@@ -77,4 +77,16 @@ class RemoteDataSource @Inject constructor(
     suspend fun addComment(token : String,text_comment : String,idgame : Int): Response<Message> {
         return userServiceAPI.addComment(token,text_comment,idgame)
     }
+
+    suspend fun getGamesInCart(token : String) : Response<List<GameItem>> {
+        return userServiceAPI.listGameInCart(token)
+    }
+
+    suspend fun buyGame(token : String,idgame : Int) : Response<Message> {
+        return userServiceAPI.buyGame(token, idgame)
+    }
+
+    suspend fun removeGameCart(token : String,idgame : Int) : Response<Message> {
+        return userServiceAPI.removeGameCart(token, idgame)
+    }
 }

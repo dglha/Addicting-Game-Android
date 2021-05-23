@@ -8,6 +8,86 @@
     android:backgroundTint="#FFFFFF"
     tools:context=".ui.fragments.cart.CartFragment">
 
+    <TextView
+        android:id="@+id/coin_return_number_textView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/metropolis_bold"
+        android:gravity="right|top"
+        android:lineSpacingExtra="4sp"
+        android:maxLines="1"
+        android:text="0"
+        android:textSize="14sp"
+        android:translationY="-2sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toEndOf="@+id/total_amount_textView"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recyclerView" />
+
+    <TextView
+        android:id="@+id/coin_return_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/metropolis_bold"
+        android:gravity="top"
+        android:lineSpacingExtra="6sp"
+        android:text="Coin Return"
+        android:textSize="14sp"
+        android:translationY="-3sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recyclerView" />
+
+    <TextView
+        android:id="@+id/myCoin_number_textView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="@font/metropolis_bold"
+        android:gravity="right|top"
+        android:lineSpacingExtra="4sp"
+        android:maxLines="1"
+        android:text="0"
+        android:textSize="14sp"
+        android:translationY="-2sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toEndOf="@+id/total_amount_textView"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recyclerView" />
+
+    <TextView
+        android:id="@+id/mycoin_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="57dp"
+        android:fontFamily="@font/metropolis_bold"
+        android:gravity="top"
+        android:lineSpacingExtra="6sp"
+        android:text="My Coin"
+        android:textSize="14sp"
+        android:translationY="-3sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_recyclerView" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
@@ -41,7 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appbar_layout" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.todkars.shimmer.ShimmerRecyclerView
         android:id="@+id/cart_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -85,7 +165,7 @@
         android:gravity="right|top"
         android:lineSpacingExtra="4sp"
         android:maxLines="1"
-        android:text="150 $"
+        android:text="0"
         android:textSize="14sp"
         android:translationY="-2sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +181,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="40dp"
         android:text="Checkout"
         app:initialCornerAngle="27dp"
         app:layout_constraintBottom_toBottomOf="parent"

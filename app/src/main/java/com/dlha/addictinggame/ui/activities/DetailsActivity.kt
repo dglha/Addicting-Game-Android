@@ -22,6 +22,7 @@ import com.dlha.addictinggame.adapter.NewGameModuleAdapter
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.utils.NetworkResult
+import com.dlha.addictinggame.viewmodels.CartViewModel
 import com.dlha.addictinggame.viewmodels.FavoriteViewModel
 import com.dlha.addictinggame.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +40,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()
     private val mainViewModel: MainViewModel by viewModels()
+    private val cartViewModel : CartViewModel by viewModels()
 
     private val mAdapter: NewGameModuleAdapter by lazy { NewGameModuleAdapter(this) }
 
@@ -69,6 +71,17 @@ class DetailsActivity : AppCompatActivity() {
         binding.detailsAddToFavoriteButton.setOnClickListener {
             addToFavorite(gameItem)
         }
+
+        binding.detailAddToCartFab.setOnClickListener {
+            cartViewModel.userToken.observe(this@DetailsActivity) {
+                if(it=="null") {
+                    Toast.makeText(this@DetailsActivity,"Please Login!!!",Toast.LENGTH_SHORT).show()
+                } else {
+                    addGameToCartAPI(it,gameItem.id)
+                }
+            }
+        }
+
         setupRecyclerView()
         readYouMayLikeApi(gameItem.categoryId, gameItem.id)
 
@@ -79,6 +92,25 @@ class DetailsActivity : AppCompatActivity() {
         binding.detailsRecyclerView.adapter = mAdapter
         binding.detailsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         showShimmerEffect()
+    }
+
+    private fun addGameToCartAPI(token : String,gameId: Int) {
+        lifecycleScope.launch {
+            cartViewModel.buyGame(token,gameId)
+            cartViewModel.messageResponse.observe(this@DetailsActivity) {response ->
+                when(response) {
+                    is NetworkResult.Loading -> {
+
+                    }
+                    is NetworkResult.Error -> {
+                        Toast.makeText(this@DetailsActivity,response.message,Toast.LENGTH_SHORT).show()
+                    }
+                    is NetworkResult.Success -> {
+                        Toast.makeText(this@DetailsActivity,"Mua game thành công",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 
     private fun readYouMayLikeApi(cateId: Int, gameId: Int) {
@@ -119,7 +151,7 @@ class DetailsActivity : AppCompatActivity() {
     private fun addToFavorite(gameItem: GameItem) {
         lifecycleScope.launch {
             favoriteViewModel.addFavoriteGameHaveId(gameItem.id)
-            favoriteViewModel.userAddFavoriteResponse.observe(this@DetailsActivity, { response ->
+            favoriteViewModel.userAddFavoriteResponse.observe(this@DetailsActivity) { response ->
                 when (response) {
                     is NetworkResult.Loading -> {
                         Toast.makeText(this@DetailsActivity, "Waiting...", Toast.LENGTH_SHORT).show()
@@ -132,7 +164,7 @@ class DetailsActivity : AppCompatActivity() {
                         changeFavoriteButtonColor()
                     }
                 }
-            })
+            }
         }
     }
 

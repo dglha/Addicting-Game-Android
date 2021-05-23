@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,30 +55,30 @@ class FavoritesActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     favoriteViewModel.unFavoriteGameHaveId(deletedItem.id)
                     favoriteViewModel.userUnFavoriteResponse.observe(
-                        this@FavoritesActivity,
-                        { response ->
-                            when (response) {
-                                is NetworkResult.Loading -> {
-                                }
-                                is NetworkResult.Error -> {
-                                    Toast.makeText(
-                                        this@FavoritesActivity,
-                                        response.message,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-
-                                }
-                                is NetworkResult.Success -> {
-                                    Toast.makeText(
-                                        this@FavoritesActivity,
-                                        "Removed ${deletedItem.name}!",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-//                                    mAdapter.setData(emptyList())
-                                    favoriteViewModel.getListFavorite()
-                                }
+                        this@FavoritesActivity
+                    ) { response ->
+                        when (response) {
+                            is NetworkResult.Loading -> {
                             }
-                        })
+                            is NetworkResult.Error -> {
+                                Toast.makeText(
+                                    this@FavoritesActivity,
+                                    response.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                            }
+                            is NetworkResult.Success -> {
+                                Toast.makeText(
+                                    this@FavoritesActivity,
+                                    "Removed ${deletedItem.name}!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                //                                    mAdapter.setData(emptyList())
+                                favoriteViewModel.getListFavorite()
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -86,12 +87,11 @@ class FavoritesActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(favoritesRecyclerView)
     }
 
-
-
+    
     private fun readApi() {
         lifecycleScope.launch {
             favoriteViewModel.getListFavorite()
-            favoriteViewModel.userFavoriteResponse.observe(this@FavoritesActivity, { response ->
+            favoriteViewModel.userFavoriteResponse.observe(this@FavoritesActivity) { response ->
                 when (response) {
                     is NetworkResult.Loading -> {
                         showShimmer()
@@ -112,7 +112,7 @@ class FavoritesActivity : AppCompatActivity() {
                         }
                     }
                 }
-            })
+            }
         }
     }
 

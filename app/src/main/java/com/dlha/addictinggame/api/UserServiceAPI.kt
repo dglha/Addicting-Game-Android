@@ -24,7 +24,20 @@ interface UserServiceAPI {
     @POST("api/favoriteGame")
     @FormUrlEncoded
     suspend fun addFavoriteGameHaveId(@Field("token") token: String, @Field("idgame") id: Int): Response<Message>
+
     @POST("api/addComment")
     @FormUrlEncoded
     suspend fun addComment(@Field("token") token : String,@Field("content") text_comment : String,@Field("idgame") idgame : Int): Response<Message>
+
+    @POST("api/listGameInCart")
+    @FormUrlEncoded
+    suspend fun listGameInCart(@Field("token") token: String) : Response<List<GameItem>>
+
+    @POST("api/buyGame")
+    @FormUrlEncoded
+    suspend fun buyGame(@Field("token") token : String,@Field("idgame") idgame : Int) : Response<Message>
+
+    @POST("api/removeGameCart")
+    @FormUrlEncoded
+    suspend fun removeGameCart(@Field("token") token : String,@Field("idgame") idgame : Int) : Response<Message>
 }
