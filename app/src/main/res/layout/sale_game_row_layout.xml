@@ -37,6 +37,8 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="Cyberpunk 2077"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

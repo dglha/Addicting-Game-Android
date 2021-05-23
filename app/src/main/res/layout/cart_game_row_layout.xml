@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="150dp">
 
@@ -39,6 +38,8 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="Cyberpunk 2077"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
