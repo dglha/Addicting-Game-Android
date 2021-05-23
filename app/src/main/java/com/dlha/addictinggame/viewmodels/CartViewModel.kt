@@ -1,7 +1,6 @@
 package com.dlha.addictinggame.viewmodels
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
@@ -14,7 +13,6 @@ import com.dlha.addictinggame.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,6 +37,14 @@ class CartViewModel  @Inject constructor(
             buyGameSafeCall(token, idgame)
         }
     }
+    fun removeGameFromCart(idgame: Int){
+        viewModelScope.launch {
+            removeGameFromCartSafeCall(idgame)
+        }
+    }
+
+
+
     suspend fun getListGameInCartSafeCall(token : String) {
         listGameInCartResponse.value = NetworkResult.Loading()
         try {
@@ -82,6 +88,29 @@ class CartViewModel  @Inject constructor(
             }
             response.body()?.message == "already" -> {
                 NetworkResult.Error("The game is already in your cart")
+            }
+            response.isSuccessful -> {
+                val message = response.body()!!
+                return NetworkResult.Success(message)
+            }
+            else -> NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun removeGameFromCartSafeCall(idgame: Int) {
+        messageResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.removeGameCart(dataStoreRepository.getAuthToken()!!,  idgame)
+            messageResponse.value = handleRemoveGameFromCart(response)
+        } catch (e : Exception) {
+            messageResponse.value = NetworkResult.Error(e.message)
+        }
+    }
+
+    private fun handleRemoveGameFromCart(response: Response<Message>): NetworkResult<Message> {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
             }
             response.isSuccessful -> {
                 val message = response.body()!!
