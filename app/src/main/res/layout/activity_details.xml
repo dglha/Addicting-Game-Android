@@ -124,6 +124,7 @@
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean justo erat, feugiat nec consectetur quis, tincidunt vitae libero. Nunc tincidunt id urna vel dapibus. Phasellus in feugiat lorem. Ut mattis finibus ante at maximus. Cras volutpat justo ut maximus dignissim. Nam laoreet id eros in porttitor"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/detail_gameCoin_textView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/detail_gameDeveloper_textView"
                 app:layout_constraintTop_toBottomOf="@+id/detail_gameDeveloper_textView" />
 
@@ -272,6 +273,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_shopping_bag"
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/detail_download_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/white"
+        android:backgroundTint="#DB3022"
+        android:clickable="false"
+        android:visibility="gone"
+        app:backgroundTint="#DB3022"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_cloud_download_24"
         app:tint="@color/white" />
 
 

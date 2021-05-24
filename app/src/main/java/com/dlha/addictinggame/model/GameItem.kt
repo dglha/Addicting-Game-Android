@@ -22,7 +22,7 @@ data class GameItem(
     @SerializedName("imgtoshow")
     val imgtoshow: String?,
     @SerializedName("linkgame")
-    val link: String,
+    val link: String?,
     @SerializedName("namegame")
     val name: String,
     @SerializedName("time")

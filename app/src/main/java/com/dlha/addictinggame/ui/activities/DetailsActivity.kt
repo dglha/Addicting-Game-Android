@@ -64,6 +64,10 @@ class DetailsActivity : AppCompatActivity() {
         setupCarouselItem(gameItem)
         setUpContentView(gameItem)
 
+
+        checkBuy(gameItem)
+        checkFavorite(gameItem)
+
         binding.commentCardCardView.setOnClickListener {
             startActivity(Intent(this, ReviewsActivity::class.java).putExtra("idgame",gameItem.id))
         }
@@ -87,7 +91,18 @@ class DetailsActivity : AppCompatActivity() {
 
 
     }
-
+    private fun checkBuy(gameItem: GameItem) {
+        if(gameItem.isBuy > 0) {
+            binding.detailDownloadFab.visibility = View.VISIBLE
+            binding.detailAddToCartFab.visibility = View.GONE
+        }
+    }
+    private fun checkFavorite(gameItem: GameItem) {
+        if(gameItem.isFavorite > 0) {
+            binding.detailsAddToFavoriteButton.setIconResource(R.drawable.ic_heart)
+            binding.detailsAddToFavoriteButton.setIconTintResource(R.color.red)
+        }
+    }
     private fun setupRecyclerView() {
         binding.detailsRecyclerView.adapter = mAdapter
         binding.detailsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
