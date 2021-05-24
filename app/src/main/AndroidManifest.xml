@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.CategoryActivity"></activity>
+        <activity android:name=".ui.activities.GameHavingActivity"></activity>
+        <activity android:name=".ui.activities.CategoryActivity" />
         <activity android:name=".ui.activities.SaleActivity" />
         <activity android:name=".ui.activities.FavoritesActivity" />
         <activity android:name=".ui.activities.NewGameActivity" />
@@ -29,7 +30,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.MainActivity"
             android:theme="@style/AppTheme">
@@ -40,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReviewsActivity"
+            android:name=".ui.activities.ReviewsActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activities.DetailsActivity" />
     </application>
