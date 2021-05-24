@@ -90,6 +90,10 @@ class RemoteDataSource @Inject constructor(
         return userServiceAPI.removeGameCart(token, idgame)
     }
 
+    suspend fun getListGameaHaving(token: String): Response<List<GameItem>>{
+        return userServiceAPI.getListGameHaving(token)
+    }
+
     suspend fun checkout(token : String,listID : String) : Response<Message> {
         return userServiceAPI.checkout(token, listID)
     }
