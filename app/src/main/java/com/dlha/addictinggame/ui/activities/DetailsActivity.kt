@@ -17,7 +17,6 @@ import androidx.lifecycle.observe
 import androidx.navigation.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.ReviewsActivity
 import com.dlha.addictinggame.adapter.NewGameModuleAdapter
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import com.dlha.addictinggame.model.GameItem

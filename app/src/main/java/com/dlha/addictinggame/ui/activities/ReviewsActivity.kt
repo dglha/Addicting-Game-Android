@@ -1,19 +1,18 @@
-package com.dlha.addictinggame
+package com.dlha.addictinggame.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dlha.addictinggame.ReviewBottomSheet
 import com.dlha.addictinggame.adapter.CommentAdapter
-import com.dlha.addictinggame.adapter.NewGameAdapter
 import com.dlha.addictinggame.databinding.ActivityReviewsBinding
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.CommentViewModel
-import com.dlha.addictinggame.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

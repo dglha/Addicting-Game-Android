@@ -73,7 +73,7 @@
     </activity>
     <activity
         android:id="@+id/reviewsActivity"
-        android:name="com.dlha.addictinggame.ReviewsActivity"
+        android:name="com.dlha.addictinggame.ui.activities.ReviewsActivity"
         android:label="ReviewsActivity" />
     <activity
         android:id="@+id/newGameActivity"
