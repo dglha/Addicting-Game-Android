@@ -108,7 +108,7 @@ class HomeFragment : Fragment() {
                 }
             }
             // read Sale Game
-            mainViewModel.getSaleGames()
+            mainViewModel.getSaleGames(token)
             mainViewModel.saleGameResponse.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is NetworkResult.Success -> {

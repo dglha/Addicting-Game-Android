@@ -18,6 +18,7 @@ import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
+import com.google.android.material.button.MaterialButton
 import kotlin.math.roundToInt
 
 class SaleGameModuleAdapter(val context : Context) : RecyclerView.Adapter<SaleGameModuleAdapter.SaleGameModuleViewHolder>() {
@@ -41,6 +42,11 @@ class SaleGameModuleAdapter(val context : Context) : RecyclerView.Adapter<SaleGa
                 strikethroughSpan,0,game.coin.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
             itemView.findViewById<TextView>(R.id.module_gameCoin_textView).text = spanBuilder
+
+            if(game.isFavorite > 0) {
+                itemView.findViewById<MaterialButton>(R.id.module_addToFavorite_button).visibility = View.GONE
+                itemView.findViewById<MaterialButton>(R.id.module_unFavorite_button).visibility = View.VISIBLE
+            }
 
             itemView.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsActivity(game)

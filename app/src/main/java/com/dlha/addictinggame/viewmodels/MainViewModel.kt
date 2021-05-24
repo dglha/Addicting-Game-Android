@@ -34,8 +34,8 @@ class MainViewModel @Inject constructor(
     fun getNewGames(token : String) = viewModelScope.launch {
         getNewGamesSafeCall(token)
     }
-    fun getSaleGames() = viewModelScope.launch {
-        getSaleGamesSafeCall()
+    fun getSaleGames(token: String) = viewModelScope.launch {
+        getSaleGamesSafeCall(token)
     }
     fun getCategory() = viewModelScope.launch {
         getCategoriesSafeCall()
@@ -70,10 +70,10 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private suspend fun getSaleGamesSafeCall() {
+    private suspend fun getSaleGamesSafeCall(token : String) {
         saleGameResponse.value = NetworkResult.Loading()
         try{
-            val response = repository.remote.getListSaleGames()
+            val response = repository.remote.getListSaleGames(token)
             saleGameResponse.value = handleListSaleGameResponse(response)
         } catch (e: Exception){
             saleGameResponse.value = NetworkResult.Error(e.message)

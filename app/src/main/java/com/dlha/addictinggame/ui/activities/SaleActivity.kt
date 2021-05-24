@@ -31,6 +31,7 @@ class SaleActivity : AppCompatActivity() {
         binding = ActivitySaleBinding.inflate(layoutInflater)
 
 
+
         //ViewModel
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -40,13 +41,20 @@ class SaleActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setupRecyclerView()
-        readAPI()
+
+        mainViewModel.userToken.observe(this) {
+            if(it=="null") {
+                readAPI("")
+            } else {
+                readAPI(it)
+            }
+        }
 
         setContentView(binding.root)
     }
-    private fun readAPI() {
+    private fun readAPI(token : String) {
         lifecycleScope.launch {
-            mainViewModel.getSaleGames()
+            mainViewModel.getSaleGames(token)
             mainViewModel.saleGameResponse.observe(this@SaleActivity) { response ->
                 when(response) {
                     is NetworkResult.Success -> {
