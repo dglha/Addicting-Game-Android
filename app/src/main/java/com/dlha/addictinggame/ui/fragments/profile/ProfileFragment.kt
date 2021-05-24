@@ -15,6 +15,7 @@ import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.FragmentProfileBinding
 import com.dlha.addictinggame.model.User
 import com.dlha.addictinggame.ui.activities.FavoritesActivity
+import com.dlha.addictinggame.ui.activities.GameHavingActivity
 import com.dlha.addictinggame.ui.activities.LoginActivity
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.ProfileViewModel
@@ -105,6 +106,14 @@ class ProfileFragment : Fragment() {
             setOnClickListener {
                 startActivity(Intent(requireContext(), FavoritesActivity::class.java))
                 Log.d("Favo", "onCreateView: start favorite")
+            }
+        }
+
+        binding.numberGameHaving.apply {
+            visibility = View.VISIBLE
+            setOnClickListener {
+                startActivity(Intent(requireContext(), GameHavingActivity::class.java))
+                Log.d("Lib", "onCreateView: start GameHaving")
             }
         }
 
