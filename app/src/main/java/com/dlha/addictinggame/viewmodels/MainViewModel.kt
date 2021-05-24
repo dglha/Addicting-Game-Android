@@ -4,7 +4,9 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.dlha.addictinggame.data.DataStoreRepository
 import com.dlha.addictinggame.data.Repository
 import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.model.GameItem
@@ -18,16 +20,19 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: Repository,
+    private val dataStoreRepository: DataStoreRepository,
     application: Application
 ): AndroidViewModel(application) {
+
+    val userToken = dataStoreRepository.readAuthToken.asLiveData()
 
     val newGamesResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
     val saleGameResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
     val categoryResponse: MutableLiveData<NetworkResult<List<Category>>> = MutableLiveData()
     val gamesInCategoryResponse: MutableLiveData<NetworkResult<List<GameItem>>> = MutableLiveData()
 
-    fun getNewGames() = viewModelScope.launch {
-        getNewGamesSafeCall()
+    fun getNewGames(token : String) = viewModelScope.launch {
+        getNewGamesSafeCall(token)
     }
     fun getSaleGames() = viewModelScope.launch {
         getSaleGamesSafeCall()
@@ -39,10 +44,10 @@ class MainViewModel @Inject constructor(
         getGamesInCategorySafeCall(idcategory)
     }
 
-    private suspend fun getNewGamesSafeCall() {
+    private suspend fun getNewGamesSafeCall(token : String) {
         newGamesResponse.value = NetworkResult.Loading()
         try{
-            val response = repository.remote.getListNewGames()
+            val response = repository.remote.getListNewGames(token)
             newGamesResponse.value = handleListNewGamesResponse(response)
         } catch (e: Exception){
             newGamesResponse.value = NetworkResult.Error(e.message)

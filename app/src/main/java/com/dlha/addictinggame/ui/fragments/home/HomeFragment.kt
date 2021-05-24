@@ -46,7 +46,14 @@ class HomeFragment : Fragment() {
         setupToolbar()
 
         setupRecycleView()
-        readApi()
+        mainViewModel.userToken.observe(viewLifecycleOwner) {
+            if(it=="null") {
+                readApi("")
+            } else {
+                readApi(it)
+            }
+        }
+
 
         binding.newViewAllTextView.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_newGameActivity)
@@ -78,10 +85,10 @@ class HomeFragment : Fragment() {
         recyclerView.hideShimmer()
     }
 
-    private fun readApi() {
+    private fun readApi(token : String) {
         // read New Game
         lifecycleScope.launch {
-            mainViewModel.getNewGames()
+            mainViewModel.getNewGames(token)
             mainViewModel.newGamesResponse.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is NetworkResult.Success -> {

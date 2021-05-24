@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -13,6 +14,7 @@ import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
+import com.google.android.material.button.MaterialButton
 
 class NewGameModuleAdapter(val context: Context) :
     RecyclerView.Adapter<NewGameModuleAdapter.NewGameModuleViewHolder>() {
@@ -27,7 +29,11 @@ class NewGameModuleAdapter(val context: Context) :
             imageView.load(game.image){
                 crossfade(600)
             }
-
+            if(game.isFavorite>0) {
+                itemView.findViewById<MaterialButton>(R.id.module_addToFavorite_button).setIconResource(R.drawable.ic_heart)
+                itemView.findViewById<MaterialButton>(R.id.module_addToFavorite_button).setIconTintResource(R.color.red)
+            }
+            Log.d("QQQ",game.isFavorite.toString())
             itemView.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeFragmentToDetailsActivity(game)
                 Log.d("NavToDetails", "game selected: $game")

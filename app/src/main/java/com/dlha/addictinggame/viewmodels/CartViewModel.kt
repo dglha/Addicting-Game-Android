@@ -42,7 +42,11 @@ class CartViewModel  @Inject constructor(
             removeGameFromCartSafeCall(idgame)
         }
     }
-
+    fun checkout(token : String,listIDGame : String) {
+        viewModelScope.launch {
+            checkoutSafeCall(token,listIDGame)
+        }
+    }
 
 
     suspend fun getListGameInCartSafeCall(token : String) {
@@ -108,6 +112,28 @@ class CartViewModel  @Inject constructor(
     }
 
     private fun handleRemoveGameFromCart(response: Response<Message>): NetworkResult<Message> {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.isSuccessful -> {
+                val message = response.body()!!
+                return NetworkResult.Success(message)
+            }
+            else -> NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun checkoutSafeCall(token: String,listIDGame: String) {
+        messageResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.checkout(token, listIDGame)
+            messageResponse.value = handleCheckout(response)
+        } catch (e : Exception) {
+            messageResponse.value = NetworkResult.Error(e.message)
+        }
+    }
+    private fun handleCheckout(response: Response<Message>): NetworkResult<Message> {
         return when {
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout.")

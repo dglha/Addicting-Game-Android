@@ -55,8 +55,8 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val gameItem = if (args.gameItem==null)
-            intent.getParcelableExtra<GameItem>("item")!!
+        val gameItem = if (args.gameItem == null)
+            intent.getParcelableExtra<GameItem>("item")
         else args.gameItem
 
         Log.d("NavToDetails", "game: " + gameItem!!.name)

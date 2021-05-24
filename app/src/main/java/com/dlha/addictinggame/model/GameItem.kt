@@ -31,6 +31,8 @@ data class GameItem(
     val salePercent: String,
     @SerializedName("developer")
     val developer: String,
-    var newCoin : Int
+    var newCoin : Int,
+    @SerializedName("isBuy") val isBuy : Int,
+    @SerializedName("isFavorite") val isFavorite : Int
 ): Parcelable {
 }

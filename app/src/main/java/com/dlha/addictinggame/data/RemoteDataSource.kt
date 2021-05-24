@@ -18,8 +18,8 @@ class RemoteDataSource @Inject constructor(
         return appServiceAPI.getListCategories()
     }
 
-    suspend fun getListNewGames() : Response<List<GameItem>>{
-        return appServiceAPI.getListNewGames()
+    suspend fun getListNewGames(token : String) : Response<List<GameItem>>{
+        return appServiceAPI.getListNewGames(token)
     }
 
     suspend fun getListSaleGames(): Response<List<GameItem>> {
@@ -88,5 +88,9 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun removeGameCart(token : String,idgame : Int) : Response<Message> {
         return userServiceAPI.removeGameCart(token, idgame)
+    }
+
+    suspend fun checkout(token : String,listID : String) : Response<Message> {
+        return userServiceAPI.checkout(token, listID)
     }
 }

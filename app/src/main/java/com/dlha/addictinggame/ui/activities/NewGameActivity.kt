@@ -41,14 +41,20 @@ class NewGameActivity : AppCompatActivity() {
 
         setupRecycleView()
 
-        readApi()
+        mainViewModel.userToken.observe(this) {
+            if(it=="null") {
+                readApi("")
+            } else {
+                readApi(it)
+            }
+        }
 
         setContentView(binding.root)
     }
 
-    private fun readApi() {
+    private fun readApi(token : String) {
         lifecycleScope.launch {
-            mainViewModel.getNewGames()
+            mainViewModel.getNewGames(token)
             mainViewModel.newGamesResponse.observe(this@NewGameActivity) { response ->
                 when (response) {
                     is NetworkResult.Success -> {

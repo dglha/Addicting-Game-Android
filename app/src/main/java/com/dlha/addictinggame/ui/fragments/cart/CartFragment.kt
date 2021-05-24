@@ -2,6 +2,7 @@ package com.dlha.addictinggame.ui.fragments.cart
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,9 @@ class CartFragment : Fragment() {
 
     private lateinit var token: String
 
+    private var listID : MutableList<Int> = mutableListOf()
+    private lateinit var listIDString : String
+
     private val mAdapter by lazy { CartAdapter(requireContext()) }
 
     override fun onCreateView(
@@ -50,9 +54,17 @@ class CartFragment : Fragment() {
         setupRecyclerView()
         swipeToDelete(binding.cartRecyclerView)
 
+
         cartViewModel.userToken.observe(viewLifecycleOwner) {
             readAPI(it)
+            getUserInfo(it)
             token = it
+
+        }
+
+        binding.checkoutButton.setOnClickListener {
+            checkout(token,listIDString)
+            binding.cartProgressBar.visibility = View.VISIBLE
         }
 
         return binding.root
@@ -81,7 +93,7 @@ class CartFragment : Fragment() {
                     }
                     is NetworkResult.Success -> {
                         hideShimmerEffect()
-                        getUserInfo(token)
+//                        getUserInfo(token)
                         response.data?.let { mAdapter.setData(it) }
                         response.data?.let { totalCoin(it) }
                     }
@@ -90,7 +102,6 @@ class CartFragment : Fragment() {
 
         }
     }
-
     private fun getUserInfo(token: String){
         profileViewModel.getUserInfo(token)
         profileViewModel.userInfoResponse.observe(viewLifecycleOwner) { response ->
@@ -110,16 +121,40 @@ class CartFragment : Fragment() {
             }
         }
     }
-    private fun totalCoin(list : List<GameItem>) {
-        var totalCoin = 0
-        for(i in 0 until list?.count()!!) {
-            if(list.get(i).salePercent.toInt() > 0) {
-                totalCoin += ((list.get(i).coin.toFloat()*(100-list.get(i).salePercent.toFloat()))/100).roundToInt()
-            } else {
-                totalCoin += list.get(i).coin.toInt()
+    private fun checkout(token : String,listID : String) {
+        lifecycleScope.launch {
+            cartViewModel.checkout(token,listID)
+            cartViewModel.messageResponse.observe(viewLifecycleOwner) {response ->
+                when(response) {
+                    is NetworkResult.Loading -> {
+                        binding.cartProgressBar.visibility = View.VISIBLE
+                    }
+                    is NetworkResult.Error -> {
+                        binding.cartProgressBar.visibility = View.INVISIBLE
+                    }
+                    is NetworkResult.Success -> {
+                        binding.cartProgressBar.visibility = View.INVISIBLE
+                        readAPI(token)
+                        Toast.makeText(requireContext(),"Payment success",Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
+    }
+    private fun totalCoin(list : List<GameItem>) {
+        var totalCoin = 0
+        listID = mutableListOf()
+        for(i in 0 until list?.count()!!) {
+            totalCoin += if(list.get(i).salePercent.toInt() > 0) {
+                ((list.get(i).coin.toFloat()*(100-list.get(i).salePercent.toFloat()))/100).roundToInt()
+            } else {
+                list.get(i).coin.toInt()
+            }
+            listID.add(list[i].id)
+        }
         binding.priceTextView.text = totalCoin.toString()
+        listIDString = listID.toString().substring(1,listID.toString().length-1)
+        Log.d("LISTIDD",listIDString)
     }
     private fun setupRecyclerView() {
         binding.cartRecyclerView.adapter = mAdapter

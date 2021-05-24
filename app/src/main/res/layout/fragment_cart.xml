@@ -201,5 +201,16 @@
         app:spinning_bar_padding="6dp"
         app:spinning_bar_width="4dp" />
 
+    <ProgressBar
+        android:id="@+id/cart_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/cart_recyclerView"
+        app:layout_constraintStart_toStartOf="@+id/cart_recyclerView"
+        app:layout_constraintTop_toTopOf="@+id/cart_recyclerView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

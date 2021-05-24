@@ -40,4 +40,8 @@ interface UserServiceAPI {
     @POST("api/removeGameCart")
     @FormUrlEncoded
     suspend fun removeGameCart(@Field("token") token : String,@Field("idgame") idgame : Int) : Response<Message>
+
+    @POST("api/checkout")
+    @FormUrlEncoded
+    suspend fun checkout(@Field("token") token : String,@Field("listID") listID : String) : Response<Message>
 }
