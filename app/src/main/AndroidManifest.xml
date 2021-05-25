@@ -20,7 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.GameHavingActivity"></activity>
+        <activity android:name=".ui.activities.SearchActivity">
+
+        </activity>
+        <activity android:name=".ui.activities.GameHavingActivity" />
         <activity android:name=".ui.activities.CategoryActivity" />
         <activity android:name=".ui.activities.SaleActivity" />
         <activity android:name=".ui.activities.FavoritesActivity" />
@@ -34,11 +37,13 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:theme="@style/AppTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".ui.activities.ReviewsActivity"

@@ -1,10 +1,15 @@
 package com.dlha.addictinggame.ui.fragments.categories
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -12,15 +17,15 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.adapter.CategoryAdapter
-import com.dlha.addictinggame.adapter.SaleGameAdapter
 import com.dlha.addictinggame.databinding.FragmentCategoriesBinding
+import com.dlha.addictinggame.ui.activities.SearchActivity
 import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CategoriesFragment : Fragment() {
+class CategoriesFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentCategoriesBinding? = null
     private val binding get() = _binding!!
 
@@ -90,6 +95,23 @@ class CategoriesFragment : Fragment() {
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.optionsmenu,menu)
+
+        val searchItem = menu.findItem(R.id.menu_search)
+
+        val searchView : SearchView? = searchItem.actionView as SearchView?
+
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        startActivity(Intent(activity,SearchActivity::class.java).putExtra("search",query))
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return true
+    }
+
 }

@@ -22,12 +22,12 @@ class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteView
 
     inner class FavoritesViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(game: GameItem, position: Int){
-            itemView.findViewById<TextView>(R.id.favorite_gameTitle_imageView).text = game.name
-            itemView.findViewById<ImageView>(R.id.favorite_gameImage_imageView).load(game.image) {
+            itemView.findViewById<TextView>(R.id.new_gameTitle_textView).text = game.name
+            itemView.findViewById<ImageView>(R.id.new_gameImage_imageView).load(game.image) {
                 crossfade(600)
             }
-            itemView.findViewById<TextView>(R.id.favorite_gameDeveloper_textView).text = game.developer
-            itemView.findViewById<TextView>(R.id.favorite_gameCoin_textView).text = game.coin
+            itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
+            itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
 
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
@@ -35,16 +35,15 @@ class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteView
                 try{
                     context.startActivity(intent)
                 } catch (e: Exception){
-                    Log.d("NavToDetails", "error when navigate from Favo: " + e.message.toString())
+                    Log.d("NavToDetails", "error when navigate from New: " + e.message.toString())
                 }
             }
-
         }
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesAdapter.FavoritesViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.favorite_game_row_layout,parent,false)
+        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.new_game_row_layout,parent,false)
         return FavoritesViewHolder(layoutInflater)
     }
 

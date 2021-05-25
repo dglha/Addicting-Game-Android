@@ -81,7 +81,7 @@
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="18dp"
-        app:iconTint="@color/black"
+        app:iconTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView"
         app:layout_constraintHorizontal_bias="1.0"
