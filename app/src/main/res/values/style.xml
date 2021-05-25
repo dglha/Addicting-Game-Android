@@ -16,8 +16,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlNormal">@color/colorControl</item>
         <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+    </style>
+
+    <style name="SplashScreenStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
     
     <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">

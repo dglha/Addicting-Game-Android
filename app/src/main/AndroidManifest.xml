@@ -18,13 +18,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/SplashScreenStyle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.GameHavingActivity"></activity>
-        <activity android:name=".ui.activities.CategoryActivity" />
-        <activity android:name=".ui.activities.SaleActivity" />
-        <activity android:name=".ui.activities.FavoritesActivity" />
-        <activity android:name=".ui.activities.NewGameActivity" />
+        <activity android:name=".ui.activities.GameHavingActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.CategoryActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.SaleActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.FavoritesActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.NewGameActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:theme="@style/AppTheme" />
@@ -33,7 +38,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.MainActivity"
-            android:theme="@style/AppTheme">
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,8 +47,10 @@
         </activity>
         <activity
             android:name=".ui.activities.ReviewsActivity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.activities.DetailsActivity" />
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.DetailsActivity"
+            android:theme="@style/DetailsActivityStyle"/>
     </application>
 
 </manifest>

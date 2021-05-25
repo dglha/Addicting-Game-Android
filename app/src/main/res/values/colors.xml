@@ -31,7 +31,7 @@
     //Custom CardView Color
     <color name="cardBackgroundColor">@color/white</color>
     <color name="titleColor">@color/black</color>
-    <color name="descriptionColor">@color/lightGray</color>
+    <color name="descriptionColor">@color/gray</color>
 
     //ActionBar and Status Bar
     <color name="actionBarBackgroundColor">@color/backgroundColor</color>
