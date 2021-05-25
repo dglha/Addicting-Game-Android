@@ -30,12 +30,12 @@
         android:id="@+id/background_imageView"
         android:layout_width="wrap_content"
         android:layout_height="600dp"
+        android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
         android:src="@drawable/cyberpunk20770_olto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:fitsSystemWindows="true"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -54,7 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#DB3022"
+        android:backgroundTint="@color/buttonBackgroundTint"
+        android:textColor="@color/white"
+        android:fontFamily="@font/metropolis_bold"
         android:text="Check"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="@id/background_imageView"
@@ -69,7 +71,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/metropolis_black"
         android:text="Addicting Game"
-        android:textColor="@color/whiteTextColor"
+        android:textColor="@color/textHomeColor"
         android:textSize="61sp"
         app:layout_constraintBottom_toTopOf="@+id/check_button"
         app:layout_constraintEnd_toEndOf="@id/background_imageView"
@@ -85,7 +87,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/metropolis_black"
         android:text="Addicting Game"
-        android:textColor="@color/whiteTextColor"
+        android:textColor="@color/textHomeColor"
         android:textSize="37sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/background_imageView"
@@ -106,7 +108,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/home_constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor">
 
 
             <TextView
@@ -117,7 +120,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:text="Sale"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="@id/home_constraintLayout"
                 app:layout_constraintTop_toTopOf="@id/home_constraintLayout" />
@@ -128,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_medium"
                 android:text="Supper autumn sale"
+                android:textColor="@color/descriptionColor"
                 app:layout_constraintStart_toStartOf="@+id/sale_textView"
                 app:layout_constraintTop_toBottomOf="@+id/sale_textView" />
 
@@ -138,24 +142,24 @@
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/metropolis_medium"
                 android:text="View all"
-                android:textColor="@color/black"
+                android:textColor="@color/descriptionColor"
                 app:layout_constraintBottom_toBottomOf="@+id/sale_textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/sale_textView" />
 
             <com.todkars.shimmer.ShimmerRecyclerView
                 android:id="@+id/saleGame_recyclerView"
-                app:shimmer_recycler_layout="@layout/placeholder_module_row_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/saleDescription_textView" />
+                app:layout_constraintTop_toBottomOf="@+id/saleDescription_textView"
+                app:shimmer_recycler_layout="@layout/placeholder_module_row_layout" />
 
             <TextView
                 android:id="@+id/new_textView"
@@ -164,7 +168,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:text="New"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="34sp"
                 app:layout_constraintStart_toStartOf="@+id/sale_textView"
                 app:layout_constraintTop_toBottomOf="@+id/saleGame_recyclerView" />
@@ -175,6 +179,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/metropolis_medium"
                 android:text="You’ve never seen it before!"
+                android:textColor="@color/descriptionColor"
                 app:layout_constraintStart_toStartOf="@+id/sale_textView"
                 app:layout_constraintTop_toBottomOf="@id/new_textView" />
 
@@ -184,6 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:text="View all"
+                android:textColor="@color/descriptionColor"
                 app:layout_constraintBottom_toBottomOf="@+id/new_textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/new_textView" />

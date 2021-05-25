@@ -17,7 +17,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/cardBackgroundColor">
 
 
             <ImageView
@@ -35,11 +36,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_semibold"
-                android:text="Cyberpunk 2077"
                 android:ellipsize="end"
+                android:fontFamily="@font/metropolis_semibold"
                 android:maxLines="1"
-                android:textColor="@color/black"
+                android:text="Cyberpunk 2077"
+                android:textColor="@color/titleColor"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -53,7 +54,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="50$"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 app:layout_constraintStart_toStartOf="@+id/gameHaving_gameTitle_textView"
                 app:layout_constraintTop_toBottomOf="@+id/gameHaving_gameDeveloper_textView" />
 
@@ -63,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="CD Project Red"
+                android:textColor="@color/descriptionColor"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/gameHaving_gameTitle_textView"
                 app:layout_constraintTop_toBottomOf="@+id/gameHaving_gameTitle_textView" />
@@ -77,11 +79,11 @@
         android:layout_height="46dp"
         android:elevation="8dp"
         app:cornerRadius="30dp"
-        app:iconTint="@color/black"
         app:icon="@drawable/ic_download"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="18dp"
+        app:iconTint="@color/buttonTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView"
         app:layout_constraintHorizontal_bias="1.0"

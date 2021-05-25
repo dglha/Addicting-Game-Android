@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorControl</item>
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationView</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+    </style>
+
     <style name="DetailsActivityStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlNormal">@color/white</item>
-        <item name="android:statusBarColor">#F9F9F9</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+    </style>
+    
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@color/bottomNavBackground</item>
+        <item name="itemIconTint">@color/bottom_nav_view_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_view_item_color</item>
+    </style>
+
+    <style name="CustomActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="background">@color/actionBarBackgroundColor</item>
     </style>
 </resources>

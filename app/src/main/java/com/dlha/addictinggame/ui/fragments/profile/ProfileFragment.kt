@@ -127,6 +127,15 @@ class ProfileFragment : Fragment() {
         binding.loginLayout.visibility = View.VISIBLE
         binding.paymentLayout.visibility = View.GONE
         binding.logoutMainLayout.visibility = View.GONE
+
+        binding.numberGameFavorites.apply{
+            visibility = View.GONE
+
+        }
+
+        binding.numberGameHaving.apply {
+            visibility = View.GONE
+        }
     }
 
     private fun changeStatusBar() {

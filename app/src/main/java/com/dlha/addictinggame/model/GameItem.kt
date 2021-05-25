@@ -1,11 +1,9 @@
 package com.dlha.addictinggame.model
 
 
-import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlin.math.roundToInt
 
 @Parcelize
 data class GameItem(

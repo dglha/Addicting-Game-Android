@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:backgroundTint="#FFFFFF"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.forums.ForumsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -44,6 +43,7 @@
         android:layout_marginTop="76dp"
         android:fontFamily="@font/metropolis_bold"
         android:text="Coming Soon"
+        android:textColor="@color/titleColor"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

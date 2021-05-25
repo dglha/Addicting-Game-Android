@@ -185,7 +185,7 @@ class DetailsActivity : AppCompatActivity() {
     private fun changeFavoriteButtonColor() {
         binding.detailsAddToFavoriteButton.setIconResource(R.drawable.ic_heart)
         binding.detailsAddToFavoriteButton.iconTint =
-            ContextCompat.getColorStateList(this, R.color.orangeRed)
+            ContextCompat.getColorStateList(this, R.color.orangeStrong)
     }
 
     private fun setupCarouselItem(gameItem: GameItem) {
