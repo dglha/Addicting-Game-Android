@@ -24,7 +24,7 @@ data class GameItem(
     @SerializedName("namegame")
     val name: String,
     @SerializedName("time")
-    val time: String,
+    val time: String?,
     @SerializedName("sale")
     val salePercent: String,
     @SerializedName("developer")

@@ -31,6 +31,9 @@ class RemoteDataSource @Inject constructor(
     suspend fun getListCommentInGame(idgame : Int): Response<List<Comment>> {
         return appServiceAPI.getListCommentInGame(idgame)
     }
+    suspend fun getListSearhGame(token : String,namegame : String) : Response<List<GameItem>> {
+        return appServiceAPI.getListSearchGame(token,namegame)
+    }
 
     /*
     *

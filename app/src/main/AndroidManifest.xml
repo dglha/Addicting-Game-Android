@@ -30,6 +30,14 @@
             android:theme="@style/AppTheme"/>
         <activity android:name=".ui.activities.NewGameActivity"
             android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.activities.SearchActivity">
+
+        </activity>
+        <activity android:name=".ui.activities.GameHavingActivity" />
+        <activity android:name=".ui.activities.CategoryActivity" />
+        <activity android:name=".ui.activities.SaleActivity" />
+        <activity android:name=".ui.activities.FavoritesActivity" />
+        <activity android:name=".ui.activities.NewGameActivity" />
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:theme="@style/AppTheme" />
@@ -47,10 +55,8 @@
         </activity>
         <activity
             android:name=".ui.activities.ReviewsActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.activities.DetailsActivity"
-            android:theme="@style/DetailsActivityStyle"/>
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activities.DetailsActivity" />
     </application>
 
 </manifest>

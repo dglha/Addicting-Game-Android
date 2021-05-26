@@ -22,4 +22,7 @@ interface AppServiceAPI {
 
     @GET("api/getListCommentInGame")
     suspend fun getListCommentInGame(@Query("idgame") idgame : Int): Response<List<Comment>>
+
+    @GET("api/searchGame")
+    suspend fun getListSearchGame(@Query("token") token : String,@Query("namegame") namegame : String) : Response<List<GameItem>>
 }
