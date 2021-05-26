@@ -20,7 +20,7 @@
             android:id="@+id/detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="#fff">
+            android:background="@color/backgroundColor">
 
             <TextView
                 android:id="@+id/detail_toolbar_title"
@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="Cyberpunk 2077"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="18sp" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -50,13 +50,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F9F9F9">
+            android:background="@color/backgroundColor">
 
             <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                 android:id="@+id/detail_gameImages_imageCarousel"
                 android:layout_width="match_parent"
                 android:layout_height="415dp"
-                app:carouselBackground="#F9F9F9"
+                app:carouselBackground="@color/backgroundColor"
                 app:imageScaleType="centerCrop"
                 app:imageViewId="@id/customImage_carousel"
                 app:itemLayout="@layout/image_carousel_custom_layout"
@@ -78,14 +78,14 @@
                 android:layout_height="56dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/whiteTextColor"
+                android:backgroundTint="@color/buttonUnFocusBackgroundTint"
                 android:elevation="8dp"
                 app:cornerRadius="30dp"
                 app:icon="@drawable/ic_heart_border"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
-                app:iconTint="@color/black"
+                app:iconTint="@color/buttonUnFocusTextColor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detail_gameImages_imageCarousel" />
 
@@ -96,7 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="$19.99"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/details_addToFavorite_button"
                 app:layout_constraintTop_toBottomOf="@+id/details_addToFavorite_button" />
@@ -108,7 +108,7 @@
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="CD Projeck Red"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/detail_gameCoin_textView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,6 +122,7 @@
                 android:fontFamily="@font/metropolis_regular"
                 android:lineSpacingMultiplier="1.26"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean justo erat, feugiat nec consectetur quis, tincidunt vitae libero. Nunc tincidunt id urna vel dapibus. Phasellus in feugiat lorem. Ut mattis finibus ante at maximus. Cras volutpat justo ut maximus dignissim. Nam laoreet id eros in porttitor"
+                android:textColor="@color/descriptionColor"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/detail_gameCoin_textView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -141,7 +142,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#F9F9F9">
+                    android:background="@color/backgroundColor">
 
                     <TextView
                         android:id="@+id/commentCard_textView"
@@ -152,7 +153,7 @@
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/metropolis_regular"
                         android:text="Comment"
-                        android:textColor="@color/black"
+                        android:textColor="@color/titleColor"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -163,11 +164,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
+                        android:tint="@color/iconTintColor"
                         app:layout_constraintBottom_toBottomOf="@+id/commentCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/commentCard_textView"
-                        app:srcCompat="@drawable/ic_forward"
-                        app:tint="@color/black" />
+                        app:srcCompat="@drawable/ic_forward" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -185,7 +186,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#F9F9F9">
+                    android:background="@color/backgroundColor">
 
                     <TextView
                         android:id="@+id/supportCard_textView"
@@ -196,7 +197,7 @@
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/metropolis_regular"
                         android:text="Support"
-                        android:textColor="@color/black"
+                        android:textColor="@color/titleColor"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -207,11 +208,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
+                        android:tint="@color/iconTintColor"
                         app:layout_constraintBottom_toBottomOf="@+id/supportCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/supportCard_textView"
-                        app:srcCompat="@drawable/ic_forward"
-                        app:tint="@color/black" />
+                        app:srcCompat="@drawable/ic_forward" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -224,14 +225,13 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="You may also like this"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/supportCard_cardView" />
 
             <com.todkars.shimmer.ShimmerRecyclerView
                 android:id="@+id/details_recyclerView"
-                app:shimmer_recycler_layout="@layout/placeholder_module_row_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
@@ -239,7 +239,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/detail_recommend_textView" />
+                app:layout_constraintTop_toBottomOf="@id/detail_recommend_textView"
+                app:shimmer_recycler_layout="@layout/placeholder_module_row_layout" />
 
             <TextView
                 android:id="@+id/coin_after_textView"
@@ -249,7 +250,7 @@
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:text="$19.99"
-                android:textColor="@color/red"
+                android:textColor="@color/textFocusColor"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/detail_gameCoin_textView"
                 app:layout_constraintTop_toBottomOf="@+id/details_addToFavorite_button" />

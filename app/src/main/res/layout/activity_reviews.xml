@@ -6,13 +6,13 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9">
+    android:background="@color/backgroundColor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/review_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F9F9F9"
+        android:background="@color/backgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="Reviews"
-                android:textColor="@color/black"
+                android:textColor="@color/titleColor"
                 android:textSize="18sp" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -40,16 +40,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
+        android:fontFamily="@font/metropolis_semibold"
         android:text="Write a review"
-        app:icon="@drawable/ic_pencil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:iconSize="14dp"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         app:backgroundTint="#DB3022"
+        app:icon="@drawable/ic_pencil"
         app:iconPadding="8dp"
-        android:fontFamily="@font/metropolis_semibold"
-        android:textAllCaps="false"
+        app:iconSize="14dp"
         app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/metropolis_semibold"
         android:text="0 Reviews"
-        android:textColor="@color/black"
+        android:textColor="@color/titleColor"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review_appbar" />

@@ -2,15 +2,15 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet_review"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/bottom_sheet_review"
     tools:context=".ReviewBottomSheet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:background="#F9F9F9">
+        android:background="@color/backgroundColor">
 
 
         <TextView
@@ -20,7 +20,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/metropolis_semibold"
             android:text="What is your opinion?"
-            android:textColor="@color/black"
+            android:textColor="@color/titleColor"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:fontFamily="@font/metropolis_semibold"
             android:gravity="center"
             android:text="Please share your opinion about the product"
-            android:textColor="@color/black"
+            android:textColor="@color/titleColor"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +63,13 @@
                     android:id="@+id/reviews_editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/metropolis_regular"
                     android:background="@drawable/custom_input"
+                    android:fontFamily="@font/metropolis_regular"
                     android:foregroundGravity="top|left"
                     android:gravity="start|top"
-                    android:padding="8dp"
                     android:inputType="textMultiLine"
-                    android:textColor="@color/black"
+                    android:padding="8dp"
+                    android:textColor="@color/titleColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
             app:layout_constraintStart_toStartOf="@+id/materialCardView2" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,14 +18,14 @@
             android:id="@+id/having_toolbar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/actionBarBackgroundColor"
             app:titleTextColor="#FF0000" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/backgroundColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar_layout">
 
@@ -39,9 +39,9 @@
                 android:layout_marginEnd="286dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:textColor="@color/black"
                 android:lineHeight="34sp"
                 android:text="Library"
+                android:textColor="@color/titleColor"
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -58,7 +58,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
-                android:background="@color/background"
+                android:background="@color/backgroundColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +73,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="6dp"
+                    app:iconTint="@color/iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -88,10 +89,11 @@
                     android:layout_marginTop="6dp"
                     android:layout_marginEnd="264dp"
                     android:layout_marginBottom="6dp"
-                    android:fontFamily="@font/metropolis_bold"
+                    android:fontFamily="@font/metropolis_medium"
                     android:gravity="top"
                     android:maxLines="1"
                     android:text="Filters"
+                    android:textColor="@color/titleColor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +109,7 @@
                     android:layout_marginStart="144dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
+                    app:iconTint="@color/iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -120,9 +123,10 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="28dp"
-                    android:fontFamily="@font/metropolis_bold"
+                    android:fontFamily="@font/metropolis_medium"
                     android:gravity="top"
                     android:text="Price: lowest to high"
+                    android:textColor="@color/titleColor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -141,23 +145,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/background"
+        android:background="@color/backgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
         tools:layout_editor_absoluteX="0dp">
 
         <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/having_recyclerView"
-            app:shimmer_recycler_layout="@layout/placeholder_row_layout"
             android:layout_width="match_parent"
-            android:orientation="vertical"
             android:layout_height="match_parent"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:shimmer_recycler_layout="@layout/placeholder_row_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

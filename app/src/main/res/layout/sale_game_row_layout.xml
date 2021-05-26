@@ -9,6 +9,7 @@
         android:id="@+id/sale_materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cardBackgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -17,7 +18,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/cardBackgroundColor">
 
 
             <ImageView
@@ -35,11 +37,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_semibold"
-                android:text="Cyberpunk 2077"
                 android:ellipsize="end"
+                android:fontFamily="@font/metropolis_semibold"
                 android:maxLines="1"
-                android:textColor="@color/black"
+                android:text="Cyberpunk 2077"
+                android:textColor="@color/titleColor"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -53,6 +55,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_regular"
                 android:text="50$"
+                android:textColor="@color/descriptionColor"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_textView"
                 app:layout_constraintTop_toBottomOf="@+id/sale_gameDeveloper_textView" />
@@ -63,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="CD Project Red"
+                android:textColor="@color/descriptionColor"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/sale_gameTitle_textView"
                 app:layout_constraintTop_toBottomOf="@+id/sale_gameTitle_textView" />
@@ -74,7 +78,8 @@
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/metropolis_semibold"
                 android:text="49$"
-                android:textColor="#DB3022"
+
+                android:textColor="@color/textFocusColor"
                 app:layout_constraintBottom_toBottomOf="@+id/sale_oldGameCoin_textView"
                 app:layout_constraintStart_toEndOf="@+id/sale_oldGameCoin_textView"
                 app:layout_constraintTop_toTopOf="@+id/sale_oldGameCoin_textView" />
@@ -87,13 +92,15 @@
         android:id="@+id/add_new_to_favorite_button"
         android:layout_width="36dp"
         android:layout_height="46dp"
+        android:backgroundTint="@color/buttonUnFocusBackgroundTint"
         android:elevation="8dp"
+        android:translationZ="90dp"
         app:cornerRadius="30dp"
-        app:iconTint="@color/black"
         app:icon="@drawable/ic_forward"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="18dp"
+        app:iconTint="@color/buttonUnFocusTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/sale_materialCardView"
         app:layout_constraintHorizontal_bias="1.0"

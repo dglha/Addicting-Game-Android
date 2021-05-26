@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <color name="colorPrimary">#FFFFFF</color>-->
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">@color/orangeStrong</color>
-    <color name="colorPrimary">@color/orangeStrong</color>
-<!--    <color name="colorPrimaryDark">#5502C8</color>-->
-<!--    <color name="colorAccent">#9D46FF</color>-->
+    <!--    <color name="colorPrimary">#FFFFFF</color>-->
+    <color name="colorPrimary">@color/orangeViolet</color>
+    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorAccent">@color/orangeViolet</color>
+
+    <!--    <color name="colorPrimaryDark">#5502C8</color>-->
+    <!--    <color name="colorAccent">#9D46FF</color>-->
+
 
     <color name="red">#DB3022</color>
     <color name="background">#F9F9F9</color>
@@ -18,40 +20,41 @@
     <color name="orange">#F01F0E</color>
     <color name="orangeStrong">#DB3022</color>
     <color name="orangeViolet">#EF3651</color>
-    
+
     <color name="darker">#1E1F28</color>
     <color name="dark">#2A2C36</color>
 
-<!--    Light Theme         -->
+    <!--    Dark Theme         -->
 
-    <color name="backgroundColor">@color/lightGray</color>
+    <color name="backgroundColor">@color/darker</color>
     <color name="placeholderColor">@color/gray</color>
-<!--    <color name="itemColor">@color/darker</color>-->
+    <!--    <color name="itemColor">@color/darker</color>-->
 
     //Custom CardView Color
-    <color name="cardBackgroundColor">@color/white</color>
-    <color name="titleColor">@color/black</color>
-    <color name="descriptionColor">@color/gray</color>
+    <color name="cardBackgroundColor">@color/dark</color>
+    <color name="titleColor">@color/white</color>
+    <color name="descriptionColor">@color/lightGray</color>
 
     //ActionBar and Status Bar
     <color name="actionBarBackgroundColor">@color/backgroundColor</color>
     <color name="statusBarColor">@color/darker</color>
-    <color name="colorControl">@color/black</color>
+    <color name="colorControl">@color/white</color>
+
 
     //Custom BottomNavigationView Style
-    <color name="bottomNavBackground">@color/white</color>
-    <color name="bottomNavItemColor">@color/black</color>
+    <color name="bottomNavBackground">@color/darker</color>
+    <color name="bottomNavItemColor">@color/white</color>
     <color name="bottomNavCheckedItemColor">@color/colorAccent</color>
 
     //Text Color, iconColor
     <color name="textHomeColor">@color/white</color>
-    <color name="textColor">@color/black</color>
+    <color name="textColor">@color/white</color>
     <color name="textFocusColor">@color/colorAccent</color>
-    <color name="iconTintColor">@color/black</color>
+    <color name="iconTintColor">@color/white</color>
 
     //Button
     <color name="buttonBackgroundTint">@color/colorAccent</color>
-    <color name="buttonUnFocusBackgroundTint">@color/white</color>
+    <color name="buttonUnFocusBackgroundTint">@color/dark</color>
 
     <color name="buttonTextColor">@color/white</color>
     <color name="buttonUnFocusTextColor">@color/black</color>

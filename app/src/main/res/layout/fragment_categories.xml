@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
+    android:background="@color/backgroundColor"
     tools:context=".ui.fragments.categories.CategoriesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,8 +19,7 @@
             android:id="@+id/categories_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Home"
-          />
+            android:background="@color/backgroundColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -37,6 +36,7 @@
         android:gravity="center_horizontal|top"
         android:lineSpacingExtra="4sp"
         android:text="Categories"
+        android:textColor="@color/titleColor"
         android:textSize="25sp"
         android:translationY="-2sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="5sp"
                     android:text="Supper Sale"
-                    android:textColor="@color/whiteTextColor"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:translationY="-2.4sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="6sp"
                     android:text="Up to 50% off"
-                    android:textColor="@color/whiteTextColor"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:translationY="-3sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -120,7 +120,9 @@
         android:id="@+id/categories_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
