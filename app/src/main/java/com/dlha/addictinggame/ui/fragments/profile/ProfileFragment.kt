@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.databinding.FragmentProfileBinding
@@ -44,7 +45,8 @@ class ProfileFragment : Fragment() {
             readUserInfo()
         }
 
-        binding.logoutMainLayout.visibility = View.VISIBLE
+        binding.logoutLayout.visibility = View.VISIBLE
+
         binding.loginLayout.setOnClickListener {
 //            findNavController().navigate(R.id.action_profileFragment_to_loginActivity)
             startActivity(Intent(requireContext(), LoginActivity::class.java))
@@ -61,11 +63,11 @@ class ProfileFragment : Fragment() {
     }
 
     private fun readUserInfo() {
-        profileViewModel.userToken.observe(viewLifecycleOwner, { token ->
+        profileViewModel.userToken.observe(viewLifecycleOwner) { token ->
             if (!token.equals("null")) {
                 Log.d("Obs", "readUserInfo: token: $token")
                 profileViewModel.getUserInfo(token)
-                profileViewModel.userInfoResponse.observe(viewLifecycleOwner, { response ->
+                profileViewModel.userInfoResponse.observe(viewLifecycleOwner) { response ->
                     when (response) {
                         is NetworkResult.Error -> {
                             resetContentView()
@@ -78,55 +80,54 @@ class ProfileFragment : Fragment() {
                         }
                     }
 
-                })
+                }
             } else {
                 Log.d("Obs", "readUserInfo: token: $token")
                 resetContentView()
             }
-        })
+        }
     }
 
 
     private fun setupContentView(user: User) {
-
         userSave = user
         val name = user.firstname + " " + user.lastname
-        val favorites = "${user.totalFavorites} Favorites"
-        binding.username.text = name
+
+        binding.usernameTextView.text = name
         binding.avatar.load(user.avatar)
+        binding.coinTextView.text = user.coinhave.toString()
 
         binding.loginLayout.visibility = View.GONE
-        binding.paymentLayout.visibility = View.VISIBLE
-        binding.paymentLayout.visibility = View.VISIBLE
-        binding.logoutMainLayout.visibility = View.VISIBLE
+        binding.favoritesGameLayout.visibility = View.VISIBLE
+        binding.gamehavingLayout.visibility = View.VISIBLE
+        binding.logoutLayout.visibility = View.VISIBLE
 
-        binding.numberGameFavorites.apply{
-            visibility = View.VISIBLE
-            text = favorites
-            setOnClickListener {
-                startActivity(Intent(requireContext(), FavoritesActivity::class.java))
-                Log.d("Favo", "onCreateView: start favorite")
-            }
+        binding.totalNumberFavorites.text = "Already have "+user.totalFavorites.toString()+" games"
+
+        binding.gamehavingLayout.setOnClickListener {
+            startActivity(Intent(requireContext(), GameHavingActivity::class.java))
         }
 
-        binding.numberGameHaving.apply {
-            visibility = View.VISIBLE
-            setOnClickListener {
-                startActivity(Intent(requireContext(), GameHavingActivity::class.java))
-                Log.d("Lib", "onCreateView: start GameHaving")
-            }
+        binding.favoritesGameLayout.setOnClickListener {
+            startActivity(Intent(requireContext(),FavoritesActivity::class.java))
         }
 
     }
 
     private fun resetContentView() {
         Log.d("Profile", "resetContentView: called")
-        binding.username.text = "USER"
+        binding.usernameTextView.text = "USER"
         binding.avatar.load(R.drawable._c3ad823775971_5632898dbfbfa)
 
         binding.loginLayout.visibility = View.VISIBLE
-        binding.paymentLayout.visibility = View.GONE
-        binding.logoutMainLayout.visibility = View.GONE
+        binding.logoutLayout.visibility = View.GONE
+        binding.favoritesGameLayout.visibility = View.GONE
+        binding.gamehavingLayout.visibility = View.GONE
+
+
+
+
+
     }
 
     private fun changeStatusBar() {
@@ -140,7 +141,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun setupToolbar() {
-        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.profileToolbar)
+        (activity as AppCompatActivity?)!!.setSupportActionBar(binding.myprofileToolbar)
         (activity as AppCompatActivity?)!!.supportActionBar?.hide()
     }
 
