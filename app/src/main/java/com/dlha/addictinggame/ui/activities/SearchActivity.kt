@@ -9,8 +9,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dlha.addictinggame.adapter.FavoritesAdapter
-import com.dlha.addictinggame.adapter.NewGameModuleAdapter
 import com.dlha.addictinggame.adapter.SearchAdapter
 import com.dlha.addictinggame.databinding.ActivitySearchBinding
 import com.dlha.addictinggame.utils.NetworkResult
@@ -107,5 +105,10 @@ class SearchActivity : AppCompatActivity() {
 
     private fun hideShimmerEffect() {
         binding.searchRecyclerView.hideShimmer()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
     }
 }

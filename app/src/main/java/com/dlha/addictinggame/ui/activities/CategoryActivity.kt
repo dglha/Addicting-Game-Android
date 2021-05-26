@@ -86,4 +86,9 @@ class CategoryActivity : AppCompatActivity() {
     private fun hideShimmerEffect() {
         binding.gameInCategoryRecyclerView.hideShimmer()
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
+    }
 }

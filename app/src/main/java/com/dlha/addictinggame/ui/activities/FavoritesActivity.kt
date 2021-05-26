@@ -135,5 +135,10 @@ class FavoritesActivity : AppCompatActivity() {
         return true
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
+    }
+
 
 }

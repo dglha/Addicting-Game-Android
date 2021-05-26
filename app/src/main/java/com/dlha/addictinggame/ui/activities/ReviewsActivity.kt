@@ -96,4 +96,9 @@ class ReviewsActivity : AppCompatActivity() {
         binding.commentRecyclerView.hideShimmer()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
+    }
+
 }

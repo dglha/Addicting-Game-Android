@@ -223,4 +223,9 @@ class DetailsActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.detail_activity_menu, menu)
         return true
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
+    }
 }

@@ -1,16 +1,14 @@
 package com.dlha.addictinggame.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
-import com.dlha.addictinggame.adapter.NewGameAdapter
 import com.dlha.addictinggame.adapter.SaleGameAdapter
 import com.dlha.addictinggame.databinding.ActivitySaleBinding
 import com.dlha.addictinggame.utils.NetworkResult
@@ -88,5 +86,10 @@ class SaleActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.optionsmenu, menu)
         return true
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        this.finish()
+        return super.onSupportNavigateUp()
     }
 }
