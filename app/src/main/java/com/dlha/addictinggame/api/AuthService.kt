@@ -15,7 +15,7 @@ interface AuthService {
 
     @POST("api/register")
     @FormUrlEncoded
-    suspend fun userRegister(@Field("name") name : String, @Field("username") username : String, @Field("password") password: String): Response<Message>
+    suspend fun userRegister(@Field("email") email : String, @Field("username") username : String, @Field("password") password: String): Response<Message>
 
     @POST("api/getUser")
     @FormUrlEncoded

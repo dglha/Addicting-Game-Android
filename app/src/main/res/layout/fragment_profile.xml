@@ -64,76 +64,82 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="76dp"
             android:src="@drawable/batman_hero_avatar_comics_512" />
     </FrameLayout>
 
     <TextView
         android:id="@+id/username_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="164dp"
         android:layout_marginBottom="626dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
         android:lineSpacingExtra="4sp"
+        android:maxLines="1"
         android:text="User"
         android:textColor="@color/titleColor"
         android:textSize="18sp"
         android:translationY="-2sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="@+id/search_appbar"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintVertical_bias="0.5" />
+
 
     <TextView
         android:id="@+id/email_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="215dp"
         android:layout_marginBottom="626dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
         android:lineSpacingExtra="4sp"
-        android:text="ndphuc.19it@vku.udn.vn"
+        android:maxLines="1"
+        android:text="Email"
         android:textColor="@color/descriptionColor"
         android:textSize="18sp"
         android:translationY="-2sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="@+id/search_appbar"
-        app:layout_constraintVertical_bias="0.496" />
-
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/coin_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="265dp"
         android:layout_marginBottom="626dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
         android:lineSpacingExtra="4sp"
-        android:text="1000 Coin"
-        android:textSize="18sp"
+        android:maxLines="1"
+        android:text="Coin"
         android:textColor="@color/textFocusColor"
+        android:textSize="18sp"
         android:translationY="-2sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/frameLayout2"
         app:layout_constraintTop_toTopOf="@+id/search_appbar"
-        app:layout_constraintVertical_bias="0.497" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <LinearLayout
         android:layout_width="match_parent"

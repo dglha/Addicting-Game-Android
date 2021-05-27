@@ -255,6 +255,22 @@
                 app:layout_constraintEnd_toStartOf="@+id/detail_gameCoin_textView"
                 app:layout_constraintTop_toBottomOf="@+id/details_addToFavorite_button" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play_now_button"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/buttonBackgroundTint"
+                android:text="Play Now"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:cornerRadius="100dp"
+                app:initialCornerAngle="27dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_gameImages_imageCarousel" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

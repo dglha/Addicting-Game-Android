@@ -30,6 +30,11 @@ class LoginActivity : AppCompatActivity() {
 
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
+       var usernameFromRegister = intent.getStringExtra("username")
+        if(!usernameFromRegister.isNullOrEmpty()) {
+            binding.usernameTextInputEditText.setText(usernameFromRegister)
+        }
+
         binding.loginButton.setOnClickListener {
             val username = binding.usernameTextInputEditText.text.toString()
             val password = binding.passwordTextInputEditText.text.toString()
@@ -82,9 +87,8 @@ class LoginActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     binding.loginProgressBar.visibility = View.INVISIBLE
                     Log.d("LoginActivity", "Success -> token: ${response.data!!.token}")
-//                    val intent = Intent(this, MainActivity::class.java)
-//                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-//                    startActivity(intent)
+                    val intent = Intent(this, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
                     this.finish()
                 }
             }

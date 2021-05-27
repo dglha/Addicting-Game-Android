@@ -1,13 +1,19 @@
 package com.dlha.addictinggame.ui.activities
 
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.StrikethroughSpan
 import android.util.Log
 import android.view.Menu
 import android.view.View
+import android.webkit.CookieManager
+import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +24,7 @@ import androidx.navigation.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.adapter.NewGameModuleAdapter
+import com.dlha.addictinggame.adapter.PlayGameActivity
 import com.dlha.addictinggame.databinding.ActivityDetailsBinding
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.utils.NetworkResult
@@ -85,6 +92,7 @@ class DetailsActivity : AppCompatActivity() {
             }
         }
 
+
         setupRecyclerView()
         readYouMayLikeApi(gameItem.categoryId, gameItem.id)
 
@@ -93,7 +101,30 @@ class DetailsActivity : AppCompatActivity() {
     private fun checkBuy(gameItem: GameItem) {
         if(gameItem.isBuy > 0) {
             binding.detailDownloadFab.visibility = View.VISIBLE
+            binding.playNowButton.visibility = View.VISIBLE
             binding.detailAddToCartFab.visibility = View.GONE
+
+            binding.playNowButton.setOnClickListener {
+                startActivity(Intent(this@DetailsActivity,PlayGameActivity::class.java).putExtra("webgame",gameItem.link))
+            }
+
+            binding.detailDownloadFab.setOnClickListener {
+                val url = ""
+
+                val request : DownloadManager.Request = DownloadManager.Request(Uri.parse(url))
+                val title : String = URLUtil.guessFileName(url,null,null)
+                request.setTitle(title)
+                request.setDescription("Download...")
+                val cookie = CookieManager.getInstance().getCookie(url)
+                request.addRequestHeader("cookie",cookie)
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,title)
+
+                val downloadManager : DownloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                downloadManager.enqueue(request)
+
+                Toast.makeText(this@DetailsActivity,"Download Start",Toast.LENGTH_SHORT).show()
+            }
         }
     }
     private fun checkFavorite(gameItem: GameItem) {

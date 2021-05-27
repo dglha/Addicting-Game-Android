@@ -95,6 +95,7 @@ class ProfileFragment : Fragment() {
 
         binding.usernameTextView.text = name
         binding.avatar.load(user.avatar)
+        binding.emailTextView.text = user.email
         binding.coinTextView.text = user.coinhave.toString()
 
         binding.loginLayout.visibility = View.GONE
@@ -103,6 +104,7 @@ class ProfileFragment : Fragment() {
         binding.logoutLayout.visibility = View.VISIBLE
 
         binding.totalNumberFavorites.text = "Already have "+user.totalFavorites.toString()+" games"
+        binding.alreadyHav.text = "Already have "+user.total_gamehaving.toString()+" games"
 
         binding.gamehavingLayout.setOnClickListener {
             startActivity(Intent(requireContext(), GameHavingActivity::class.java))
@@ -116,17 +118,15 @@ class ProfileFragment : Fragment() {
 
     private fun resetContentView() {
         Log.d("Profile", "resetContentView: called")
-        binding.usernameTextView.text = "USER"
+        binding.usernameTextView.text = "Username"
+        binding.emailTextView.text = "Email"
+        binding.coinTextView.text = "Coin"
         binding.avatar.load(R.drawable._c3ad823775971_5632898dbfbfa)
 
         binding.loginLayout.visibility = View.VISIBLE
         binding.logoutLayout.visibility = View.GONE
         binding.favoritesGameLayout.visibility = View.GONE
         binding.gamehavingLayout.visibility = View.GONE
-
-
-
-
 
     }
 

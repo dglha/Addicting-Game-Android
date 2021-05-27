@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
         android:name=".MyApplication"
@@ -20,37 +21,41 @@
         android:supportsRtl="true"
         android:theme="@style/SplashScreenStyle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.GameHavingActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.activities.MainActivity"/>
-
-        <activity android:name=".ui.activities.CategoryActivity"
+        <activity
+            android:name=".adapter.PlayGameActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ui.activities.GameHavingActivity"
+            android:parentActivityName=".ui.activities.MainActivity"
             android:theme="@style/AppTheme" />
-
-        <activity android:name=".ui.activities.SaleActivity"
-            android:theme="@style/AppTheme"
-            />
-        <activity android:name=".ui.activities.FavoritesActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.activities.MainActivity"/>
-
-        <activity android:name=".ui.activities.NewGameActivity"
-            android:theme="@style/AppTheme"
-            />
-        <activity android:name=".ui.activities.SearchActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.activities.MainActivity"/>
-
+        <activity
+            android:name=".ui.activities.CategoryActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.SaleActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.FavoritesActivity"
+            android:parentActivityName=".ui.activities.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.NewGameActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activities.SearchActivity"
+            android:parentActivityName=".ui.activities.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.RegisterActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.activities.LoginActivity"/>
+            android:parentActivityName=".ui.activities.LoginActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".ui.activities.MainActivity"/>
+            android:parentActivityName=".ui.activities.MainActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activities.MainActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,12 +65,12 @@
         </activity>
         <activity
             android:name=".ui.activities.ReviewsActivity"
-            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".ui.activities.DetailsActivity"
-            android:theme="@style/DetailsActivityStyle"/>
-
-        <activity android:name=".ui.activities.DetailsActivity"
-            android:theme="@style/DetailsActivityStyle"/>
+            android:theme="@style/DetailsActivityStyle"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activities.DetailsActivity"
+            android:theme="@style/DetailsActivityStyle" />
     </application>
 
 </manifest>
