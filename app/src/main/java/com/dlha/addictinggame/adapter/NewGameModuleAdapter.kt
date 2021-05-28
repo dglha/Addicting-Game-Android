@@ -1,11 +1,11 @@
 package com.dlha.addictinggame.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
+import com.dlha.addictinggame.ui.activities.DetailsActivity
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
 import com.google.android.material.button.MaterialButton
 
@@ -41,6 +42,8 @@ class NewGameModuleAdapter(val context: Context) :
                     itemView.findNavController().navigate(action)
                 } catch (e: Exception){
                     Log.d("NavToDetails", "error when navigate: " + e.message.toString())
+                    val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
+                    context.startActivity(intent)
                 }
 
             }

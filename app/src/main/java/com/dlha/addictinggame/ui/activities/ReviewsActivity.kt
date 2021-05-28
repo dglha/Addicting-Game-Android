@@ -98,7 +98,7 @@ class ReviewsActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         this.finish()
-        return super.onSupportNavigateUp()
+        return true
     }
 
 }

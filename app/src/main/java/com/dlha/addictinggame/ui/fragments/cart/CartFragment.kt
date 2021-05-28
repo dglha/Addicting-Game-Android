@@ -88,6 +88,7 @@ class CartFragment : Fragment() {
                         showShimmerEffect()
                     }
                     is NetworkResult.Error -> {
+                        mAdapter.setData(emptyList())
                         hideShimmerEffect()
                         Toast.makeText(requireContext(),response.message,Toast.LENGTH_SHORT).show()
                     }
