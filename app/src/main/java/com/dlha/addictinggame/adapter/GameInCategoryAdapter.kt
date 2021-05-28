@@ -20,12 +20,12 @@ class GameInCategoryAdapter(val context : Context) : RecyclerView.Adapter<GameIn
     var gamesInCategory : List<GameItem> = emptyList()
     inner class GameInCategoryAdapterViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         fun bind(gameItem: GameItem) {
-            itemView.findViewById<TextView>(R.id.favorite_gameTitle_imageView).text = gameItem.name
-            itemView.findViewById<ImageView>(R.id.favorite_gameImage_imageView).load(gameItem.image) {
+            itemView.findViewById<TextView>(R.id.new_gameTitle_textView).text = gameItem.name
+            itemView.findViewById<ImageView>(R.id.new_gameImage_imageView).load(gameItem.image) {
                 crossfade(600)
             }
-            itemView.findViewById<TextView>(R.id.favorite_gameTitle_imageView).text = gameItem.developer
-            itemView.findViewById<TextView>(R.id.favorite_gameCoin_textView).text = gameItem.coin
+            itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = gameItem.developer
+            itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = gameItem.coin
 
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java).putExtra("gameItem", gameItem)
@@ -35,7 +35,7 @@ class GameInCategoryAdapter(val context : Context) : RecyclerView.Adapter<GameIn
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameInCategoryAdapterViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.favorite_game_row_layout,parent,false)
+        val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.new_game_row_layout,parent,false)
         return GameInCategoryAdapterViewHolder(layoutInflater)
     }
 
