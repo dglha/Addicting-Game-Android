@@ -1,6 +1,5 @@
 package com.dlha.addictinggame.ui.fragments.cart
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -43,7 +42,7 @@ class CartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         changeStatusBar()
         binding = FragmentCartBinding.inflate(layoutInflater)
         setupToolbar()
@@ -62,18 +61,13 @@ class CartFragment : Fragment() {
 
         }
 
-        binding.checkoutButton.setOnClickListener {
-            checkout(token,listIDString)
-            binding.cartProgressBar.visibility = View.VISIBLE
-        }
+        binding.checkoutButton.isClickable = false
 
         return binding.root
     }
     private fun changeStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val window: Window = requireActivity().window
-            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+        val window: Window = requireActivity().window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
     private fun setupToolbar() {
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.cartToolbar)
@@ -145,18 +139,41 @@ class CartFragment : Fragment() {
     private fun totalCoin(list : List<GameItem>) {
         var totalCoin = 0
         listID = mutableListOf()
-        for(i in 0 until list?.count()!!) {
-            totalCoin += if(list.get(i).salePercent.toInt() > 0) {
-                ((list.get(i).coin.toFloat()*(100-list.get(i).salePercent.toFloat()))/100).roundToInt()
+        for(i in 0 until list.count()) {
+            totalCoin += if(list[i].salePercent.toInt() > 0) {
+                ((list[i].coin.toFloat()*(100- list[i].salePercent.toFloat()))/100).roundToInt()
             } else {
-                list.get(i).coin.toInt()
+                list[i].coin.toInt()
             }
             listID.add(list[i].id)
         }
         binding.priceTextView.text = totalCoin.toString()
+
+        //Check if return coin is negative
+        setCheckOutButton(totalCoin)
+
+
         listIDString = listID.toString().substring(1,listID.toString().length-1)
         Log.d("LISTIDD",listIDString)
     }
+
+    private fun setCheckOutButton(totalCoin: Int) {
+        val myCoin = binding.myCoinNumberTextView.text.toString()
+        if((myCoin.toInt() - totalCoin) > 0){
+            Log.d("CartFragment", "setCheckOutButton: return coin: " + (totalCoin - myCoin.toInt()) )
+            binding.checkoutButton.isClickable = true
+            binding.checkoutButton.setOnClickListener {
+                checkout(token,listIDString)
+                binding.cartProgressBar.visibility = View.VISIBLE
+            }
+        } else {
+            binding.checkoutButton.isClickable = true
+            binding.checkoutButton.setOnClickListener {
+                Toast.makeText(requireContext(), "Not enough coin :D!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun setupRecyclerView() {
         binding.cartRecyclerView.adapter = mAdapter
         binding.cartRecyclerView.layoutManager = LinearLayoutManager(requireContext())
