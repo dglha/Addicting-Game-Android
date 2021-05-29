@@ -72,8 +72,7 @@ class RegisterActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     binding.registerProgressBar.visibility = View.INVISIBLE
                     Log.d("RegisterActivity", "Success -> Message: ${response.data!!.message}")
-                    startActivity(Intent(this, LoginActivity::class.java).putExtra("username",username))
-                    overridePendingTransition(R.anim.slide_in_left,android.R.anim.slide_out_right);
+                    this.finish()
                 }
             }
         }
