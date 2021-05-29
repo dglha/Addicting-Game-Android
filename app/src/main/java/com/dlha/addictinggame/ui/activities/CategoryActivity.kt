@@ -40,8 +40,13 @@ class CategoryActivity : AppCompatActivity() {
         Log.d("QQQ",idcategory.toString())
 
         setupRecyclerView()
-        readAPI(idcategory)
-
+        mainViewModel.userToken.observe(this) {
+            if(it!=null) {
+                readAPI(idcategory,it)
+            } else {
+                readAPI(idcategory,"")
+            }
+        }
         setContentView(binding.root)
     }
     private fun setupToolbar(title: String) {
@@ -50,9 +55,9 @@ class CategoryActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.categoryToolbarTitle.text = title
     }
-    private fun readAPI(idcategory : Int) {
+    private fun readAPI(idcategory : Int,token : String) {
         lifecycleScope.launch {
-            mainViewModel.getGamesInCategory(idcategory)
+            mainViewModel.getGamesInCategory(idcategory,token)
             mainViewModel.gamesInCategoryResponse.observe(this@CategoryActivity) { response ->
                 when(response) {
                     is NetworkResult.Loading -> {

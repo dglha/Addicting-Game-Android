@@ -2,6 +2,9 @@ package com.dlha.addictinggame.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.StrikethroughSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +19,7 @@ import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
 import com.dlha.addictinggame.ui.fragments.home.HomeFragmentDirections
 import com.google.android.material.button.MaterialButton
+import kotlin.math.roundToInt
 
 class NewGameModuleAdapter(val context: Context) :
     RecyclerView.Adapter<NewGameModuleAdapter.NewGameModuleViewHolder>() {
@@ -33,6 +37,9 @@ class NewGameModuleAdapter(val context: Context) :
             if(game.isFavorite>0) {
                 itemView.findViewById<MaterialButton>(R.id.module_addToFavorite_button).setIconResource(R.drawable.ic_heart)
                 itemView.findViewById<MaterialButton>(R.id.module_addToFavorite_button).setIconTintResource(R.color.red)
+            }
+            if(game.salePercent.toInt()>0) {
+                game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
             }
             Log.d("QQQ",game.isFavorite.toString())
             itemView.setOnClickListener {

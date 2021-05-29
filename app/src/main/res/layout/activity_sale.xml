@@ -73,12 +73,12 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginBottom="6dp"
-                    android:tint="@color/iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/ic_baseline_filter_list_24" />
+                    app:srcCompat="@drawable/ic_baseline_filter_list_24"
+                    app:tint="@color/iconTintColor" />
 
                 <TextView
                     android:id="@+id/filters_textView"
@@ -109,12 +109,12 @@
                     android:layout_marginStart="144dp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
-                    android:tint="@color/iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/ic_baseline_attach_money_24" />
+                    app:srcCompat="@drawable/ic_baseline_attach_money_24"
+                    app:tint="@color/iconTintColor" />
 
                 <TextView
                     android:id="@+id/price_lowest_to_highest_textView"

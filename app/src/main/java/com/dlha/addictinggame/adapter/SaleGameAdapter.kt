@@ -36,8 +36,10 @@ class SaleGameAdapter(val context : Context) : RecyclerView.Adapter<SaleGameAdap
             spanBuilder.setSpan(
                 strikethroughSpan,0,game.coin.length,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
+            if(game.salePercent.toInt()>0) {
+                game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
+            }
             itemView.findViewById<TextView>(R.id.sale_oldGameCoin_textView).text = spanBuilder
-            game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
             itemView.findViewById<TextView>(R.id.sale_newGameCoin_textView).text = game.newCoin.toString()
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)

@@ -94,7 +94,16 @@ class DetailsActivity : AppCompatActivity() {
 
 
         setupRecyclerView()
-        readYouMayLikeApi(gameItem.categoryId, gameItem.id)
+
+        mainViewModel.userToken.observe(this@DetailsActivity) {
+            if(it!=null) {
+                readYouMayLikeApi(gameItem.categoryId, gameItem.id,it)
+            } else {
+                readYouMayLikeApi(gameItem.categoryId, gameItem.id,"")
+            }
+        }
+
+
 
 
     }
@@ -109,7 +118,7 @@ class DetailsActivity : AppCompatActivity() {
             }
 
             binding.detailDownloadFab.setOnClickListener {
-                val url = ""
+                val url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
 
                 val request : DownloadManager.Request = DownloadManager.Request(Uri.parse(url))
                 val title : String = URLUtil.guessFileName(url,null,null)
@@ -158,9 +167,9 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun readYouMayLikeApi(cateId: Int, gameId: Int) {
+    private fun readYouMayLikeApi(cateId: Int, gameId: Int,token: String) {
         lifecycleScope.launch {
-            mainViewModel.getGamesInCategory(cateId)
+            mainViewModel.getGamesInCategory(cateId,token)
             mainViewModel.gamesInCategoryResponse.observe(this@DetailsActivity) { response ->
                 when(response) {
                     is NetworkResult.Loading -> {

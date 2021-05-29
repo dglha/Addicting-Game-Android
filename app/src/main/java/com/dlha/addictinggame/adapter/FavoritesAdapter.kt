@@ -15,6 +15,7 @@ import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
 import com.dlha.addictinggame.viewmodels.FavoriteViewModel
+import kotlin.math.roundToInt
 
 class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteViewModel, val lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>()
 {
@@ -28,7 +29,9 @@ class FavoritesAdapter(val context: Context, val favoriteViewModel: FavoriteView
             }
             itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
             itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
-
+            if(game.salePercent.toInt() > 0) {
+                game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
+            }
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
                 Log.d("NavToDetails", "game selected: $game")

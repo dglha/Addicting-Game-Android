@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Addicting Games</string>
+    <string name="login_username_hint">Tài khoản</string>
+    <string name="login_password_hint">Mật khẩu</string>
+    <string name="already_have_an_account">Bạn đã có tài khoản?</string>
+    <string name="favorites">Yêu thích</string>
+    <string name="price_lowest_to_high">Thấp đến cao</string>
+    <string name="filters">Bộ lọc</string>
+    <string name="library">Thư viện</string>
+    <string name="login">Đăng nhập</string>
+    <string name="forgot_your_password">Quên mật khẩu</string>
+    <string name="or_login_with_social_account">Đăng nhập qua mạng xã hội</string>
+    <string name="doesn_t_have_an_account_create_one">Đăng ký tài khoản</string>
+    <string name="comment">Bình luận</string>
+    <string name="support">Hỗ trợ</string>
+    <string name="you_may_also_like_this">Bạn cũng có thể thích</string>
+    <string name="play_now">Chơi ngay</string>
+    <string name="password" translatable="false">Mật khẩu</string>
+    <string name="username">Tài khoản</string>
+    <string name="register">Đăng ký</string>
+    <string name="categories">Danh Mục</string>
+    <string name="my_profile">Thông tin của tôi</string>
+    <string name="log_out">Đăng xuất</string>
+    <string name="settings">Cài đặt</string>
+    <string name="change_style">Thay đổi phong cách</string>
+    <string name="purchased_game">Game đã mua</string>
+    <string name="change_language">Thay đổi ngôn ngữ</string>
+    <string name="suitable_for_each_country">Phù hợp từng quốc gia</string>
+</resources>

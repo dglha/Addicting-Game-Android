@@ -19,7 +19,7 @@
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
         android:lineHeight="34sp"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/titleColor"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"

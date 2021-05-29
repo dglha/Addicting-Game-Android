@@ -38,6 +38,7 @@ class CartAdapter(val context : Context) : RecyclerView.Adapter<CartAdapter.Cart
                 spanBuilder.setSpan(
                     strikethroughSpan,0,gameItem.coin.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
+
                 itemView.findViewById<TextView>(R.id.cart_gameCoin_textView).text = spanBuilder
 
             } else {

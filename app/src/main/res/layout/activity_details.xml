@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/metropolis_semibold"
-                android:text="Cyberpunk 2077"
+                android:text="@string/cyberpunk_2077"
                 android:textColor="@color/titleColor"
                 android:textSize="18sp" />
 
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_semibold"
-                android:text="$19.99"
+                android:text="@string/_19_99"
                 android:textColor="@color/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/details_addToFavorite_button"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/metropolis_semibold"
-                android:text="CD Projeck Red"
+                android:text="@string/cd_projeck_red"
                 android:textColor="@color/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/detail_gameCoin_textView"
@@ -152,7 +152,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="Comment"
+                        android:text="@string/comment"
                         android:textColor="@color/titleColor"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -164,11 +164,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:tint="@color/iconTintColor"
                         app:layout_constraintBottom_toBottomOf="@+id/commentCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/commentCard_textView"
-                        app:srcCompat="@drawable/ic_forward" />
+                        app:srcCompat="@drawable/ic_forward"
+                        app:tint="@color/iconTintColor" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -196,7 +196,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/metropolis_regular"
-                        android:text="Support"
+                        android:text="@string/support"
                         android:textColor="@color/titleColor"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -208,11 +208,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:tint="@color/iconTintColor"
                         app:layout_constraintBottom_toBottomOf="@+id/supportCard_textView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/supportCard_textView"
-                        app:srcCompat="@drawable/ic_forward" />
+                        app:srcCompat="@drawable/ic_forward"
+                        app:tint="@color/iconTintColor" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -224,7 +224,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/metropolis_semibold"
-                android:text="You may also like this"
+                android:text="@string/you_may_also_like_this"
                 android:textColor="@color/titleColor"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -263,7 +263,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="@color/buttonBackgroundTint"
-                android:text="Play Now"
+                android:text="@string/play_now"
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:cornerRadius="100dp"

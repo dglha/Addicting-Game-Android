@@ -1,12 +1,16 @@
 package com.dlha.addictinggame.ui.fragments.profile
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +26,7 @@ import com.dlha.addictinggame.utils.NetworkResult
 import com.dlha.addictinggame.viewmodels.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
@@ -114,6 +119,11 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(),FavoritesActivity::class.java))
         }
 
+
+        binding.changeLanguageLayout.setOnClickListener {
+            showChangeLanguage()
+        }
+
     }
 
     private fun resetContentView() {
@@ -128,6 +138,40 @@ class ProfileFragment : Fragment() {
         binding.favoritesGameLayout.visibility = View.GONE
         binding.gamehavingLayout.visibility = View.GONE
 
+    }
+
+    private fun showChangeLanguage() {
+        val listItem = arrayOf("Vietnamese","English")
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Choose Language")
+        builder.setSingleChoiceItems(listItem,-1) { dialog, which ->
+            if(which == 0) {
+                setLocate("vi")
+                activity?.let { recreate(it) }
+            } else if(which == 1) {
+                setLocate("en")
+                activity?.let { recreate(it) }
+            }
+
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+
+        dialog.show()
+    }
+
+    fun setLocate(lang : String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        activity?.baseContext?.resources?.updateConfiguration(config,
+            activity?.baseContext?.resources!!.displayMetrics)
+
+        val editor = activity?.getSharedPreferences("Settings", Context.MODE_PRIVATE)?.edit()
+        editor?.putString("My_Lang", lang)
+        editor?.apply()
     }
 
     private fun changeStatusBar() {

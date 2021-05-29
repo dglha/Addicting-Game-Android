@@ -2,6 +2,9 @@ package com.dlha.addictinggame.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.StrikethroughSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +17,7 @@ import coil.load
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.GameItem
 import com.dlha.addictinggame.ui.activities.DetailsActivity
+import kotlin.math.roundToInt
 
 class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter.NewGameViewHolder>()
 {
@@ -28,7 +32,9 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
             }
             itemView.findViewById<TextView>(R.id.new_gameDeveloper_textView).text = game.developer
             itemView.findViewById<TextView>(R.id.new_gameCoin_textView).text = game.coin
-
+            if(game.salePercent.toInt()>0) {
+                game.newCoin = ((game.coin.toFloat()*(100-game.salePercent.toFloat()))/100).roundToInt()
+            }
             itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java).putExtra("item", game)
                 Log.d("NavToDetails", "game selected: $game")
@@ -38,7 +44,6 @@ class NewGameAdapter(val context: Context) : RecyclerView.Adapter<NewGameAdapter
                     Log.d("NavToDetails", "error when navigate from New: " + e.message.toString())
                 }
             }
-
         }
     }
 

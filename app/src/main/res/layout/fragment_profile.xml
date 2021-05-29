@@ -33,19 +33,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="106dp"
-        android:layout_marginEnd="192dp"
         android:layout_marginBottom="672dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
-        android:text="My profile"
-        android:textSize="34sp"
+        android:text="@string/my_profile"
         android:textColor="@color/titleColor"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488" />
 
     <FrameLayout
         android:id="@+id/frameLayout2"
@@ -150,6 +151,8 @@
         app:layout_constraintTop_toBottomOf="@+id/coin_textView"
         tools:layout_editor_absoluteX="0dp">
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/gamehaving_layout"
             android:layout_width="match_parent"
@@ -169,7 +172,7 @@
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
                 android:textColor="@color/titleColor"
-                android:text="Purchased Game"
+                android:text="@string/purchased_game"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -214,7 +217,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:text="Favorites"
+                android:text="@string/favorites"
                 android:textColor="@color/titleColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -230,6 +233,52 @@
                 android:layout_marginBottom="17dp"
                 android:gravity="top"
                 android:text="Already have 12 games"
+                android:textColor="@color/descriptionColor"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/change_language_layout"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gamehaving_layout"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/change_language_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/metropolis_bold"
+                android:gravity="top"
+                android:text="@string/change_language"
+                android:textColor="@color/titleColor"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/change_sub_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="17dp"
+                android:gravity="top"
+                android:text="@string/suitable_for_each_country"
                 android:textColor="@color/descriptionColor"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -260,7 +309,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/textFocusColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -306,7 +355,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:text="Log Out"
+                android:text="@string/log_out"
                 android:textColor="@color/textFocusColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"

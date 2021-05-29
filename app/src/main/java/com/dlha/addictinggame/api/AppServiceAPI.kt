@@ -18,7 +18,7 @@ interface AppServiceAPI {
     suspend fun getListSaleGame(@Query("token") token : String): Response<List<GameItem>>
 
     @GET("api/listGameInCategory")
-    suspend fun getListGameInCategory(@Query("iddm") idcategory : Int ): Response<List<GameItem>>
+    suspend fun getListGameInCategory(@Query("iddm") idcategory : Int,@Query("token") token : String): Response<List<GameItem>>
 
     @GET("api/getListCommentInGame")
     suspend fun getListCommentInGame(@Query("idgame") idgame : Int): Response<List<Comment>>
