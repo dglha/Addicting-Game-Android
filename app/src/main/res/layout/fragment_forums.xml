@@ -40,12 +40,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/metropolis_bold"
-        android:text="Coming Soon"
+        android:text="@string/coming_soon"
         android:textColor="@color/titleColor"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fixing_imageView" />
 

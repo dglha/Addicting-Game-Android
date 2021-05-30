@@ -16,7 +16,6 @@
     <string name="support">Hỗ trợ</string>
     <string name="you_may_also_like_this">Bạn cũng có thể thích</string>
     <string name="play_now">Chơi ngay</string>
-    <string name="password" translatable="false">Mật khẩu</string>
     <string name="username">Tài khoản</string>
     <string name="register">Đăng ký</string>
     <string name="categories">Danh Mục</string>
@@ -27,4 +26,21 @@
     <string name="purchased_game">Game đã mua</string>
     <string name="change_language">Thay đổi ngôn ngữ</string>
     <string name="suitable_for_each_country">Phù hợp từng quốc gia</string>
+    <string name="new_game" translatable="false">Game mới</string>
+    <string name="sale">Giảm giá</string>
+    <string name="my_cart">Giỏ hàng</string>
+    <string name="total_amount">Tổng giá trị đơn hàng</string>
+    <string name="my_coin">Coin của tôi</string>
+    <string name="coin_return">Coin trả lại</string>
+    <string name="coming_soon">Đang Code</string>
+    <string name="what_is_your_opinion">Ý kiến của bạn</string>
+    <string name="please_share_your_opinion_about_the_product">Hãy chia sẻ ý kiến của bạn về sản phẩm</string>
+    <string name="send_review">Gửi nhận xét</string>
+    <string name="super_sale">Đại giảm giá mùa hè</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="you_ve_never_seen_it_before">Bạn chưa bao giờ thấy nó trước đây!</string>
+
+    <string name="up_to_50_off">Lên đến 50%</string>
+    <string name="super_sale_cate">Siêu giảm giá</string>
+    <string name="checkout">Thanh toán</string>
 </resources>

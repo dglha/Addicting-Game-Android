@@ -77,7 +77,7 @@
                     android:fontFamily="@font/metropolis_bold"
                     android:gravity="top"
                     android:lineSpacingExtra="5sp"
-                    android:text="@string/supper_sale"
+                    android:text="@string/super_sale_cate"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:translationY="-2.4sp"
