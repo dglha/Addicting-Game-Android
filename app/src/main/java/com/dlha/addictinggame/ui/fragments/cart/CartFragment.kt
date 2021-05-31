@@ -148,6 +148,7 @@ class CartFragment : Fragment() {
             listID.add(list[i].id)
         }
         binding.priceTextView.text = totalCoin.toString()
+        binding.coinReturnNumberTextView.text = (binding.myCoinNumberTextView.text.toString().toInt() - binding.priceTextView.text.toString().toInt()).toString()
 
         //Check if return coin is negative
         setCheckOutButton(totalCoin)
@@ -206,6 +207,7 @@ class CartFragment : Fragment() {
                                 Toast.makeText(requireContext(), "Removed ${deletedItem.name}!", Toast.LENGTH_SHORT).show()
                                 //                                    mAdapter.setData(emptyList())
                                 cartViewModel.getListGameInCart(token)
+                                binding.coinReturnNumberTextView.text = (binding.myCoinNumberTextView.text.toString().toInt() - binding.priceTextView.text.toString().toInt()).toString()
                             }
                         }
                     }
