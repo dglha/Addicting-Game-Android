@@ -1,6 +1,7 @@
 package com.dlha.addictinggame.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dlha.addictinggame.R
 import com.dlha.addictinggame.model.Comment
+import com.dlha.addictinggame.ui.activities.SeeOtherProfileActivity
 
 
 class CommentAdapter(val context : Context) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>()
@@ -18,6 +20,11 @@ class CommentAdapter(val context : Context) : RecyclerView.Adapter<CommentAdapte
             itemView.findViewById<TextView>(R.id.commentName_textView).text = comment.user_comment
             itemView.findViewById<TextView>(R.id.commentBody_textView).text = comment.text_comment
             itemView.findViewById<TextView>(R.id.commentDate_textView).text = comment.time_comment
+
+            itemView.findViewById<TextView>(R.id.commentName_textView).setOnClickListener {
+                context.startActivity(Intent(context,SeeOtherProfileActivity::class.java).putExtra("username",comment.user_comment))
+            }
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {

@@ -24,12 +24,17 @@ class ProfileViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     val userInfoResponse : MutableLiveData<NetworkResult<User>> = MutableLiveData()
+    val otherUserInfoResponse : MutableLiveData<NetworkResult<User>> = MutableLiveData()
 
     //DataStore
     val userToken = dataStoreRepository.readAuthToken.asLiveData()
 
     fun getUserInfo(token: String) = viewModelScope.launch {
         getUserInfoSafeCall(token)
+    }
+
+    fun getOtherUserInfo(username : String) = viewModelScope.launch {
+        getOtherUserInfoSafeCall(username)
     }
 
     private suspend fun getUserInfoSafeCall(token: String) {
@@ -43,6 +48,32 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun handleUserInfoResponse(response: Response<User>): NetworkResult<User> {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout.")
+            }
+            response.body()?.username.isNullOrEmpty() -> {
+                NetworkResult.Error("User not found!")
+            }
+            response.isSuccessful -> {
+                val message = response.body()!!
+                return NetworkResult.Success(message)
+            }
+            else -> NetworkResult.Error(response.message().toString())
+        }
+    }
+
+    private suspend fun getOtherUserInfoSafeCall(username: String) {
+        otherUserInfoResponse.value = NetworkResult.Loading()
+        try {
+            val response = repository.remote.getOtherUserInfo(username)
+            otherUserInfoResponse.value = handleOtherInfoRespone(response)
+        } catch (e : Exception) {
+            otherUserInfoResponse.value = NetworkResult.Error(e.toString())
+        }
+    }
+
+    private fun handleOtherInfoRespone(response: Response<User>): NetworkResult<User> {
         return when {
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout.")

@@ -34,6 +34,9 @@ class RemoteDataSource @Inject constructor(
     suspend fun getListSearhGame(token : String,namegame : String) : Response<List<GameItem>> {
         return appServiceAPI.getListSearchGame(token,namegame)
     }
+    suspend fun getOtherUserInfo(username : String) : Response<User> {
+        return appServiceAPI.getOtherUserInfo(username)
+    }
 
     /*
     *

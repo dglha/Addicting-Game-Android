@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/myprofile_toolbar"
+            android:id="@+id/other_profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:titleTextColor="#fff">
@@ -38,7 +38,7 @@
         android:layout_marginBottom="672dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
-        android:text="@string/my_profile"
+        android:text="@string/profile"
         android:textColor="@color/titleColor"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -126,6 +126,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="265dp"
+        android:visibility="invisible"
         android:layout_marginBottom="626dp"
         android:fontFamily="@font/metropolis_bold"
         android:gravity="top"
@@ -152,49 +153,6 @@
         tools:layout_editor_absoluteX="0dp">
 
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gamehaving_layout"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/line">
-
-            <TextView
-                android:id="@+id/total_game_having"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_bold"
-                android:gravity="top"
-                android:textColor="@color/titleColor"
-                android:text="@string/purchased_game"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/already_hav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="17dp"
-                android:gravity="top"
-                android:text="Already have 12 games"
-                android:textColor="@color/descriptionColor"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/favorites_game_layout"
             android:layout_width="match_parent"
@@ -208,7 +166,7 @@
             tools:layout_editor_absoluteX="0dp">
 
             <TextView
-                android:id="@+id/total_game_favorites"
+                android:id="@+id/add_friend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -217,14 +175,14 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:text="@string/favorites"
+                android:text="@string/add_friend"
                 android:textColor="@color/titleColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/total_sub_game_favorites"
+                android:id="@+id/add_friends_sub_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -232,7 +190,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="17dp"
                 android:gravity="top"
-                android:text="Already have 12 games"
+                android:text="@string/new_friend"
                 android:textColor="@color/descriptionColor"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -254,7 +212,7 @@
             tools:layout_editor_absoluteX="0dp">
 
             <TextView
-                android:id="@+id/change_language"
+                android:id="@+id/played_game"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -263,14 +221,14 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/metropolis_bold"
                 android:gravity="top"
-                android:text="@string/change_language"
+                android:text="@string/games_played"
                 android:textColor="@color/titleColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/change_language_sub_textView"
+                android:id="@+id/games_played_sub_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -278,103 +236,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="17dp"
                 android:gravity="top"
-                android:text="@string/suitable_for_each_country"
+                android:text="@string/played_games"
                 android:textColor="@color/descriptionColor"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/login_layout"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/line"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.544"
-            tools:layout_editor_absoluteX="0dp">
-
-            <TextView
-                android:id="@+id/login_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_bold"
-                android:gravity="top"
-                android:text="@string/login"
-                android:textColor="@color/textFocusColor"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/login_sub_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="17dp"
-                android:gravity="top"
-                android:text="Sign in to use all features"
-                android:textColor="@color/descriptionColor"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/logout_layout"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/line"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.544"
-            tools:layout_editor_absoluteX="0dp">
-
-            <TextView
-                android:id="@+id/logout_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/metropolis_bold"
-                android:gravity="top"
-                android:text="@string/log_out"
-                android:textColor="@color/textFocusColor"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/logout_sub_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="17dp"
-                android:gravity="top"
-                android:text="Good bye!! "
-                android:textColor="@color/descriptionColor"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

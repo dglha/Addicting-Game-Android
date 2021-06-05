@@ -108,7 +108,7 @@ class ProfileFragment : Fragment() {
         binding.gamehavingLayout.visibility = View.VISIBLE
         binding.logoutLayout.visibility = View.VISIBLE
 
-        binding.totalNumberFavorites.text = "Already have "+user.totalFavorites.toString()+" games"
+        binding.totalSubGameFavorites.text = "Already have "+user.totalFavorites.toString()+" games"
         binding.alreadyHav.text = "Already have "+user.total_gamehaving.toString()+" games"
 
         binding.gamehavingLayout.setOnClickListener {

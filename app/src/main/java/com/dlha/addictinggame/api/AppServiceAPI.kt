@@ -3,6 +3,8 @@ package com.dlha.addictinggame.api
 import com.dlha.addictinggame.model.Category
 import com.dlha.addictinggame.model.Comment
 import com.dlha.addictinggame.model.GameItem
+import com.dlha.addictinggame.model.User
+import com.google.gson.annotations.SerializedName
 
 import retrofit2.Response
 import retrofit2.http.*
@@ -25,4 +27,8 @@ interface AppServiceAPI {
 
     @GET("api/searchGame")
     suspend fun getListSearchGame(@Query("token") token : String,@Query("namegame") namegame : String) : Response<List<GameItem>>
+
+    @POST("api/getOtherUser")
+    @FormUrlEncoded
+    suspend fun getOtherUserInfo(@Field("username") username : String) : Response<User>
 }

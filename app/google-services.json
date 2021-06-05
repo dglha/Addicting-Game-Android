@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402680407080",
+    "project_id": "games-50715",
+    "storage_bucket": "games-50715.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402680407080:android:d3988152f5ee4e14a9011d",
+        "android_client_info": {
+          "package_name": "com.dlha.addictinggame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402680407080-n4ljnqd9usol80u520k5qakqejuucnrt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfN5mZLoqGDzOHXDEs8UkcMrTNqvDnqOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402680407080-n4ljnqd9usol80u520k5qakqejuucnrt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

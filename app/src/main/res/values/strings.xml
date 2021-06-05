@@ -48,4 +48,9 @@
     <string name="view_all">View all</string>
     <string name="you_ve_never_seen_it_before">You’ve never seen it before!</string>
     <string name="checkout">Checkout</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="new_friend">New Friend</string>
+    <string name="games_played">Games Played</string>
+    <string name="played_games">Played 12 games</string>
+    <string name="profile">Profile</string>
 </resources>
