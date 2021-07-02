@@ -1,14 +1,12 @@
 package com.dlha.addictinggame.ui.activities
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.fragment.app.activityViewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import coil.load
 import com.dlha.addictinggame.databinding.ActivitySeeOtherProfileBinding
 import com.dlha.addictinggame.model.User
 import com.dlha.addictinggame.utils.NetworkResult
@@ -53,7 +51,7 @@ class SeeOtherProfileActivity : AppCompatActivity() {
                     }
                     is NetworkResult.Success -> {
                         setupView(response.data!!)
-                        Log.d("USERNAME",response.data!!.username)
+                        Log.d("USERNAME", response.data.toString())
                     }
                 }
             }
@@ -63,6 +61,7 @@ class SeeOtherProfileActivity : AppCompatActivity() {
     private fun setupView(user : User) {
         binding.usernameTextView.text = user.firstname + " " + user.lastname
         binding.emailTextView.text = user.email
+        binding.avatar.load(user.avatar)
     }
 
 }

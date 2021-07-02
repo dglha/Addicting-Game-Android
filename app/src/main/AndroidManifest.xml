@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/SplashScreenStyle"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.SeeOtherProfileActivity"></activity>
+        <activity android:name=".ui.activities.SeeOtherProfileActivity"
+            android:theme="@style/AppTheme"/>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
